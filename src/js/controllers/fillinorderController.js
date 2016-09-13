@@ -262,7 +262,12 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
     $scope.minus_partner = function() {
         $scope.input.partner = --$scope.input.partner < 0 ? ++$scope.input.partner : $scope.input.partner;
         $scope.calculate();
-    }
+    };
+    // select package;
+    $scope.select_package = function(package) {
+        $scope.input.amount = package.purchase;
+        $scope.calculate();
+    };
 
     //鼠标移入提示 
 

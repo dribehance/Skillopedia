@@ -74,7 +74,7 @@
                         <a ng-click="remove_cover(cover)" class="remove"><i class="fa fa-times"></i></a>
                     </div> -->
                     <div class="open-img" flow-init="{singleFile:true}" ng-controller="uploadPosterController" flow-btn>
-                        <img ng-src="{{staticImageUrl + input.poster}}" flow-img="$flow.files[0]" class="full-width full-height" alt="">
+                        <img ng-src="{{staticImageUrl + input.poster}}" class="full-width full-height" alt="">
                     </div>
                     <input type="hidden" name="poster" required ng-model="input.poster">
                 </div>

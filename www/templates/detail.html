@@ -4,7 +4,7 @@
 <div class="wrap">
     <div class="section detail-section">
         <div class="detail-left">
-            <a class="coach-item" ng-href="#/show?user_id={{course.user_id}}">
+            <a class="coach-item">
                 <div class="coach-avatar">
                     <!-- <img ng-src="{{staticImageUrl + course.user_image_01}}" class="full-width" alt="" err-src="../images/example_7.png"> -->
                     <imageview data-rate="1" center-only src="staticImageUrl + course.user_image_01"></imageview>
@@ -53,13 +53,6 @@
             </div>
             <div class="line"></div>
             <div class="section sm">
-                <div class="section-title">About coach</div>
-                <div class="overview">
-                    {{course.overview}}
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="section sm">
                 <div class="section-title">Photo and Video</div>
                 <!-- <button id="openpopup">open</button> -->
                 <div class="image-gallaxy clearfix">
@@ -71,6 +64,12 @@
                     <div class="video" ng-repeat="video in course.CourseVedios">
                         <iframe ng-src="{{get_video(video.vedio_url)}}" frameborder="0" allowfullscreen></iframe>
                     </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="section sm">
+                <div class="section-title">About coach</div>
+                <div class="overview" ng-bind-html="parse_html(course.overview)">
                 </div>
             </div>
             <div class="line" ng-show="course.CourseCertifications.length>0"></div>
@@ -134,8 +133,8 @@
                 </p> -->
                 <p class="text-center">
                     <span class="btn btn-second" ng-click="toggle_like()"><i class="fa" ng-class="{'fa-heart-o':course.is_collection == '0','fa-heart':course.is_collection == '1'}" aria-hidden="true" style="margin-right: 8px"></i>like</span>
-                    <a class="btn btn-primary" ng-href="#/fillinorder?course_id={{course.course_id}}">add to cart</a>
-                    <a class="btn btn-success" ng-href="#/fillinorder?course_id={{course.course_id}}">pay now</a>
+                    <!-- <a class="btn btn-primary" ng-href="#/fillinorder?course_id={{course.course_id}}">add to cart</a> -->
+                    <a class="btn btn-success" ng-href="#/fillinorder?course_id={{course.course_id}}">Get Started</a>
                 </p>
             </div>
             <div class="section sm">
@@ -144,9 +143,9 @@
                 </div>
                 <!-- <div ng-include="'templates/calendar.html'"></div> -->
                 <calendar calendar="calendar" class="small-calendar"></calendar>
-                <!-- <span class="calender-tip unavailable">不可预约</span> -->
+                <span class="calender-tip unavailable">unavailable</span>
                 <span class="calender-tip confirm">booked</span>
-                <span class="calender-tip busy">unavailable</span>
+                <!-- <span class="calender-tip busy">unavailable, coach busy</span> -->
             </div>
             <div class="section sm map-section">
                 <div class="section-title">Teaching location</div>

@@ -154,4 +154,8 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 	$scope.to_fix = function(m) {
 		return m.toFixed(1);
 	}
+	$scope.parse_html = function(html) {
+		if (!html) return;
+		return html.replace(/\n/g, "<br>");
+	}
 })
