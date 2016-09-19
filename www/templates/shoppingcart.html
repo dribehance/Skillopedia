@@ -10,7 +10,7 @@
             <div class="tabs clearfix">
                 <a class="tab-item pull-left active">Cart</a>
                 <div class="btn-group pull-right clearfix" ng-if="normal_courses.length>0">
-                    <a class="btn" ng-click="check_all()" ng-class="{'text-primary':shoppingcart_size==normal_courses.length}"><i class="fa" ng-class="{'fa-check-square-o':shoppingcart_size==normal_courses.length,'fa-square-o':shoppingcart_size!=normal_courses.length}"></i> 全选</a>
+                    <a class="btn" ng-click="check_all()" ng-class="{'text-primary':shoppingcart_size==normal_courses.length}"><i class="fa" ng-class="{'fa-check-square-o':shoppingcart_size==normal_courses.length,'fa-square-o':shoppingcart_size!=normal_courses.length}"></i> All</a>
                     <a class="btn text-primary">${{get_total()}}</a>
                     <a class="btn btn-success" ng-click="pay()">pay now</a>
                 </div>

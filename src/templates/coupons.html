@@ -18,7 +18,7 @@
             <div class="section sm">
                 <div class="coupon" ng-repeat="coupon in coupons">
                     <div class="coupon-top">
-                        <span class="btn" ng-click="remove(coupon,$event)">Remove</span>
+                        <span class="btn" ng-click="remove(coupon,$event)">Delete</span>
                         <h2>offered by {{coupon.provider}}</h2>
                             <p><strong>{{coupon.total_coupon_money|currency:"$"}}</strong>&nbsp;&nbsp;x{{coupon.coupon_num}}</p>
                         <div class="p2">Valid from {{coupon.begin_time}} to {{coupon.end_time}}</div>
@@ -29,9 +29,9 @@
                     </div>
                 </div>
             </div>
-            <div class="section text-center">
+            <!-- <div class="section text-center">
                 <span class="btn btn-lg" ng-click="loadMore()">{{page.message}}</span>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

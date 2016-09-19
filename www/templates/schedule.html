@@ -16,15 +16,15 @@
                     <div class="calenader-result">
                         <p class="text-center">schedule</p>
                         <div class="result-item" ng-if="calendar.selected.state == '1'">
-                            <p>课程名称：{{calendar.selected.course_name}}</p>
-                            <p>上课地址：{{calendar.selected.course_location}}</p>
-                            <p>上课时间：{{calendar.selected.course_time}}</p>
-                            <p>学员留言：{{calendar.selected.remarks}}</p>
+                            <p>Course title：{{calendar.selected.course_name}}</p>
+                            <p>Teaching Location：{{calendar.selected.course_location}}</p>
+                            <p>Time for class：{{calendar.selected.course_time}}</p>
+                            <p>Message：{{calendar.selected.remarks}}</p>
                         </div>
                         <div class="result-item" ng-if="calendar.selected.state != '1'">
                             <div ng-repeat="time in calendar.selected" ng-if="time.remarks">
-                                <p>所选时间：{{time.hour||"-"}}</p>
-                                <p>时间安排：{{time.remarks||"暂无安排"}}</p>
+                                <p>Selected time：{{time.hour||"-"}}</p>
+                                <p>Plan：{{time.remarks||"no"}}</p>
                             </div>
                             <div class="clearfix" ng-if="calendar.selected.length>0">
                                 <p class="btn-group text-center">
