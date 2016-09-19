@@ -7,14 +7,14 @@
         <div class="course-tip">
             <h2>Create your course</h2>
             <p>Start Skillopedia from here</p>
-            <h4><i class="fa fa-archive" aria-hidden="true"></i> Manage your own business</h4>
-            <p>Set your own rate, Skillopedia provide Convenient tool to scheduling</p>
-            <h4><i class="fa fa-paper-plane" aria-hidden="true"></i> Publish your course</h4>
-            <p>You can create your courses, upload course profile whenever you want, When our course go live, $4.99 will be charged in your first payment</p>
-            <h4><i class="fa fa-users" aria-hidden="true"></i> Reach new client</h4>
-            <p>Client will reach you and booking training after they order</p>
+            <h4><i class="fa fa-archive" aria-hidden="true"></i>Manage your own business</h4>
+            <p>Set your own rates. Skillopedia provides convenient scheduling tools.</p>
+            <h4><i class="fa fa-paper-plane" aria-hidden="true"></i>Publish your courses</h4>
+            <p>You can create new courses and upload course profiles at your own convenience. When our courses go live, we will charge you an one-time annual fee of $9.99.</p>
+            <h4><i class="fa fa-users" aria-hidden="true"></i>Reach new clients</h4>
+            <p>Clients will contact you to schedule their training session after purchasing their course. Clients may also schedule their training session when placing their order.</p>
             <p></p>
-            <p>If you have any question createing your course</p>
+            <p>If you have any questions regarding creating your course, please contact us at:</p>
             <p>please contact us at:</p>
             <p>Email: <a href="mailto:admin@skillopedia.cc">admin@skillopedia.cc</a></p>
             <p>Tel: 714-213-9873</p>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="title-input">
-                    <span><b class="text-danger" ng-if='input.certs.length>0'> * </b>Certification - suggestion size: 520*296, below 500k</span>
+                    <span><b class="text-danger" ng-if='input.certs.length>0'> * </b>Certification - suggested size: 520*296, below 500k</span>
                     <div class="course-itemwrap clearfix">
                         <div class="course-items pull-left" ng-repeat="cert in input.certs">
                             <div class="course-item" ng-form="certForm">
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="title-input">
-                    <span><b class="text-danger" ng-if='input.videos.length>0'> * </b>Video,eg <code class="text-primary">http://www.youtube.com/watch?v=xxx</code><div class="pull-right" ng-click="add_video()"><i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 26px;color: #00E370;"></i></div></span>
+                    <span><b class="text-danger" ng-if='input.videos.length>0'> * </b>Video, e.g. <code class="text-primary">http://www.youtube.com/watch?v=xxx</code><div class="pull-right" ng-click="add_video()"><i class="fa fa-plus-circle" aria-hidden="true" style="font-size: 26px;color: #00E370;"></i></div></span>
                     <div class="remove-input" ng-repeat="video in input.videos track by $index" ng-form="videoForm" style="margin-bottom:15px;">
                         <input type="text" ng-model="video.url" class="full-width" ng-required="true" placeholder="http://www.youtube.com/watch?v=xxx" />
                         <div class="course-videoremove" ng-click="remove_video(video)">remove</div>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="m-session pull-right">
-                        <span><b class="text-danger"> * </b>Experienced Year</span>
+                        <span><b class="text-danger"> * </b>Years of Experience</span>
                         <div class="course-select">
                             <select name="teaching_since" ng-model="input.teaching_since" required>
                                 <option value="">Select Option</option>
@@ -154,7 +154,7 @@
                                 <option value="15+">15+</option>
                             </select>
                             <i class="fa fa-caret-down" aria-hidden="true"></i>
-                            <!-- <input type="text" name="teaching_since" ng-model="input.teaching_since" ng-required="true" class="full-width pickadate" placeholder="Experienced Year" class="full-width" /> -->
+                            <!-- <input type="text" name="teaching_since" ng-model="input.teaching_since" ng-required="true" class="full-width pickadate" placeholder="Years of Experience" class="full-width" /> -->
                         </div>
                     </div>
                 </div>
@@ -162,13 +162,13 @@
                 <div class="title-input">
                     <div class="clearfix">
                         <div class="m-session pull-left">
-                            <span><b class="text-danger"> * </b>Session Rate($) <b class="text-danger" ng-if="stepForm2.rate.$invalid && stepForm2.rate.$dirty"> (Number Only) </b></span>
+                            <span><b class="text-danger"> * </b>Session Rate ($) <b class="text-danger" ng-if="stepForm2.rate.$invalid && stepForm2.rate.$dirty"> (Number Only) </b></span>
                             <div class="u-input">
                                 <input type="number" min="0" name="rate" ng-model="input.rate" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="session rate,($)" class="full-width" />
                             </div>
                         </div>
                         <div class="m-session pull-right">
-                            <span><b class="text-danger"> * </b>Teaching age<b class="text-danger" ng-if="stepForm2.teaching_age.$invalid && stepForm2.teaching_age.$dirty"> (Number Only) </b></span>
+                            <span><b class="text-danger"> * </b>Preferred Age of Students<b class="text-danger" ng-if="stepForm2.teaching_age.$invalid && stepForm2.teaching_age.$dirty"> (Number Only) </b></span>
                             <div class="course-select">
                                 <select name="teaching_age" ng-model="input.teaching_age" required>
                                     <option value="">Select Option</option>
@@ -178,7 +178,7 @@
                                     <option value="18+">18+</option>
                                 </select>
                                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                <!-- <input type="number" min="0" name="teaching_age" ng-model="input.teaching_age" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="teaching age" class="full-width" /> -->
+                                <!-- <input type="number" min="0" name="teaching_age" ng-model="input.teaching_age" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Preferred Age of Students" class="full-width" /> -->
                             </div>
                         </div>
                     </div>
@@ -187,15 +187,15 @@
                 <div class="title-input">
                     <div class="clearfix">
                         <div class="m-session pull-left">
-                            <span><b class="text-danger"> * </b>Additional partner<b class="text-danger" ng-if="stepForm2.partner.$invalid && stepForm2.partner.$dirty"> (Number Only) </b></span>
+                            <span><b class="text-danger"> * </b>Number of Extra Partners Per Session<b class="text-danger" ng-if="stepForm2.partner.$invalid && stepForm2.partner.$dirty"> (Number Only) </b></span>
                             <div class="u-input">
                                 <input type="number" min="0" name="partner" ng-model="input.partner" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="partner limit" class="full-width" />
                             </div>
                         </div>
                         <div class="m-session pull-right">
-                            <span><b class="text-danger"> * </b>Surcharge for each ($)<b class="text-danger" ng-if="stepForm2.surcharge.$invalid && stepForm2.surcharge.$dirty"> (Number Only) </b></span>
+                            <span><b class="text-danger"> * </b>Surcharge for Each Extra Partner ($) ($)<b class="text-danger" ng-if="stepForm2.surcharge.$invalid && stepForm2.surcharge.$dirty"> (Number Only) </b></span>
                             <div class="u-input">
-                                <input type="number" min="0" name="surcharge" ng-model="input.surcharge" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Surcharge for each,($)" class="full-width" />
+                                <input type="number" min="0" name="surcharge" ng-model="input.surcharge" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Surcharge for Each Extra Partner ($),($)" class="full-width" />
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                         <div class="course-items pull-left">
                             <div class="course-item" ng-form="discountForm1">
                                 <div class="course-item-header">
-                                    <span>one-time buy {{input.discount_1.purchase||"xxx"}} course</span>
+                                    <span>One time: Buy {{input.discount_1.purchase||"xxx"}} courses, </span>
                                     <span>get {{input.discount_1.off +"%"||"xxx"}} off</span>
                                     <span><b class="text-danger" ng-if="(discountForm1.purchase.$invalid && discountForm1.purchase.$dirty) || (discountForm1.off.$invalid && discountForm1.off.$dirty)"> (Number Only, below 100) </b></span>
                                 </div>
@@ -269,8 +269,8 @@
                 </div>
                 <div class="section text-center text-danger">
                     <div ng-if="stepForm2.rate.$invalid &&stepForm2.$dirty">* Session rate is number required</div>
-                    <div ng-if="stepForm2.teaching_since.$invalid &&stepForm2.$dirty">* Experienced year is required</div>
-                    <div ng-if="stepForm2.teaching_age.$invalid &&stepForm2.$dirty">* Teaching age is required</div>
+                    <div ng-if="stepForm2.teaching_since.$invalid &&stepForm2.$dirty">* Years of Experience is required</div>
+                    <div ng-if="stepForm2.teaching_age.$invalid &&stepForm2.$dirty">* Preferred Age of Students is required</div>
                     <div ng-if="stepForm2.partner.$invalid &&stepForm2.$dirty">* Parter is number required</div>
                     <div ng-if="stepForm2.surcharge.$invalid &&stepForm2.$dirty">* Surcharge is number required</div>
                     <div ng-if="stepForm2.byMoneyForm.$invalid &&stepForm2.$dirty">* Discount is number required</div>
@@ -284,11 +284,11 @@
                     <div class="m-check clearfix">
                         <label class="u-check" ng-class="{'text-primary':input.travel_to_session == '1'}">
                             <input type="radio" class="hide" ng-model="input.travel_to_session" value="1">
-                            <i class="btn fa fa-circle-o"></i>Yes,i am willing to travel to session
+                            <i class="btn fa fa-circle-o"></i>Yes, I am willing to travel to sessions.
                         </label>
                         <label class="u-check" ng-class="{'text-primary':input.travel_to_session == '0'}">
                             <input type="radio" class="hide" ng-model="input.travel_to_session" value="0">
-                            <i class="btn fa fa-circle-o"></i> Noop,i am not willing to travel session
+                            <i class="btn fa fa-circle-o"></i>No, I am not willing to travel to sessions
                         </label>
                     </div>
                 </div>
@@ -296,7 +296,7 @@
                 <div class="title-input" ng-if="input.travel_to_session == '1'">
                     <div class="clearfix">
                         <div class="m-session pull-left">
-                            <span><b class="text-danger"> * </b>Travel Distance (mile)<b class="text-danger" ng-if="stepForm3.distance.$invalid && stepForm3.distance.$dirty"> (Number Only) </b></span>
+                            <span><b class="text-danger"> * </b>Travel Distance (miles)<b class="text-danger" ng-if="stepForm3.distance.$invalid && stepForm3.distance.$dirty"> (Number Only) </b></span>
                             <!-- <div class="u-input">
                                 <input type="number" min="0" name="distance" ng-model="input.distance" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="travel distance(miles)" class="full-width" />
                             </div> -->
@@ -311,13 +311,13 @@
                                     <option value="50">50</option>
                                 </select>
                                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                <!-- <input type="number" min="0" name="teaching_age" ng-model="input.teaching_age" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="teaching age" class="full-width" /> -->
+                                <!-- <input type="number" min="0" name="teaching_age" ng-model="input.teaching_age" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Preferred Age of Students" class="full-width" /> -->
                             </div>
                         </div>
                         <div class="m-session pull-right">
-                            <span><b class="text-danger"> * </b>Traffic Cost ($)<b class="text-danger" ng-if="stepForm3.traffic_cost.$invalid && stepForm3.traffic_cost.$dirty"> (Number Only) </b></span>
+                            <span><b class="text-danger"> * </b>Travel Fee ($)<b class="text-danger" ng-if="stepForm3.traffic_cost.$invalid && stepForm3.traffic_cost.$dirty"> (Number Only) </b></span>
                             <div class="u-input">
-                                <input type="number" min="0" name="traffic_cost" ng-model="input.traffic_cost" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="travel cost" class="full-width" />
+                                <input type="number" min="0" name="traffic_cost" ng-model="input.traffic_cost" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Travel Fee" class="full-width" />
                             </div>
                         </div>
                     </div>
@@ -351,27 +351,27 @@
                     <div class="title-input">
                         <span><b class="text-danger"> * </b>Location - <b class="text-danger" ng-if="street_error">{{street_error}}</b></span>
                         <div class="course-input">
-                            <input type="text" name="street" ng-model="input.street" ng-required="true" class="full-width" placeholder="Street Address e.g 123 Main St" />
+                            <input type="text" name="street" ng-model="input.street" ng-required="true" class="full-width" placeholder="Street address, P.O. box, company name, c/o." />
                         </div>
                         <div class="course-input z-margin">
-                            <input type="text" name="apt" ng-model="input.apt" class="full-width" placeholder="APt,Suite,Bldg.e.g Apt #7 (Not Required)" />
+                            <input type="text" name="apt" ng-model="input.apt" class="full-width" placeholder="Apartment, suite, unit, building, floor, etc. (Not Required)" />
                         </div>
                     </div>
                     <div class="title-input clearfix">
                         <div class="m-session z-margin pull-left">
                             <div class="u-input">
-                                <input type="text" name="city" ng-model="input.city" class="full-width" placeholder="City.e.g.San Francisco" />
+                                <input type="text" name="city" ng-model="input.city" class="full-width" placeholder="City, e.g. San Francisco" />
                             </div>
                         </div>
                         <div class="m-session z-margin pull-right">
                             <div class="u-input">
-                                <input type="text" name="state" ng-model="input.state" ng-required="true" class="full-width" placeholder="State e.. CA" />
+                                <input type="text" name="state" ng-model="input.state" ng-required="true" class="full-width" placeholder="State, e.g. CA" />
                             </div>
                         </div>
                     </div>
                     <div class="m-session z-margin">
                         <div class="u-input" style="position:relative">
-                            <input type="text" autocomplete="off" name="zipcode" ng-pattern="/[0-9]/" ng-model="input.zipcode" ng-required="true" class="full-width" placeholder="Zip code e.g. 94105" />
+                            <input type="text" autocomplete="off" name="zipcode" ng-pattern="/[0-9]/" ng-model="input.zipcode" ng-required="true" class="full-width" placeholder="Zip Code, e.g. 94105" />
                             <!-- <div class="zipcode-suggestion" ng-if="input.zipcode && input.suggestions.length>0">
                                 <span class="suggestion-item" ng-repeat="suggestion in input.suggestions | filter:input.zipcode" ng-click="select(suggestion)">{{suggestion.zipcode}}</span>
                             </div>

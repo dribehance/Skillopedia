@@ -30,19 +30,22 @@
                             <!-- <i class="fa" ng-class="{'fa-caret-down':input.review == '1','fa-caret-up':input.review == '2'}" aria-hidden="true"></i> -->
                     </span>
                     <span class="condition" ng-class="{'active':input.hot}"  ng-click="sort_by_hot()">
-                            Hot 
+                            Popular
                             <!-- <i class="fa" ng-class="{'fa-caret-down':input.hot == '1','fa-caret-up':input.hot == '2'}" aria-hidden="true"></i> -->
                     </span>
                 </div>
                 <div class="condition-3">
-                    <span><b>Travel:</b></span>
+                    <span><b>Travel Services Available:</b></span>
                     <!-- <label class="condition" ng-class="{'active':input.priority == priority}" ng-repeat="priority in input.priorities">
                         <input type="radio" class="hide" ng-model="input.priority" value="{{priority}}" name="priority">
                             {{priority}} 
                             <i class="fa fa-caret-down" aria-hidden="true"></i>
                     </label> -->
-                    <span class="condition" ng-class="{'active':input.travel =='1'}" ng-click="sort_by_travel()">
-                            travel
+                    <span class="condition" ng-class="{'active':input.travel =='1'}" ng-click="travel_yes()">
+                            Yes
+                    </span>
+                    <span class="condition" ng-class="{'active':input.travel =='0'}" ng-click="travel_no()">
+                            No
                     </span>
                 </div>
                 <!-- <span class="condition select" ng-if="input.category.name" ng-click="remove('category')">{{input.category.name}} <i class="fa fa-times-circle" aria-hidden="true"></i></span> -->

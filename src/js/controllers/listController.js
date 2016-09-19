@@ -105,8 +105,12 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 		$scope.reload();
 	};
 	var travel = 0;
-	$scope.sort_by_travel = function() {
-		$scope.input.travel = ++travel % 2;
+	$scope.travel_yes = function() {
+		$scope.input.travel = 1;
+		$scope.reload();
+	};
+	$scope.travel_no = function() {
+		$scope.input.travel = 0;
 		$scope.reload();
 	};
 	$scope.open_map = function(course, e) {

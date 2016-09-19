@@ -1,7 +1,7 @@
 <div class="signin-body">
     <div class="signin-panel">
         <div class="signin-left">
-            <div class="text-gray">you can also sign in with</div class="text-center">
+            <div class="text-gray">You can also sign in with:</div class="text-center">
             <div class="section" style="margin-top:30px">
                 <span class="full-width social-btn btn-facebook" ng-click="facebook_login()"><i class="fa fa-facebook" aria-hidden="true"></i>facebook</span>
                 <span class="full-width social-btn btn-twitter" ng-click="twitter_login()"><i class="fa fa-twitter" aria-hidden="true"></i>twitter</span>
@@ -9,7 +9,7 @@
                     <div class="signin-guide-title">Become a private coach</div>
                     <div class="signin-guide-icon icon-left"><img src="../images/lineSharp.png"></div>
                     <div class="signin-guide-icon icon-right"><img src="../images/lineSharp.png"></div>
-                    <div class="signin-guide-content">1.Sign up account</div>
+                    <div class="signin-guide-content">1.Sign up for an account</div>
                     <div class="signin-guide-content">2.Sign in</div>
                     <div class="signin-guide-content">3.Go to personal center</div>
                     <div class="signin-guide-content">4.Apply for coaching</div>
@@ -21,7 +21,7 @@
                 Log in <a ng-href="#/index" class="hover pull-right" style="color:black"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <div class="section" style="margin-top:30px;">
                     <div class="input-group">
-                        <input type="email" class="full-width form-control" name="email" ng-model="input.signin_email" required placeholder="enter you email/account">
+                        <input type="email" class="full-width form-control" name="email" ng-model="input.signin_email" required placeholder="enter your email">
                         <small class="text-danger" style="position:absolute;left:0;bottom:-15px" ng-if="signinForm.email.$invalid && signinForm.email.$dirty">Please Enter correct email here</small>
                     </div>
                     <div class="input-group">
@@ -40,7 +40,7 @@
             Signup
             <form class="section" name="signupForm" ng-submit="signup_action()">
                 <div class="input-group">
-                    <input type="text" class="full-width form-control" ng-model="input.username" required placeholder="fullname">
+                    <input type="text" class="full-width form-control" ng-model="input.username" required placeholder="full name">
                 </div>
                 <div class="input-group">
                     <input type="email" class="full-width form-control" name="email" ng-model="input.signup_email" required placeholder="enter your email/account">
@@ -54,7 +54,7 @@
                 </div>
             </form>
             <div class="text-center">
-                <span ng-click="signin()" class="btn">signin</span>
+                <span ng-click="signin()" class="btn">sign in</span>
             </div>
         </div>
         <div class="signin-right" ng-if="sign =='forget'">
@@ -68,7 +68,7 @@
                 </div>
             </form>
             <div class="text-center">
-                <span ng-click="signin()" class="btn">signin</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="signup()" class="btn">signup</span>
+                <span ng-click="signin()" class="btn">sign in</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="signup()" class="btn">sign up</span>
             </div>
         </div>
     </div>

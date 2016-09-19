@@ -12,8 +12,8 @@
         	</div>
             <div class="message clearfix" ng-repeat="message in messages">
                 <dl>
-                    <dt ng-if="message.type =='1'">[评论]</dt>
-                    <dt ng-if="message.type =='2'">[系统推送]</dt>
+                    <dt ng-if="message.type =='1'">[comment]</dt>
+                    <dt ng-if="message.type =='2'">[system notification]</dt>
                     <dd class="message-info">{{message.note}}</dd>
                     <dd class="clearfix" ng-if="message.is_reply">
                         <div class="note">

@@ -26,7 +26,7 @@
                 </div>
             </a>
             <div class="section sm">
-                <div class="section-title">Detail</div>
+                <div class="section-title">Details</div>
                 <p class="clearfix text-ellipsis">
                     <span class="col-xs-6">
                         <span class="">Experience: {{course.teaching_since}} years</span>
@@ -37,7 +37,7 @@
                     
                 </p>
                 <p class="clearfix text-ellipsis">
-                    <span class="col-xs-6"><span class="">Group Session: Up to {{course.additional_partner}}</span></span>
+                    <span class="col-xs-6"><span class="">Group Session: Up to {{course.additional_partner}} ppl</span></span>
                     <span class="col-xs-6 text-right">Ages: at least {{course.teaching_age}} years old</span>
                     
                     
@@ -152,12 +152,12 @@
                 <!-- <iframe ng-src="{{get_map()}}" class="map" height="300px" frameborder="0" allowfullscreen></iframe> -->
                 <div style="height:300px;border:1px solid #d2d2d2" id="map"></div>
                 <!-- <p>{{course.street+" , "+course.area+" , "+course.city}}</p> -->
-                <p>travel: 
+                <p>Travel: 
                     <span ng-if="course.travel_to_session == '1'">yes</span>
                     <span ng-if="course.travel_to_session == '0'">no</span>
                 </p>
-                <p ng-if="course.travel_to_session == '1'">travel distance: {{course.travel_to_session_distance}}miles</p>
-                <span>specific location will show up after your payment</span>
+                <p ng-if="course.travel_to_session == '1'">Travel distance: {{course.travel_to_session_distance}}miles</p>
+                <span>Specific location will be made available after payment.</span>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
         <sidebar active="" class="sidebar-wrap"></sidebar>
         <div class="content-wrap">
             <div class="tabs clearfix">
-                <a class="tab-item pull-left active">Authenication</a>
+                <a class="tab-item pull-left active">Authentication</a>
             </div>
             <form class="authen-step" ng-submit="ajaxForm()" name="authenForm" ng-show="user.authen_status == '0'">
             <!-- <form class="authen-step" ng-submit="ajaxForm()" name="authenForm"> -->
@@ -50,7 +50,7 @@
                         <span>Category<em class="text-danger text-sm">*</em></span>
                         <div class="input-select">
                             <select name="category" ng-model="input.category" ng-options="c1.category_02_name for c1 in categorys">
-                                <option value="">请选择</option>
+                                <option value="">Select Option</option>
                             </select>
                             <i class="fa fa-caret-down" aria-hidden="true"></i>
                         </div>
@@ -59,7 +59,7 @@
                         <span>Experience<em class="text-danger text-sm">*</em></span>
                         <div class="input-select">
                             <select name="experience" ng-model="input.experience" required>
-                                <option value="">请选择</option>
+                                <option value="">Select Option</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="title-input"><span>Government ID - suggestion size : 370*240</span></div>
+                <div class="title-input"><span>Government ID - suggested size : 370*240</span></div>
                 <div class="title-input">
                     <div class="m-session pull-left">
                         <img ng-src="../images/example_12.png" class="full-width full-height" alt="">
@@ -95,10 +95,10 @@
                     </div>
                 </div>
                 <label>
-                    Take a photo or selct one to upload you official ID,such as Driver license passport.this information will not share with others. You should take your picture like example above.
+                    Take a photo or select one to upload your official ID, such as driver license or passport. This information will not be shared with others. Your picture should appear like the example above.
                 </label>
                 <div class="nextbtn-addr">
-                    <button type="submit" ng-disabled="authenForm.$invalid" class="btn btn-second btn-lg">AUTHEN</button>
+                    <button type="submit" ng-disabled="authenForm.$invalid" class="btn btn-second btn-lg">Authentication</button>
                 </div>
             </form>
             <!-- 教练认证中 -->
@@ -120,13 +120,14 @@
                 <div class="authening">
                     <div class="authening-content">
                         <span><img ng-src="../images/notyet.png" alt=""></span>
-                        <span>We are sorry to inform you that your application is not approved</span>
+                        <span>We are sorry to inform you that your application has not been approved.</span>
                     </div>
                     <div class="nextbtn-addr">
                         <div class="authen-number">customer service：400-300-3000</div>
                         <div class="authen-recertification" ng-click="reauthen()" ng-if="user.authen_num !='0'">Reapply</div>
                     </div>
-                    <div class="anthen-tips">you have {{user.authen_num}} times to reapply, if you have any question, please contact us</div>
+                    <div class="anthen-tips">You can reapply {{user.authen_num}}  more times. If you have any questions, please contact us.
+                    </div>
                 </div>
             </div>
         </div>

@@ -35,14 +35,14 @@
                 </div>
                 <div ng-if="input.travel_to_session == '1'"><span class="btn" ng-click="edit()">You want to have you course at : {{format_address}}</span></div>
                 <a class="btn text-success" ng-if="course.travel_to_session == '1'" ng-click="edit()"><span class="text-transform">{{course.nickname}}</span> offer travel to session ,edit location!</a>
-                <a class="btn text-danger" ng-if="course.travel_to_session != '1'"><span class="text-transform">{{course.nickname}}</span> does not offer travel service</a>
+                <a class="btn text-danger" ng-if="course.travel_to_session != '1'"><span class="text-transform">{{course.nickname}}</span> does not offer travel services.</a>
             </div>
             <div class="section sm">
                 <div class="section-title" ng-if="course.is_stop_course == '1'">
                     注意：教练已停课
                 </div>
                 <div class="section-title" ng-if="course.is_stop_course != '1'">
-                    Booking your preferred time
+                    Select and book your preferred time.
                 </div>
                 <div class="calendar-wrap">
                     <calendar calendar="calendar" class="calendar-left"></calendar>
@@ -55,7 +55,7 @@
                                 {{get_from_time(select.from.hour)}} to {{get_to_time(select.to.hour)}}
                             </div>
                             <div class="result-item" ng-if="calendar.selected.length==0">
-                                your booking time will show here!
+                                Your booking time will show up here.
                             </div>
                             <div class="result-item" ng-if="calendar.selected.length>0">
                                 you total can book {{calendar.size}} course ! you can change the amount before you can book more!
@@ -99,7 +99,7 @@
                     </span>
                     </span>
                     <span class="hovertips" ng-show="show">This fee is used for maintain coach service, you won't be charged in the future when you purchase the same course with this coach</span>
-                    <span ng-if="input.total_traffic_cost>0">+Travel cost</span>
+                    <span ng-if="input.total_traffic_cost>0">+Travel Fee</span>
                 </p>
                 <p class="price text-center">
                     <span ng-class="{'underline':input.discount_price>0}">{{input.total_price|currency:"$"}}</span>
@@ -184,7 +184,7 @@
                 </p>
                 <div class="">
                     <div class="section-title">
-                        Leaving message for coach
+                        Leave message for coach.
                     </div>
                     <div class="input-group">
                         <textarea class="form-control full-width" ng-model="input.message" placeholder="leaving message"></textarea>
@@ -208,12 +208,13 @@
                         <div class="text-danger">{{course.first_joint_fee}}%</div>
                     </div>
                     <div ng-if="course.travel_to_session=='1'">
-                        <p><b>Travel cost </b></p>
+                        <p><b>Travel Fee </b></p>
                         <div class="text-danger">{{course.travel_to_session_trafic_surcharge|currency:"$"}}</div>
                     </div>
                     <div ng-if="course.additional_partner>0">
                         <p><b>Additional partner </b></p>
-                        <div>{{course.surcharge_for_each|currency:"$"}} for each partner, up to {{course.additional_partner}} partner allowed.</div>
+                        <div>{{course.surcharge_for_each|currency:"$"}} extra for each partner. Up to {{course.additional_partner}} partners allowed.
+                        </div>
                     </div>
                 </div>
             </div>

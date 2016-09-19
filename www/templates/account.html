@@ -18,19 +18,19 @@
                 </div>
                 <form ng-submit="ajaxForm()" name="nicknameForm" class="account-center-right">
                     <p class="">
-                        Sign in account:{{user.email}}
+                        Account Name: {{user.email}}
                     </p>
                     <p>
-                        <span ng-if="user.agent_level == 1">Role：normal user</span><span ng-if="user.agent_level == 2">Role:coach</span>
+                        <span ng-if="user.agent_level == 1">Role：Normal user</span><span ng-if="user.agent_level == 2">Role: Coach</span>
                     </p>
                     <div class="skill-input">
                         <input type="text" ng-model="input.nickname" required placeholder="enter your nickname" class="full-width text-transform" readonly>
                     </div>
                     <div class="skill-input" ng-if="user.is_third =='0'">
-                        <input type="password" ng-model="input.password" required ng-minLength="6" placeholder="enter your password ,at least 6" class="full-width">
+                        <input type="password" ng-model="input.password" required ng-minLength="6" placeholder="enter your old password" class="full-width">
                     </div>
                     <div class="skill-input" ng-if="user.is_third =='0'">
-                        <input type="password" ng-model="input.password_1" required ng-minLength="6" placeholder="enter your new password ,at least 6" class="full-width">
+                        <input type="password" ng-model="input.password_1" required ng-minLength="6" placeholder="enter your password. must be 6-16 characters long." class="full-width">
                     </div>
                     <button class="btn btn-second" type="submit" ng-disabled="nicknameForm.$invalid" ng-if="user.is_third =='0'">Change Password</button>
                 </form>

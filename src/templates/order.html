@@ -35,9 +35,9 @@
             <div class="goods clearfix">
                 <ul>
                     <li><a href="">Price:<em>{{order.Course.session_rate|currency:"$"}}</em></a></li>
-                    <li><a href="">Additional partner({{order.take_partner_num}}):<em>${{get_total_partner_fee()}}</em></a></li>
+                    <li><a href="">Additional partners  ({{order.take_partner_num}}): <em>${{get_total_partner_fee()}}</em></a></li>
                     <li><a href="">Traffic costs:<em>{{order.go_door_traffic_cost|currency:"$"}}</em></a></li>
-                    <li><a href="">service fee:<em>{{order.first_joint_fee|currency:"$"}}</em></a></li>
+                    <li><a href="">Service fee:<em>{{order.first_joint_fee|currency:"$"}}</em></a></li>
                     <li><a href="">Amount:<em>x{{order.buy_amount}}</em></a></li>
                     <li><a href="">Discount:<em>{{order.discount_price|currency:"$"}}</em></a></li>
                     <li><a href="">Total:<em>{{order.total_session_rate|currency:"$"}}</em></a></li>

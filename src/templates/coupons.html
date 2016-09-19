@@ -12,19 +12,19 @@
                 <a class="tab-item pull-left" ng-class="{'active':input.coupon_type=='-1'}" ng-click="active_tab('-1')">expired</a>
             </div>
             <form ng-submit="get_coupon()" name="couponForm" class="coupon-form">
-               <input type="text" class="form-control" ng-model="input.coupon_id" placeholder="enter coupons code"> 
+               <input type="text" class="form-control" ng-model="input.coupon_id" placeholder="enter coupon codes"> 
                <button type="submit" class="btn btn-second">Get</button>
             </form>
             <div class="section sm">
                 <div class="coupon" ng-repeat="coupon in coupons">
                     <div class="coupon-top">
-                        <span class="btn" ng-click="remove(coupon,$event)">删除</span>
-                        <h2>offered by SKILLOPEDIA</h2>
+                        <span class="btn" ng-click="remove(coupon,$event)">Remove</span>
+                        <h2>offered by {{coupon.provider}}</h2>
                             <p><strong>{{coupon.total_coupon_money|currency:"$"}}</strong>&nbsp;&nbsp;x{{coupon.coupon_num}}</p>
                         <div class="p2">Valid from {{coupon.begin_time}} to {{coupon.end_time}}</div>
                     </div>
                     <div class="coupon-below clearfix">
-                        <span>Coupon rule:</span>
+                        <span>Coupon details: </span>
                         <div class="c-note">{{coupon.coupon_rule}}</div>
                     </div>
                 </div>
