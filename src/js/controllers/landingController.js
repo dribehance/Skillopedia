@@ -157,12 +157,12 @@ angular.module("Skillopedia").controller("landingController", function($scope, $
 			})
 		})
 	}
-	$scope.sign = "signin";
+	$rootScope.sign = "signin";
 	$scope.signin = function() {
-		$scope.sign = "signin";
+		$rootScope.sign = "signin";
 	}
 	$scope.signup = function() {
-		$scope.sign = "signup";
+		$rootScope.sign = "signup";
 	};
 	// oauth
 	$scope.facebook_login = function() {

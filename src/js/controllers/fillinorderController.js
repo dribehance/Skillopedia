@@ -265,7 +265,12 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
     };
     // select package;
     $scope.select_package = function(package) {
+        if (parseFloat(package.purchase) < parseFloat($scope.calendar.selected.length)) {
+            errorServices.autoHide("You have booking time,before you can change the amount, cancel booking")
+            return;
+        }
         $scope.input.amount = package.purchase;
+        $scope.calendar.size = $scope.input.amount;
         $scope.calculate();
     };
 
