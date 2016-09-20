@@ -4,7 +4,7 @@
 	</div>
 	<div class="dribehance-options hide">
 		<div class="dribehance-option" ng-click="select({coupon_name:'不使用优惠券',my_coupon_id:'0'},$event)" ng-if="options.all.length>0">
-			不使用优惠券
+			No coupon available
 		</div>
 		<div class="dribehance-option" ng-repeat="op in options.all" ng-click="select(op,$event)" title="{{op.coupon_name}}">
 			{{op.coupon_name}}

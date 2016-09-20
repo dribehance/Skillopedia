@@ -58,7 +58,7 @@
                 </div>
             </div>
             <!-- 失效订单 -->
-            <p class="text-center hover" ng-if="expired_courses.length>0" ng-click="remove_expired()">失效购物车，点击清空失效购物车</p>
+            <p class="text-center hover" ng-if="expired_courses.length>0" ng-click="remove_expired()">Shopping Cart items expired, click to clear.</p>
             <div class="coach-item with-action-bar shopping-cart" style="opacity:0.5" ng-repeat="course in expired_courses">
                 <!-- <span class="btn radio-btn" ng-click="toggle(course)"><i class="fa webfont" ng-class="{'text-primary':course.selected,'fa-check-square-o':course.selected,'fa-square-o':!course.selected}"></i></span> -->
                 <div class="coach-avatar">
