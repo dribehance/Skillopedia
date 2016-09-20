@@ -104,12 +104,12 @@
                     <button type="button" class="btn btn-success col-xs-4 btn-md col-xs-offset-4" ng-click="show_step(2)" ng-disabled="createCourseForm.stepForm1.$invalid">Next</button>
                 </div>
                 <div class="section text-center text-danger">
-                    <div ng-if="stepForm1.title.$invalid &&stepForm1.$dirty">* 课程名称必填</div>
-                    <div ng-if="stepForm1.certForm.$invalid &&stepForm1.$dirty">* 证书必须上传</div>
-                    <div ng-if="stepForm1.poster.$invalid &&stepForm1.$dirty">* 课程缩略图必须上传</div>
-                    <div ng-if="(stepForm1.coverForm.$invalid || input.covers.length == 0)&&stepForm1.$dirty">* 封面图必须上传</div>
-                    <div ng-if="stepForm1.videoForm.$invalid &&stepForm1.$dirty">* 如果选择上传视频，视频链接必填</div>
-                    <div ng-if="stepForm1.overview.$invalid &&stepForm1.$dirty">* 简介必填,至少200字</div>
+                    <div ng-if="stepForm1.title.$invalid &&stepForm1.$dirty">* Course name is required</div>
+                    <div ng-if="stepForm1.certForm.$invalid &&stepForm1.$dirty">* Certification is required</div>
+                    <div ng-if="stepForm1.poster.$invalid &&stepForm1.$dirty">* Poster of course is required</div>
+                    <div ng-if="(stepForm1.coverForm.$invalid || input.covers.length == 0)&&stepForm1.$dirty">* Cover of course is required</div>
+                    <div ng-if="stepForm1.videoForm.$invalid &&stepForm1.$dirty">* Video url is required</div>
+                    <div ng-if="stepForm1.overview.$invalid &&stepForm1.$dirty">* About me is required - 200 characters minimum</div>
                 </div>
             </div>
             <!-- 新建课程第2步 -->

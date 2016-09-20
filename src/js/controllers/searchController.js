@@ -55,9 +55,9 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.courses = $scope.courses.concat(data.Result.Courses.list);
 				$scope.no_more = $scope.courses.length == data.Result.Courses.totalRow ? true : false;
-				$scope.page.result = "搜索结果，共找到关于 '" + $scope.page.kw + "' 的" + data.Result.Courses.totalRow + "条记录";
+				$scope.page.result = data.Result.Courses.totalRow + "records about '" + $scope.page.kw + "'";
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.courses.length + " records found";

@@ -30,7 +30,7 @@ angular.module("Skillopedia").controller("shoppingcartController", function($sco
 				$scope.page.pn++;
 				$scope.no_more = $scope.courses.length == data.Result.Carts.totalRow ? true : false;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.courses.length + " records found";
@@ -84,7 +84,7 @@ angular.module("Skillopedia").controller("shoppingcartController", function($sco
 	};
 	// 删除购物车
 	$scope.remove = function(course) {
-		$scope.confirm.content = "确定删除吗？";
+		$scope.confirm.content = "Are you sure to delete course ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

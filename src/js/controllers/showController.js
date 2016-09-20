@@ -29,7 +29,7 @@ angular.module("Skillopedia").controller("showController", function($scope, $rou
 				$scope.courses = $scope.courses.concat(data.Result.Courses.list);
 				$scope.no_more = $scope.courses.length == data.Result.Courses.totalRow ? true : false;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.courses.length + " records found";

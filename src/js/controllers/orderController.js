@@ -50,7 +50,7 @@ angular.module("Skillopedia").controller("orderController", function($scope, $sc
 	};
 	// remove order
 	$scope.remove = function(order) {
-		$scope.confirm.content = "确定删除吗？";
+		$scope.confirm.content = "Are you sure to delete order ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

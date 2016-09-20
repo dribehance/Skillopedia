@@ -32,7 +32,7 @@ angular.module("Skillopedia").controller("stepsPublishController", function($sco
 	$scope.remove_step = function(id, e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$scope.confirm.content = "确定删除吗？";
+		$scope.confirm.content = "Are you sure to delete step ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

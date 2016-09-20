@@ -25,7 +25,7 @@ angular.module("Skillopedia").controller("ordersController", function($scope, $r
 				$scope.orders = $scope.orders.concat(data.Result.OrderList.list);
 				$scope.no_more = $scope.orders.length == data.Result.OrderList.totalRow ? true : false;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.orders.length + " records found";
@@ -89,7 +89,7 @@ angular.module("Skillopedia").controller("ordersController", function($scope, $r
 	};
 	// remove order
 	$scope.remove = function(order) {
-		$scope.confirm.content = "确定删除吗？";
+		$scope.confirm.content = "Are you sure to delete order ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

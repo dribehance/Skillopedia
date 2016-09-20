@@ -23,7 +23,7 @@ angular.module("Skillopedia").controller("couponsController", function($scope, $
 				$scope.coupons = $scope.coupons.concat(data.Result.MyCoupons.list);
 				$scope.no_more = $scope.coupons.length == data.Result.MyCoupons.totalRow ? true : false;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.coupons.length + " records found";
@@ -70,7 +70,7 @@ angular.module("Skillopedia").controller("couponsController", function($scope, $
 	$scope.remove = function(coupon, e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$scope.confirm.content = "确定删除吗？";
+		$scope.confirm.content = "Are you sure to delete coupon ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

@@ -1,16 +1,16 @@
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap" ng-cloak ng-if="payment">
-    <p>支付金额</p>
+    <p>Payment amount</p>
     <span class="text-primary text-big">{{payment.total_total_session_rate|currency:"$"}}</span><span class="text-line-through">{{payment.total_original_total_session_rate|currency:"$"}}</span>
     <div class="section sm">
-        选择支付方式
+        Payment methods
     </div>
     <!-- <a href="" ng-click="pay('1')" class="alipay"></a> -->
     <div class="paypal">
        <!--  <form name="paypalForm" action="https://www.paypal.com/cgibin/webscr" method="post"> -->
        <!-- paypal沙盒支付测试地址 -->
         <form id="pay_form" name="paypalForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-            <!-- 支付金额-->
+            <!-- Payment amount-->
             <input type="hidden" name="amount" value="{{payment.total_total_session_rate}}">
             <!-- 自己的参数 商品条目-->
             <input type="hidden" name="item_number" id="item_number" value="{{payment.course_titles}}">

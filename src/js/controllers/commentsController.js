@@ -20,7 +20,7 @@ angular.module("Skillopedia").controller("commentsController", function($scope, 
 				$scope.comments = $scope.comments.concat(data.Result.Comments.list);
 				$scope.no_more = $scope.comments.length == data.Result.Comments.totalRow ? true : false;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.comments.length + " records found";

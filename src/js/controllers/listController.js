@@ -43,7 +43,7 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 				$scope.paging.page_size = $scope.paging.page_size;
 				$scope.paging.total_items = data.Result.Courses.totalRow;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 		})
 

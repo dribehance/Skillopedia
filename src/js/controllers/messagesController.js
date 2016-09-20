@@ -20,7 +20,7 @@ angular.module("Skillopedia").controller("messagesController", function($scope, 
 				$scope.messages = $scope.messages.concat(data.Result.Comments.list);
 				$scope.no_more = $scope.messages.length == data.Result.Comments.totalRow ? true : false;
 			} else {
-				errorServices.autoHide("服务器错误");
+				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
 				$scope.page.message = $scope.messages.length + " records found";
@@ -32,7 +32,7 @@ angular.module("Skillopedia").controller("messagesController", function($scope, 
 	$scope.loadMore();
 	// remove message
 	$scope.remove = function(message) {
-		$scope.confirm.content = "确定删除吗？";
+		$scope.confirm.content = "Are you sure to delete message ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

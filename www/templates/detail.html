@@ -102,7 +102,7 @@
                                         <i class="fa fa-star" ng-class="{'text-primary':comment.total_score >3}" aria-hidden="true"></i>
                                         <i class="fa fa-star" ng-class="{'text-primary':comment.total_score >4}" aria-hidden="true"></i>
                                     </span>
-                                    <span class="pull-right">专业技能{{to_fix(comment.pro_skill)}} 教学环境 {{to_fix(comment.teaching_environment)}}教学态度 {{to_fix(comment.teaching_attitude)}}</span>
+                                    <span class="pull-right">speciality{{to_fix(comment.pro_skill)}} environment {{to_fix(comment.teaching_environment)}}attitude {{to_fix(comment.teaching_attitude)}}</span>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
             </div>
             <div class="section sm">
                 <div class="section-title" ng-if="course.is_stop_course == '1'">
-                    注意：教练已停课
+                    Attention! This course is suspend.
                 </div>
                 <!-- <div ng-include="'templates/calendar.html'"></div> -->
                 <calendar calendar="calendar" class="small-calendar"></calendar>
