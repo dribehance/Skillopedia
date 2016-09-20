@@ -48,6 +48,7 @@ angular.module("Skillopedia").constant("config", {
 		"orders",
 		"orders_management",
 		"privacy",
+		"refund_policy",
 		"payment",
 		"schedule",
 		"services",
