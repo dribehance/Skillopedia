@@ -30,7 +30,8 @@ angular.module("Skillopedia").factory("tokenInterceptor", function($location, $r
 			if (response.data.code == config.request.TOKEN_INVALID) {
 				console.log("TOKEN_INVALID")
 				localStorageService.remove("token");
-				$location.path("/landing").replace();
+				// $location.path("/landing").replace();
+				$location.path("/index").replace();
 				return defer.promise;
 			} else {
 				return response;
