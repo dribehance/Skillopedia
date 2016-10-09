@@ -2,70 +2,37 @@
 <script src="lib/js/main.js"></script>
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
-    <div class="section detail-section">
+    <div class="detail-section">
         <div class="detail-left">
-            <a class="coach-item">
+            <div class="coach-item">
                 <div class="coach-avatar">
-                    <!-- <img ng-src="{{staticImageUrl + course.user_image_01}}" class="full-width" alt="" err-src="../images/example_7.png"> -->
                     <imageview data-rate="1" center-only src="staticImageUrl + course.user_image_01"></imageview>
                     <span class="official-coach" ng-if="course.is_official"></span>
                 </div>
                 <div class="coach-info">
-                    <div class="auto-title text-ellipsis">{{course.title}}</div>
-                    <div style="margin-bottom:10px;" class="text-transform">{{course.nickname}}</div>
-                    <div class="star text-ellipsis">
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >0}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >1}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >2}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >3}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >4}" aria-hidden="true"></i>
-                        <span>{{course.total_coment_num || "0"}} reviews</span>
-                        <!-- <span ng-if="course.total_coment_num ==0">暂无评价</span> -->
-                    </div>
-                    <div class="coach-meta"><span><i class="fa fa-bars" aria-hidden="true"></i>{{course.category_02_name}}</span><!-- <span><i class="fa fa-user" aria-hidden="true"></i>by {{course.nickname}}</span> --><span><i class="fa fa-map-marker" aria-hidden="true"></i>{{course.area}}</span></div>
-                </div>
-            </a>
-            <div class="section sm">
-                <div class="section-title">Details</div>
-                <p class="clearfix text-ellipsis">
-                    <span class="col-xs-6">
-                        <span class="">Experience: {{course.teaching_since}} years</span>
-                    </span>
-                    <span class="col-xs-6 text-right">
-                        <span class="" >Session Duration: {{course.session_length}}min</span>
-                    </span>
-                    
-                </p>
-                <p class="clearfix text-ellipsis">
-                    <span class="col-xs-6"><span class="">Group Session: Up to {{course.additional_partner}} ppl</span></span>
-                    <span class="col-xs-6 text-right">Ages: at least {{course.teaching_age}} years old</span>
-                    
-                    
-                </p>
-                <div class="clearfix text-ellipsis">
-                    <span class="col-xs-9"><span class="pull-left" ng-if="course.travel_to_session == '1'">Travel: Yes</span><span class="pull-left" ng-if="course.travel_to_session == '0'">Travel: No</span></span>
-                   
-                   <span ng-if="course.travel_to_session == '1'">Travel Distance: {{course.travel_to_session_distance}} miles</span>
-                    
-                    
-                    
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="section sm">
-                <div class="section-title">Photo and Video</div>
-                <!-- <button id="openpopup">open</button> -->
-                <div class="image-gallaxy clearfix">
-                    <a class="image" href="{{staticImageUrl + photo.image_01}}" ng-repeat="photo in course.CourseBanners">
-                        <img ng-src="{{staticImageUrl + photo.image_01}}" class="full-width" alt="" err-src="../images/error.jpg">
-                    </a>
-                </div>
-                <div class="videos">
-                    <div class="video" ng-repeat="video in course.CourseVedios">
-                        <iframe ng-src="{{get_video(video.vedio_url)}}" frameborder="0" allowfullscreen></iframe>
+                    <div class="auto-title text-ellipsis">{{course.title||"..."}}</div>
+                    <div style="margin-bottom:10px;" class="text-transform">{{course.nickname||"..."}}</div>
+                    <div class="justified">
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>{{course.total_coment_num || "0"}} reviews</span>
+                        </div>
+                        <div>
+                            <span class="" ng-click="toggle_like()"><i class="fa" ng-class="{'fa-heart-o':course.is_collection == '0','fa-heart':course.is_collection == '1'}" aria-hidden="true" style="margin-right: 8px"></i>like</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <span>{{course.category_02_name}}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>{{course.area}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- gallery -->
+            <dribehance-gallery gallery-image="course.CourseBanners" gallery-video="course.CourseVedios"></dribehance-gallery>
             <div class="line"></div>
             <div class="section sm">
                 <div class="section-title">About coach</div>
@@ -123,23 +90,43 @@
             <div class="settlement">
                 <p class="price text-center">{{course.session_rate|currency:"$"}}</p>
                 <p class="text-center"> {{course.session_length}} mins per session</p>
-                <!-- <p class="clearfix settlement-action">
-                    购买数量
-                    <span class="pull-right">
-                    <span class="settlement-minus">-</span>
-                    <span class="settlement-amount">5</span>
-                    <span class="settlement-plus">+</span>
-                    </span>
-                </p> -->
                 <p class="text-center">
-                    <span class="btn btn-second" ng-click="toggle_like()"><i class="fa" ng-class="{'fa-heart-o':course.is_collection == '0','fa-heart':course.is_collection == '1'}" aria-hidden="true" style="margin-right: 8px"></i>like</span>
-                    <!-- <a class="btn btn-primary" ng-href="#/fillinorder?course_id={{course.course_id}}">add to cart</a> -->
                     <a class="btn btn-success" ng-href="#/fillinorder?course_id={{course.course_id}}">Get Started</a>
                 </p>
             </div>
+            <div class="section sm wrap bg-white">
+                <div>
+                    <i class="fa fa-tag text-primary text-h2 v-middle" aria-hidden="true"></i>
+                    <b>Details</b>
+                </div>
+                <p><b>Experience:</b> {{course.teaching_since}} years</p>
+                <p><b>Group Session:</b> Up to {{course.additional_partner}} ppl</p>
+                <p>
+                    <span ng-if="course.travel_to_session == '1'"><b>Travel: </b>Yes</span><span ng-if="course.travel_to_session == '0'"><b>Travel:</b> No</span>
+                </p>
+                <p><b>Session Duration: </b>{{course.session_length}}min</p>
+                <p><b>Ages: </b>at least {{course.teaching_age}} years old</p>
+                <p><span ng-if="course.travel_to_session == '1'"><b>Travel Distance:</b> {{course.travel_to_session_distance}} miles</span></p>
+            </div>
+            <div class="section sm bg-white wrap">
+                <div class="hover v-middle" ng-click="open_map(course,$event)">
+                    <i class="fa fa-map-marker text-primary text-h2 v-middle" aria-hidden="true"></i>
+                    <b class="v-middle">Teaching location</b>
+                </div>
+                <!-- <div style="height:300px;border:1px solid #d2d2d2" id="map"></div>
+                <p>Travel: 
+                    <span ng-if="course.travel_to_session == '1'">yes</span>
+                    <span ng-if="course.travel_to_session == '0'">no</span>
+                </p>
+                <p ng-if="course.travel_to_session == '1'">Travel distance: {{course.travel_to_session_distance}}miles</p>
+                <span>Specific location will be made available after payment.</span> -->
+            </div>
             <div class="section sm">
-                <div class="section-title" ng-if="course.is_stop_course == '1'">
+                <div class="wrap bg-primary text-white text-center" ng-if="course.is_stop_course == '1'">
                     Attention! This course is suspend.
+                </div>
+                <div class="wrap bg-primary text-white text-center" ng-if="course.is_stop_course != '1'">
+                    Avalibale
                 </div>
                 <!-- <div ng-include="'templates/calendar.html'"></div> -->
                 <calendar calendar="calendar" class="small-calendar"></calendar>
@@ -147,18 +134,16 @@
                 <span class="calender-tip confirm">booked</span>
                 <!-- <span class="calender-tip busy">unavailable, coach busy</span> -->
             </div>
-            <div class="section sm map-section">
+            <!-- <div class="section sm map-section">
                 <div class="section-title">Teaching location</div>
-                <!-- <iframe ng-src="{{get_map()}}" class="map" height="300px" frameborder="0" allowfullscreen></iframe> -->
                 <div style="height:300px;border:1px solid #d2d2d2" id="map"></div>
-                <!-- <p>{{course.street+" , "+course.area+" , "+course.city}}</p> -->
                 <p>Travel: 
                     <span ng-if="course.travel_to_session == '1'">yes</span>
                     <span ng-if="course.travel_to_session == '0'">no</span>
                 </p>
                 <p ng-if="course.travel_to_session == '1'">Travel distance: {{course.travel_to_session_distance}}miles</p>
                 <span>Specific location will be made available after payment.</span>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

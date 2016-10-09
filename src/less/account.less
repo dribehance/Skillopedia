@@ -1,6 +1,6 @@
 .tabs {
-    margin-bottom: 15px;
-    border-bottom: 3px solid #f1f1f1;
+    background-color: white;
+    border-bottom: 1px solid #f1f1f1;
     .tab-item {
         position: relative;
         padding: 15px 25px;
@@ -26,14 +26,15 @@
 .coach-item {
     position: relative;
     display: block;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 1px dashed #ccc;
+    padding: 15px;
+    margin-bottom: 8px;
+    // border-bottom: 1px dashed #ccc;
     overflow: hidden;
     color: #494949;
+    background-color: white;
     cursor: pointer;
     font-weight: 100;
-    min-height: 116px;
+    min-height: 90px;
     .link();
     .title {
         display: block;
@@ -81,7 +82,7 @@
         }
     }
     &.with-action-bar {
-        margin-bottom: 86px;
+        border-bottom: 86px solid #f4f4f4;
         overflow: visible;
         // height: 100px;
         .action-bar {
@@ -89,8 +90,11 @@
             top: 100%;
             left: 0;
             right: 0;
-            padding: 16px 0;
-            border-bottom: 1px dashed #a0a0a0;
+            padding: 15px;
+            margin-bottom: 8px;
+            background-color: white;
+            // border-bottom: 1px dashed #a0a0a0;
+            border-top: 1px solid #e4e4e4;
         }
     }
     @media (min-width:748px) {
@@ -100,11 +104,11 @@
         }
         .coach-avatar {
             position: absolute;
-            left: 0;
-            top: 0px;
+            left: 15px;
+            top: 15px;
         }
         .coach-info {
-            padding: 0px 15px;
+            // padding: 0px 15px;
         }
     }
 }
@@ -126,14 +130,16 @@
 .coach-avatar {
     position: relative;
     float: left;
-    width: 110px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
     margin-right: 15px;
     background-color: #f3e7d9;
     .box-sizing(border-box);
     text-align: center;
     border: 2px solid @brand-primary;
-    border-radius: 10px;
     overflow: hidden;
     img {
         width: 100%;
@@ -168,7 +174,7 @@
 .conditions {
     padding: 15px;
     margin-bottom: 15px;
-    background-color: #f1f1f1;
+    background-color: white;
     .condition {
         display: inline-block;
         padding: 8px;
@@ -219,6 +225,7 @@
 }
 
 .account-center {
+    padding: 15px;
     .clearfix();
     .account-avatar {
         display: block;
@@ -258,6 +265,7 @@ input.pickadate {
     border: 1px solid #ccc;
 }
 .coupon-form {
+    padding: 15px;
     text-align: center;
     input {
         padding: 10px 16px;

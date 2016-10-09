@@ -451,8 +451,7 @@
 
 .step-item {
     display: block;
-    margin-bottom: 15px;
-    padding-bottom: 26px;
+    padding: 15px;;
     border-bottom: 1px dashed #ccc;
     color: inherit;
     text-decoration: none;
@@ -498,11 +497,12 @@
 /******************************消息****************************************/
 
 .message {
-    margin-top: 15px;
+    padding:0 15px 0 15px;
 }
 
 .message-info {
     display: block;
+    padding:8px 0;
 }
 
 .message ul {
@@ -553,6 +553,7 @@
 }
 
 .message ul li {
+    margin-right: 15px;
     float: left;
     list-style: none;
 }
@@ -844,7 +845,7 @@
 
 .tit {
     width: 100%;
-    padding: 20px 0 15px;
+    padding: 20px 10px 15px;
 }
 
 .loca-map {

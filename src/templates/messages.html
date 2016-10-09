@@ -15,20 +15,20 @@
                     <dt ng-if="message.type =='1'">[comment]</dt>
                     <dt ng-if="message.type =='2'">[system notification]</dt>
                     <dd class="message-info">{{message.note}}</dd>
-                    <dd class="clearfix" ng-if="message.is_reply">
+                    <dd class="clearfix" ng-if="message.is_reply && message.content !=''">
                         <div class="note">
                             <p>{{message.content}}</p>
                         </div>
                     </dd>
                     <dd class="clearfix">
                         <ul>
-                            <li><a class="btn">{{message.comment_name}}</a></li>
+                            <li><a class="">{{message.comment_name || "Administrator"}}</a></li>
                             <li class="btn-group">
-                                <a ng-click="remove(message)" class="btn text-danger">
+                                <a ng-click="remove(message)" class="text-danger">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     remove
                                 </a>
-                                <a ng-click="reply(message)" class="btn text-success" ng-if="message.type=='1'&& user.agent_level =='2'">
+                                <a ng-click="reply(message)" class="text-success" ng-if="message.type=='1'&& user.agent_level =='2'">
                                     <i class="fa fa-share" aria-hidden="true"></i>
                                     reply
                                 </a>

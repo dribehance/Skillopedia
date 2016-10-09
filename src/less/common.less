@@ -3,6 +3,7 @@
 }
 body {
 	font-family: Helvetica, Droidsansfallback, Dengxian, "微软雅黑", "Heiti SC";
+    background-color: #f4f4f4;
 }
 .wrap {
 	position: relative;
@@ -45,7 +46,7 @@ body {
     }
 }
 .section.sm {
-	margin: 25px auto;
+	margin: 15px auto;
 }
 .full-width {
     width: 100%;
@@ -123,9 +124,26 @@ body {
 .bg-white {
     background-color: #ffffff;
 }
+.bg-primary {
+    background-color: @brand-primary;
+}
 .opacity {
     opacity: 0.5;
 }
 .text-transform {
     text-transform: capitalize;
+}
+.justified {
+    display: table;
+    // width: 100%;
+    table-layout: fixed;
+    // text-align: center;
+    >* {
+        display: table-cell;
+        width: 1%;
+        float: none!important;
+    }
+}
+.v-middle {
+    vertical-align: middle;
 }

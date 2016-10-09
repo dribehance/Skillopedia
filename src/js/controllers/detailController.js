@@ -10,36 +10,32 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 		toastServices.hide()
 		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 			$scope.course = data.Result.Course;
-			$scope.get_map();
 		} else {
 			errorServices.autoHide(data.message);
 		}
 	}).then(function(data) {
 		$scope.query_schedule($filter("date")(new Date().getTime(), "yyyy-MM-dd"));
 	});
-	// parse iframe map url
-	$scope.get_map = function() {
-		// if (!$scope.course.city) {
-		// 	return;
-		// }
-		// var map_url = "https://maps.google.com/maps?q=" + $scope.course.city + " " + $scope.course.area + " " + $scope.course.street + "&output=embed";
-		// return $sce.trustAsResourceUrl(map_url);
-		googleMapServices.geocoding({
-			address: $scope.course.street + "," + $scope.course.area + "," + $scope.course.city
-		}).then(function(data) {
-			$scope.lat_lng = data.results[0].geometry.location;
-			var map = googleMapServices.create_map(document.getElementById('map'), $scope.lat_lng);
-			// console.log(map)
-			var circle_marker = googleMapServices.create_circle_marker(map, $scope.lat_lng);
-		})
-	};
-	// parse video url
-	$scope.get_video = function(video) {
-		if (video) {
-			// ?autoplay=0
-			var video = video.replace("watch?v=", "embed/");
-			return $sce.trustAsResourceUrl(video);
-		}
+	$scope.open_map = function(course, e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$.magnificPopup.open({
+			items: {
+				// src: "https://maps.google.com/maps?q=" + course.city + course.area + course.street
+				src: "<div style='height:300px;border:1px solid #d2d2d2;background-color:white' id='map'></div>"
+			},
+			type: "inline"
+		});
+		$timeout(function() {
+			googleMapServices.geocoding({
+				address: course.street + "," + course.area + "," + course.city
+			}).then(function(data) {
+				$scope.lat_lng = data.results[0].geometry.location;
+				var map = googleMapServices.create_map(document.getElementById('map'), $scope.lat_lng);
+				// console.log(map)
+				var circle_marker = googleMapServices.create_circle_marker(map, $scope.lat_lng);
+			})
+		}, 0)
 	};
 	// 加入收藏
 	$scope.toggle_like = function() {

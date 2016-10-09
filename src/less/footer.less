@@ -4,8 +4,13 @@
     padding: 10px;
     margin-top: 50px;
     line-height: 26px;
-    background-color: #292929;
-    color: white;
+    // background-color: #292929;
+    background-color: white;
+    // color: white;
+    &.footer-index {
+        background-color: #292929;
+        color: white;
+    }
 }
 
 .footer .footer-left {
@@ -15,18 +20,20 @@
 
 .footer .footer-right {
     float: left;
-    width: 30%;
+    // width: 30%;
+    width: 80px;
 }
 
-.footer .links {
-    margin-bottom: 80px;
+.footer-index .links {
+    margin-bottom: 30px;
 }
 
 .footer .links .links-item {
     display: inline-block;
-    padding: 15px 15px 15px 0;
+    padding: 0 15px 15px 0;
     .link();
 }
+
 .share-icon {
     display: inline-block;
     height: 30px;
@@ -35,9 +42,10 @@
     text-align: center;
     vertical-align: middle;
     border-radius: 100%;
-    background-color:#a1a1a1;
+    background-color: #a1a1a1;
     color: white;
 }
+
 .footer .about {
     padding: 15px 0;
 }
@@ -48,4 +56,5 @@
 
 .footer .copyright {
     color: @gray;
+    font-size: 13px;
 }
