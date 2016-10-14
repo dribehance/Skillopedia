@@ -20,14 +20,14 @@
             Log in
             <div class="section">
                 <div class="input-group">
-                    <input type="email" class="full-width form-control" name="email" ng-model="input.signin_email" required placeholder="enter your email">
+                    <input type="email" class="full-width form-control" name="email" ng-model="input.signin_email" required placeholder="Enter your email">
                     <small class="text-danger" style="position:absolute;left:0;bottom:-15px" ng-if="signinForm.email.$invalid && signinForm.email.$dirty">Please Enter correct email here</small>
                 </div>
                 <div class="input-group">
-                    <input type="password" class="full-width form-control " ng-model="input.signin_password" required placeholder="enter your password">
+                    <input type="password" class="full-width form-control " ng-model="input.signin_password" required placeholder="Enter your password">
                 </div>
                 <div class="input-group">
-                    <button type="submit" class="btn btn-primary btn-lg full-width">sign in</button>
+                    <button type="submit" class="btn btn-primary btn-lg full-width">Sign in</button>
                 </div>
             </div>
             <div class="text-center">
@@ -39,35 +39,35 @@
         Signup
         <form class="section" name="signupForm" ng-submit="signup_action()">
             <div class="input-group">
-                <input type="text" class="full-width form-control" ng-model="input.username" required placeholder="full name">
+                <input type="text" class="full-width form-control" ng-model="input.username" required placeholder="Full name">
             </div>
             <div class="input-group">
-                <input type="email" class="full-width form-control" name="email" ng-model="input.signup_email" required placeholder="enter your email/account">
+                <input type="email" class="full-width form-control" name="email" ng-model="input.signup_email" required placeholder="Enter your email/account">
                 <small class="text-danger" style="position:absolute;left:0;bottom:-15px" ng-if="signupForm.email.$invalid && signupForm.email.$dirty">Please Enter correct email here</small>
             </div>
             <div class="input-group">
-                <input type="password" class="full-width form-control" ng-model="input.signup_password" required placeholder="enter your password,at least 6">
+                <input type="password" class="full-width form-control" ng-model="input.signup_password" required placeholder="Enter your password,at least 6">
             </div>
             <div class="input-group">
-                <button type="submit" class="btn btn-primary btn-lg full-width" ng-disabled="signupForm.$invalid">sign up</button>
+                <button type="submit" class="btn btn-primary btn-lg full-width" ng-disabled="signupForm.$invalid">Sign up</button>
             </div>
         </form>
         <div class="text-center">
-            <span ng-click="signin()" class="btn">sign in</span>
+            <span ng-click="signin()" class="btn">Sign in</span>
         </div>
     </div>
     <div class="signin-right" ng-if="sign =='forget'">
         Forgot your password?
         <form class="section" name="forgetForm" ng-submit="forget_action()">
             <div class="input-group">
-                <input type="email" class="full-width form-control" ng-model="input.forget_email" required placeholder="enter your email/account">
+                <input type="email" class="full-width form-control" ng-model="input.forget_email" required placeholder="Enter your email/account">
             </div>
             <div class="input-group">
                 <button type="submit" class="btn btn-primary btn-lg full-width" ng-disabled="forgetForm.$invalid">Find your password</button>
             </div>
         </form>
         <div class="text-center">
-            <span ng-click="signin()" class="btn">sign in</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="signup()" class="btn">sign up</span>
+            <span ng-click="signin()" class="btn">Sign in</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="signup()" class="btn">Sign up</span>
         </div>
     </div>
    

@@ -11,7 +11,7 @@
                 <div class="title-input">
                     <span><b class="text-danger"> * </b>Course Title</span>
                     <div class="course-input">
-                        <input type="text" name="title" ng-model="input.title" ng-required="true" placeholder="enter course title" class="full-width" />
+                        <input type="text" name="title" ng-model="input.title" ng-required="true" placeholder="Enter course title" class="full-width" />
                     </div>
                 </div>
                 <div class="title-input">
@@ -68,11 +68,6 @@
                 </div>
                 <div class="title-input">
                     <span><b class="text-danger"> * </b>Poster - the icon for this course</span>
-                    <!-- <div class="open-img">
-                        <img ng-src="{{staticImageUrl + input.poster}}" class="full-width full-height" err-src="../images/error.jpg" alt="">
-                        <input type="hidden" name="poster" ng-model="input.poster" required>
-                        <a ng-click="remove_cover(cover)" class="remove"><i class="fa fa-times"></i></a>
-                    </div> -->
                     <div class="open-img" flow-init="{singleFile:true}" ng-controller="uploadPosterController" flow-btn>
                         <img ng-src="{{staticImageUrl + input.poster}}" class="full-width full-height" alt="">
                     </div>
@@ -98,7 +93,15 @@
                 </div>
                 <div class="title-input">
                     <span class="clearfix"><b class="text-danger"> * </b>About myself<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.overview.$invalid">at least 200 letter</b></span>
-                    <textarea class="full-width" rows="8" name="overview" ng-model="input.overview" ng-required="true" placeholder="overview"></textarea>
+                    <textarea class="full-width" rows="8" name="overview" ng-model="input.overview" ng-required="true" placeholder="About myself (at least 200 letter)"></textarea>
+                </div>
+                <div class="title-input">
+                    <span class="clearfix"><b class="text-danger"> * </b>Achievements<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.achievements.$invalid"></b></span>
+                    <textarea class="full-width" rows="8" name="achievements" ng-model="input.achievements" ng-required="true" placeholder="Achievements"></textarea>
+                </div>
+                <div class="title-input">
+                    <span class="clearfix"><b class="text-danger"> * </b>Specialist<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.specialist.$invalid">at least 50 letter</b></span>
+                    <textarea class="full-width" rows="8" name="specialist" minlength="50" ng-model="input.specialist" ng-required="true" placeholder="Specialist (at least 50 letter)"></textarea>
                 </div>
                 <div class="section text-center">
                     <button type="button" class="btn btn-success col-xs-4 btn-md col-xs-offset-4" ng-click="show_step(2)" ng-disabled="createCourseForm.stepForm1.$invalid">Next</button>
@@ -109,7 +112,9 @@
                     <div ng-if="stepForm1.poster.$invalid &&stepForm1.$dirty">* Poster of course is required</div>
                     <div ng-if="(stepForm1.coverForm.$invalid || input.covers.length == 0)&&stepForm1.$dirty">* Cover of course is required</div>
                     <div ng-if="stepForm1.videoForm.$invalid &&stepForm1.$dirty">* Video url is required</div>
-                    <div ng-if="stepForm1.overview.$invalid &&stepForm1.$dirty">* About me is required - 200 characters minimum</div>
+                    <div ng-if="stepForm1.overview.$invalid &&stepForm1.$dirty">* About myself is required - 200 characters minimum</div>
+                    <div ng-if="stepForm1.achievements.$invalid &&stepForm1.$dirty">* Achievements is required</div>
+                    <div ng-if="stepForm1.specialist.$invalid &&stepForm1.$dirty">* Specialist is required - 200 characters minimum</div>
                 </div>
             </div>
             <!-- 新建课程第2步 -->
@@ -138,7 +143,6 @@
                                 <option value="15+">15+</option>
                             </select>
                             <i class="fa fa-caret-down" aria-hidden="true"></i>
-                            <!-- <input type="text" name="teaching_since" ng-model="input.teaching_since" ng-required="true" class="full-width pickadate" placeholder="Years of Experience" class="full-width" /> -->
                         </div>
                     </div>
                 </div>
@@ -162,7 +166,6 @@
                                     <option value="18+">18+</option>
                                 </select>
                                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                <!-- <input type="number" min="0" name="teaching_age" ng-model="input.teaching_age" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Preferred Age of Students" class="full-width" /> -->
                             </div>
                         </div>
                     </div>
@@ -196,12 +199,11 @@
                                     <span><b class="text-danger" ng-if="(discountForm1.purchase.$invalid && discountForm1.purchase.$dirty) || (discountForm1.off.$invalid && discountForm1.off.$dirty)"> (Number Only, below 100) </b></span>
                                 </div>
                                 <div class="course-input">
-                                    <input type="number" min="0" class="full-width" name="purchase" ng-model="input.discount_1.purchase" ng-required="true" ng-pattern="/^\d+$/" placeholder="course quantity" readonly />
+                                    <input type="number" min="0" class="full-width" name="purchase" ng-model="input.discount_1.purchase" ng-required="true" ng-pattern="/^\d+$/" placeholder="Course quantity" readonly />
                                 </div>
                                 <div class="course-input">
-                                    <input type="number" min="0" max="100" class="full-width" name="off" ng-model="input.discount_1.off" ng-required="true" ng-pattern="/^\d+$/" placeholder="discount amount" />
+                                    <input type="number" min="0" max="100" class="full-width" name="off" ng-model="input.discount_1.off" ng-required="true" ng-pattern="/^\d+$/" placeholder="Discount amount" />
                                 </div>
-                                <!-- <div class="course-edit" ng-click="remove_discount(discount)">remove</div> -->
                             </div>
                         </div>
                         <!-- discount 2 -->
@@ -213,12 +215,11 @@
                                     <span><b class="text-danger" ng-if="(discountForm2.purchase.$invalid && discountForm2.purchase.$dirty) || (discountForm2.off.$invalid && discountForm2.off.$dirty)"> (Number Only, {{input.discount_1.off}}-100) </b></span>
                                 </div>
                                 <div class="course-input">
-                                    <input type="number" min="0" class="full-width" name="purchase" ng-model="input.discount_2.purchase" ng-required="true" ng-pattern="/^\d+$/" placeholder="course quantity" readonly />
+                                    <input type="number" min="0" class="full-width" name="purchase" ng-model="input.discount_2.purchase" ng-required="true" ng-pattern="/^\d+$/" placeholder="Course quantity" readonly />
                                 </div>
                                 <div class="course-input">
-                                    <input type="number" ng-min="input.discount_1.off" max="100" class="full-width" name="off" ng-model="input.discount_2.off" ng-required="true" ng-pattern="/^\d+$/" placeholder="discount amount" />
+                                    <input type="number" ng-min="input.discount_1.off" max="100" class="full-width" name="off" ng-model="input.discount_2.off" ng-required="true" ng-pattern="/^\d+$/" placeholder="Discount amount" />
                                 </div>
-                                <!-- <div class="course-edit" ng-click="remove_discount(discount)">remove</div> -->
                             </div>
                         </div>
                         <!-- discount 3 -->
@@ -230,21 +231,13 @@
                                     <span><b class="text-danger" ng-if="(discountForm3.purchase.$invalid && discountForm3.purchase.$dirty) || (discountForm3.off.$invalid && discountForm3.off.$dirty)"> (Number Only, {{input.discount_2.off}}-100)) </b></span>
                                 </div>
                                 <div class="course-input">
-                                    <input type="number" min="0" class="full-width" name="purchase" ng-model="input.discount_3.purchase" ng-required="true" ng-pattern="/^\d+$/" placeholder="course quantity" readonly />
+                                    <input type="number" min="0" class="full-width" name="purchase" ng-model="input.discount_3.purchase" ng-required="true" ng-pattern="/^\d+$/" placeholder="Course quantity" readonly />
                                 </div>
                                 <div class="course-input">
-                                    <input type="number" ng-min="input.discount_2.off" max="100" class="full-width" name="off" ng-model="input.discount_3.off" ng-required="true" ng-pattern="/^\d+$/" placeholder="discount amount" />
+                                    <input type="number" ng-min="input.discount_2.off" max="100" class="full-width" name="off" ng-model="input.discount_3.off" ng-required="true" ng-pattern="/^\d+$/" placeholder="Discount amount" />
                                 </div>
-                                <!-- <div class="course-edit" ng-click="remove_discount(discount)">remove</div> -->
                             </div>
                         </div>
-                        <!-- <div class="course-items pull-left">
-                            <div class="course-item" ng-if="input.discounts.length<3" ng-click="add_discount()">
-                                <div class="imgwrap" style="height:120px">
-                                    <img src="../images/upload.png" class="full-width full-height" />
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="section text-center">
@@ -282,7 +275,7 @@
                         <div class="m-session pull-left">
                             <span><b class="text-danger"> * </b>Travel Distance (miles)<b class="text-danger" ng-if="stepForm3.distance.$invalid && stepForm3.distance.$dirty"> (Number Only) </b></span>
                             <div class="u-input">
-                                <input type="number" min="0" name="distance" ng-model="input.distance" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="travel distance(miles)" class="full-width" />
+                                <input type="number" min="0" name="distance" ng-model="input.distance" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Travel distance(miles)" class="full-width" />
                             </div>
                         </div>
                         <div class="m-session pull-right">
@@ -303,7 +296,6 @@
                             </div>
                         </div>
                         <div class="section sm map-section">
-                            <!-- <iframe ng-src="{{map_url}}" class="map" height="300px" frameborder="0" allowfullscreen></iframe> -->
                             <div style="height:300px;border:1px solid #d2d2d2" id="map"></div>
                         </div>
                     </div>
@@ -342,9 +334,6 @@
                     <div class="m-session z-margin">
                         <div class="u-input" style="position:relative">
                             <input type="text" name="zipcode" ng-model="input.zipcode" ng-required="true" class="full-width" placeholder="Zip Code, e.g. 94105" />
-                            <!-- <div class="zipcode-suggestion" ng-if="input.zipcode && input.suggestions.length>0">
-                                <span class="suggestion-item" ng-repeat="suggestion in input.suggestions | filter:input.zipcode" ng-click="select(suggestion)">{{suggestion.zipcode}}</span>
-                            </div> -->
                         </div>
                     </div>
                     <div class="section text-center">

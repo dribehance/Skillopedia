@@ -60,6 +60,7 @@
 
 .confirm-box {
     .overlay(white);
+    z-index: 1000;
     .confirm-body {
         position: absolute;
         top: 5%;
@@ -77,6 +78,9 @@
         padding: 20px 15px;
         border-bottom: 1px dashed #a0a0a0;
     }
+    .logo {
+        width:250px;
+    }
     .close {
         color: #a0a0a0;
         cursor: pointer;
@@ -84,6 +88,7 @@
     .confirm-content {
         padding: 20px 15px;
         color:#555;
+        font-size: 20px;
     }
     input {
         padding: 15px;
@@ -96,23 +101,3 @@
         background-color: #f0f0f0;
     }
 }
-
-// #nprogress .bar {
-//     background: @brand-primary;
-// }
-
-// #nprogress .spinner-icon {
-//     border-top-color: @brand-primary;
-//     border-left-color: @brand-primary;
-// }
-
-// .browser-message {
-//     position: fixed;
-//     left: 0;
-//     right: 0;
-//     top: 45%;
-//     margin-top: -50px;
-//     padding: 50px;
-//     background-color: fade(black, 50%);
-//     color: white;
-// }

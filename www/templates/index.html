@@ -10,10 +10,10 @@
         Skillopedia<i class="fa fa-angle-down hover-spin-reverse" aria-hidden="true"></i>
     </span>
     <div class="nav-action" ng-controller="headerController">
-        <span class="signin-btn btn btn-black" ng-click="signin()" ng-if="!is_signin()">Sign In</span>
-        <span class="signup-btn btn" ng-click="signup()" ng-if="!is_signin()">Sign Up</span>
-        <span class="logout-btn" ng-click="show_menu($event)" ng-if="is_signin()"><img ng-src="{{staticImageUrl + user.image_01}}" alt="" err-src="../images/example_7.png" onload></span>
+        <span class="signin-btn btn btn-black" ng-click="signin()" ng-if="!is_signin()">Sign in</span>
+        <span class="signup-btn btn" ng-click="signup()" ng-if="!is_signin()">Sign up</span>
         <a class="shoppingcart" ng-if="is_signin()" ng-href="#/shoppingcart"><img ng-src="../images/cart.png" alt="" err-src="../images/example_7.png"></a>
+        <span class="logout-btn" ng-click="show_menu($event)" ng-if="is_signin()"><img ng-src="{{staticImageUrl + user.image_01}}" alt="" err-src="../images/example_7.png" onload></span>
         <div class="dropdown-menu" ng-if="is_signin()">
             <a class="menu-item" ng-href="#/orders">
                 <i class="fa fa-user" aria-hidden="true"></i>Orders
@@ -79,18 +79,14 @@
 <div class="wrap search-wrap">
     <form class="search-input" ng-submit="ajaxForm()" name="searchForm" ng-controller="searchFormController">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" required placeholder="Find your coach or lesson">
+        <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" required placeholder="Find your private coach or lesson">
         <span class="category-suggestion" ng-if="input.focus && input.categorys.length>0">
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
         </span>
         <span class="zipcode">
             <autocomplete value="input.zipcode"></autocomplete>
-            <!-- <input type="text" class="full-width" ng-model="input.zipcode" placeholder="zipcode">
-            <div class="zipcode-suggestion" ng-if="input.zipcode && input.suggestions.length>0">
-                <span class="suggestion-item" ng-repeat="suggestion in input.suggestions" ng-click="select(suggestion)">{{suggestion.zipcode}}</span>
-            </div> -->
         </span>
-        <button class="btn" type="submit" ng-disabled="searchForm.$invalid">Search</button>
+        <button class="btn" type="submit" ng-disabled="searchForm.$invalid" ng-class="{'highlight':!searchForm.$invalid}">Search</button>
     </form>
 </div>
 <!-- feature section -->

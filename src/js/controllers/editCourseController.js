@@ -43,6 +43,8 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 			parse_certs($scope.course.CourseCertifications);
 			// overview
 			$scope.input.overview = $scope.course.overview;
+			$scope.input.achievements = $scope.course.achievements;
+			$scope.input.specialist = $scope.course.specialist;
 			// covers
 			$scope.input.covers = $scope.course.CourseBanners.map(function(c) {
 				return c.image_01;
@@ -457,6 +459,8 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 			category_02_id: $scope.input.category_2.id,
 			category_02_name: $scope.input.category_2.name,
 			overview: $scope.input.overview,
+			achievements: $scope.input.achievements,
+			specialist: $scope.input.specialist,
 			fileName: $scope.input.covers.join("#"),
 			vedioURL: $scope.input.videos.map(function(video) {
 				return video.url

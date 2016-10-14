@@ -15,6 +15,10 @@ angular.module("Skillopedia").controller("accountController", function($scope, $
 		}
 	})
 	$scope.ajaxForm = function() {
+		if ($scope.input.password_1 != $scope.input.password_2) {
+			errorServices.autoHide("Password not the same")
+			return;
+		}
 		toastServices.show();
 		userServices.rsa_key().then(function(data) {
 			var crypt = new JSEncrypt(),
@@ -40,6 +44,7 @@ angular.module("Skillopedia").controller("accountController", function($scope, $
 				}
 				$scope.input.password = "";
 				$scope.input.password_1 = "";
+				$scope.input.password_2 = "";
 			})
 		})
 	}

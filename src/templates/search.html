@@ -11,25 +11,27 @@
                     <imageview data-rate="1" center-only src="staticImageUrl + course.coach_image"></imageview>
                     <span class="official-coach" ng-if="course.is_official"></span>
                 </div>
+
                 <div class="coach-info">
                     <div class="long-title text-ellipsis">{{course.title}}</div>
-                    <div style="margin-bottom:10px;" class="text-transform">{{course.coach_name}}</div>
                     <span class="pull-right text-primary text-big">{{course.session_rate|currency:"$"}}</span>
-                    <div class="star text-ellipsis">
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >0}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >1}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >2}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >3}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >4}" aria-hidden="true"></i>
-                        <span>{{course.total_coment_num || "0"}} reviews</span>
-                        <!-- <span ng-if="course.total_coment_num ==0">暂无评价</span> -->
-                        <span ng-if="course.distance">{{course.distance}}</span>
-                    </div>
-                    <div class="coach-meta">
-                        <span><i class="fa fa-bars" aria-hidden="true"></i>{{course.category_02_name}}</span>
-                        <!-- <span><i class="fa fa-user" aria-hidden="true"></i>by {{course.coach_name}}</span> -->
-                        <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{course.area}}</span>
-                        <span class="text-success open-map" ng-click="open_map(course,$event)"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Course location</span>
+                    <div style="margin-bottom:10px;" class="text-transform">{{course.coach_name}}</div>
+                    <div class="justified">
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>{{course.total_coment_num || "0"}} reviews</span>
+                        </div>
+                        <div>
+                            <span ng-if="course.distance">{{course.distance}}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <span>{{course.category_02_name}}</span>
+                        </div>
+                        <div ng-click="open_map(course,$event)">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>{{course.area}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,12 +39,12 @@
                 <span class="btn btn-lg" ng-click="loadMore()">{{page.message}}</span>
             </div>
         </div>
-        <div class="list-right">
+        <div class="list-right wrap bg-white">
             <form class="search-form" name="searchForm" ng-submit="ajaxForm()" ng-controller="searchFormController">
                 <!-- <p>Search on Skillopedia</p> -->
                 <div class="skill-input addon">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" required placeholder="find your private coach or lesson">
+                    <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" required placeholder="Find your private coach or lesson">
                     <span class="category-suggestion" ng-if="input.focus && input.categorys.length>0">
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
                     </span>
@@ -50,10 +52,6 @@
                 <div class="skill-input addon-btn">
                     <span class="zipcode">
                         <autocomplete value="input.zipcode"></autocomplete>
-                        <!-- <input type="text" class="full-width" ng-model="input.zipcode" placeholder="zipcode">
-                        <div class="zipcode-suggestion" ng-if="input.zipcode && input.suggestions.length>0">
-                            <span class="suggestion-item" ng-repeat="suggestion in input.suggestions | filter:input.zipcode" ng-click="select(suggestion)">{{suggestion.zipcode}}</span>
-                </div> -->
                 </span>
         </div>
         <button class="btn btn-primary btn-lg full-width" type="submit" ng-disabled="searchForm.$invalid">Search</button>
@@ -62,10 +60,6 @@
             <rangeslider></rangeslider>
         </div>
         <div class="category-tab" ng-if="recommands.length>0">
-            <!-- <div class="tab-header clearfix">
-                <span ng-class="{'active':sidebar.title=='recommand'}" ng-click="change_sidebar('recommand')">Recommand</span>
-                <span ng-class="{'active':sidebar.title=='hot'}" ng-click="change_sidebar('hot')">Hot</span>
-            </div> -->
             <p>Recommand</p>
             <div class="tab-content">
                 <a class="tab-content-item" ng-repeat="recommand in recommands" ng-href="#/list?category={{recommand.name}}&category_id={{recommand.catetory_id}}">

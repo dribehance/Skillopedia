@@ -364,6 +364,8 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 			category_02_id: $scope.input.category_2.id,
 			category_02_name: $scope.input.category_2.name,
 			overview: $scope.input.overview,
+			achievements: $scope.input.achievements,
+			specialist: $scope.input.specialist,
 			fileName: $scope.input.covers.join("#"),
 			vedioURL: $scope.input.videos.map(function(video) {
 				return video.url

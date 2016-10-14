@@ -50,7 +50,7 @@
 
 .settlement {
     padding: 15px;
-    background-color: @brand-second;
+    background-color: white;
     color: #494949;
     .price {
         margin: 15px;
@@ -66,9 +66,6 @@
         width: 100%;
         margin-bottom: 10px;
         .box-sizing(border-box);
-        // @media (min-width:1000px) {
-        //     width: 30%;
-        // }
     }
     .settlement-action span {
         display: inline-block;
@@ -76,14 +73,19 @@
         cursor: pointer;
         -webkit-user-select: none;
     }
+    .settlement-action .control {
+        display: inline-block;
+        padding: 0;
+        background-color: #e6e6e6;
+        color:#323232;
+    }
+    .settlement-amount {
+        border: 1px solid #e6e6e6;
+        background-color: white;
+    }
     a {
         text-decoration: none;
     }
-    // .form-control {
-    //     padding-top:0px;
-    //     padding-bottom: 0px;
-    //     max-width: 138px;
-    // }
 }
 
 .hovertips {
@@ -151,32 +153,45 @@
 }
 
 .overview {
+    color: #646464;
     overflow: hidden;
     line-height: 26px;
 }
 
+.detail-tab {
+    font-style: bold;
+    color: #b4b4b4;
+}
+
 .comments {
     .comment-item {
+        position: relative;
         padding-bottom: 15px;
         margin-bottom: 15px;
         border-bottom: 1px solid #f1f1f1;
-    }
-    .comment-header {
         overflow: hidden;
     }
-    .comment-name {
-        display: block;
-        font-size: 20px;
-        margin-bottom: 5px;
+    .comment-meta-entry {
+        &:first-child {
+            font-style: bold;
+            font-size: 18px;
+            color: #323232;
+        }
+        display: inline-block;
+        margin-right: 15px;
+        color: #969696;
     }
     .comment-avatar {
         float: left;
         width: 50px;
         height: 50px;
-        overflow: hidden;
         margin-right: 10px;
+        overflow: hidden;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
     }
     .comment-content {
+        color:#323232;
         line-height: 24px;
     }
     .comment-reply {
@@ -187,6 +202,40 @@
         color: #c1c1c1;
     }
 }
+
+.detail-group {
+    position: relative;
+    .detail-icon {
+        position: absolute;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-image: url("../images/tag.png");
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-position: center center;
+    }
+    .address-icon {
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        background-image: url("../images/address.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center center;
+    }
+    .group-title {
+        font-size: 20px;
+        text-indent: 60px;
+    }
+    p {
+        color: #646464;
+        text-indent: 60px;
+    }
+}
+
 dribehance-gallery {
     display: block;
     min-height: 430px;

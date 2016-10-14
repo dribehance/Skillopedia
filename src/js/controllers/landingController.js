@@ -194,7 +194,7 @@ angular.module("Skillopedia").controller("landingController", function($scope, $
 					errorServices.autoHide(data.message)
 				}
 				if (data.code == config.request.SUCCESS && data.status == 4) {
-					$window.location.href = "http://www.skillopedia.cc/landingFacebook";
+					$window.location.href = "https://www.skillopedia.cc/landingFacebook";
 				}
 			})
 		});

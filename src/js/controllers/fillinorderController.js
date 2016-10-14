@@ -53,6 +53,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
     };
     $scope.query_coupons = function() {
         if (!$rootScope.is_signin()) {
+            $scope.calculate();
             return;
         }
         toastServices.show();
@@ -239,7 +240,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
     // action
     $scope.input.amount = 1;
     $scope.add_amount = function() {
-        $scope.input.amount++;
+        $scope.input.amount = ++$scope.input.amount > 50 ? --$scope.input.amount : $scope.input.amount;
         $scope.calculate();
         // control calendar selected size;
         $scope.calendar.size = $scope.input.amount;
@@ -273,24 +274,19 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
         $scope.calendar.size = $scope.input.amount;
         $scope.calculate();
     };
-
     //鼠标移入提示 
-
     $scope.show = function() {
         if ($(".hovertips").hasClass("active")) {
             $(".hovertips").removeClass("active")
         } else {
             $(".hovertips").addClass("active")
         }
-
     }
     $scope.hide = function() {
         if ($(".hovertips").hasClass("active")) {
             $(".hovertips").removeClass("active")
         }
-
     }
-
     $scope.calculate = function() {
         var discount_price = 0;
         // 总价 = 课程费用+小伙伴费用+首次服务费用+交通费用
@@ -343,11 +339,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             $scope.input.total_traffic_cost = parseFloat($scope.course.travel_to_session_trafic_surcharge) * parseFloat($scope.input.amount);
         }
         // 首次服务费用 百分比,仅仅单节课程费用的百分比
-        if ($rootScope.is_signin()) {
-            $scope.input.total_fee = parseFloat($scope.course.session_rate) * parseFloat($scope.course.first_joint_fee) / 100;
-        } else {
-            $scope.input.total_fee = 0;
-        }
+        $scope.input.total_fee = parseFloat($scope.course.session_rate) * parseFloat($scope.course.first_joint_fee) / 100;
     }
     $scope.is_watch = false;
     $scope.$watch("input.coupons.selected", function(n, o) {
@@ -379,6 +371,10 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
     $scope.fillinorder = function(type) {
         if (!$rootScope.is_signin()) {
             $rootScope.signin();
+            return;
+        }
+        if ($scope.input.message.length > 400) {
+            errorServices.autoHide("message too long");
             return;
         }
         // 首单服务费+交通费

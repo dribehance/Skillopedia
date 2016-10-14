@@ -1,3 +1,36 @@
+.calendar-wrap {
+    .clearfix();
+    background-color: white;
+    .calendar-left {
+        float: left;
+        width: 66.66%;
+    }
+    .calendar-right {
+        float: left;
+        width: 33.3%;
+    }
+    .result-item {
+        padding: 8px 15px;
+        color: #555;
+    }
+    .calendar-result {
+        min-height: 520px;
+    }
+    .calendar-title {
+        padding: 15px;
+        margin-left: 15px;
+        font-size: 20px;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .calendar-header {
+        padding:15px;
+        font-size: 20px;
+        background-color: #f0f0f0;
+        color:#323232;
+    }
+}
+
 .calendar {
     position: relative;
     color: #494949;
@@ -94,9 +127,11 @@
         text-align: center;
     }
 }
+
 datepicker a {
     display: inline-block !important;
 }
+
 .small-calendar .hour {
     font-size: 12px;
 }
@@ -143,7 +178,7 @@ datepicker a {
         position: absolute;
         left: 0;
         bottom: 0;
-        width:12.5%;
+        width: 12.5%;
         text-align: center;
     }
     .weekly-item {

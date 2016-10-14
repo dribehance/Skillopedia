@@ -20,17 +20,21 @@
                     <p class="">
                         Account Name: {{user.email}}
                     </p>
+                    <p><span ng-if="user.agent_level == 1">Role：Normal user</span><span ng-if="user.agent_level == 2">Role: Coach</span></p>
                     <p>
-                        <span ng-if="user.agent_level == 1">Role：Normal user</span><span ng-if="user.agent_level == 2">Role: Coach</span>
+                        <span>Full name: {{input.nickname}}</span>
                     </p>
                     <div class="skill-input">
-                        <input type="text" ng-model="input.nickname" required placeholder="enter your nickname" class="full-width text-transform" readonly>
+                        <input type="hidden" ng-model="input.nickname" required placeholder="Enter your nickname" class="full-width text-transform" readonly>
                     </div>
                     <div class="skill-input" ng-if="user.is_third =='0'">
-                        <input type="password" ng-model="input.password" required ng-minLength="6" placeholder="enter your old password" class="full-width">
+                        <input type="password" ng-model="input.password" required ng-minLength="6" placeholder="Enter your old password" class="full-width">
                     </div>
                     <div class="skill-input" ng-if="user.is_third =='0'">
-                        <input type="password" ng-model="input.password_1" required ng-minLength="6" placeholder="enter your password. must be 6-16 characters long." class="full-width">
+                        <input type="password" ng-model="input.password_1" required ng-minLength="6" placeholder="Enter your password. must be 6-16 characters long." class="full-width">
+                    </div>
+                    <div class="skill-input" ng-if="user.is_third =='0'">
+                        <input type="password" ng-model="input.password_2" required ng-minLength="6" placeholder="Enter your password again" class="full-width">
                     </div>
                     <button class="btn btn-second" type="submit" ng-disabled="nicknameForm.$invalid" ng-if="user.is_third =='0'">Change Password</button>
                 </form>

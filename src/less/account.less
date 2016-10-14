@@ -27,20 +27,20 @@
     position: relative;
     display: block;
     padding: 15px;
-    margin-bottom: 8px;
-    // border-bottom: 1px dashed #ccc;
+    // margin-bottom: 8px;
+    border-bottom: 1px solid #f1f1f1;
     overflow: hidden;
-    color: #494949;
     background-color: white;
     cursor: pointer;
     font-weight: 100;
     min-height: 90px;
     .link();
+    color: #323232;
     .title {
         display: block;
         margin-bottom: 8px;
         font-size: 20px;
-        font-weight: 400;
+        font-weight: 700;
         .text-ellipsis;
     }
     .long-title {
@@ -48,6 +48,7 @@
         margin-bottom: 8px;
         line-height: 26px;
         font-size: 20px;
+        font-weight: 700;
         overflow: hidden;
     }
     .auto-title {
@@ -57,6 +58,7 @@
         margin-bottom: 8px;
         line-height: 26px;
         font-size: 20px;
+        font-weight: 700;
     }
     .summary {
         height: 40px;
@@ -75,11 +77,11 @@
     .star i.active {
         color: @brand-primary;
     }
+    .justified {
+        color:#646464;
+    }
     &.hover {
         height: 100px;
-        &:hover {
-            border-bottom-color: @brand-primary;
-        }
     }
     &.with-action-bar {
         border-bottom: 86px solid #f4f4f4;
@@ -132,14 +134,14 @@
     float: left;
     width: 85px;
     height: 85px;
-    border-radius: 100%;
-    -webkit-border-radius:100%;
-    -moz-border-radius:100%;
+    // border-radius: 100%;
+    // -webkit-border-radius:100%;
+    // -moz-border-radius:100%;
     margin-right: 15px;
     background-color: #f3e7d9;
     .box-sizing(border-box);
     text-align: center;
-    border: 2px solid @brand-primary;
+    // border: 2px solid #f0f0f0;
     overflow: hidden;
     img {
         width: 100%;
@@ -234,7 +236,7 @@
         margin: 0 auto 15px;
         text-align: center;
         border-radius: 200px;
-        border: 1px solid @brand-primary;
+        // border: 1px solid @brand-primary;
         background-color: #f3e7d9;
         overflow: hidden;
         img {

@@ -9,38 +9,21 @@
                     <label class="condition" ng-class="{'active':input.category.id == category.category_02_id}" ng-repeat="category in categorys">
                         <input type="radio" class="hide" ng-model="input.category" ng-value="{name:category.category_02_name,id:category.category_02_id}" name="category">{{category.category_02_name}}</label>
                 </div>
-                <!-- <div class="condition-2">
-                    <span><b>Distance:</b></span>
-                    <label class="condition" ng-class="{'active':input.distance == distance}" ng-repeat="distance in input.distances">
-                        <input type="radio" class="hide" ng-model="input.distance" value="{{distance}}" name="distance">{{distance}}</label>
-                </div> -->
                 <div class="condition-3">
                     <span><b>Priority:</b></span>
-                    <!-- <label class="condition" ng-class="{'active':input.priority == priority}" ng-repeat="priority in input.priorities">
-                        <input type="radio" class="hide" ng-model="input.priority" value="{{priority}}" name="priority">
-                            {{priority}} 
-                            <i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </label> -->
                     <span class="condition" ng-class="{'active':input.price}" ng-click="sort_by_price()">
                             Price 
                             <i class="fa" ng-class="{'fa-caret-down':input.price == '1','fa-caret-up':input.price == '2'}" aria-hidden="true"></i>
                     </span>
                     <span class="condition" ng-class="{'active':input.review}"  ng-click="sort_by_review()">
                             Rating 
-                            <!-- <i class="fa" ng-class="{'fa-caret-down':input.review == '1','fa-caret-up':input.review == '2'}" aria-hidden="true"></i> -->
                     </span>
                     <span class="condition" ng-class="{'active':input.hot}"  ng-click="sort_by_hot()">
                             Popular
-                            <!-- <i class="fa" ng-class="{'fa-caret-down':input.hot == '1','fa-caret-up':input.hot == '2'}" aria-hidden="true"></i> -->
                     </span>
                 </div>
                 <div class="condition-3">
                     <span><b>Travel Services Available:</b></span>
-                    <!-- <label class="condition" ng-class="{'active':input.priority == priority}" ng-repeat="priority in input.priorities">
-                        <input type="radio" class="hide" ng-model="input.priority" value="{{priority}}" name="priority">
-                            {{priority}} 
-                            <i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </label> -->
                     <span class="condition" ng-class="{'active':input.travel =='1'}" ng-click="travel_yes()">
                             Yes
                     </span>
@@ -48,9 +31,6 @@
                             No
                     </span>
                 </div>
-                <!-- <span class="condition select" ng-if="input.category.name" ng-click="remove('category')">{{input.category.name}} <i class="fa fa-times-circle" aria-hidden="true"></i></span> -->
-                <!-- <span class="condition select" ng-if="input.distance" ng-click="remove('distance')">{{input.distance}} <i class="fa fa-times-circle" aria-hidden="true"></i></span>
-                <span class="condition select" ng-if="input.priority" ng-click="remove('priority')">{{input.priority}} <i class="fa fa-times-circle" aria-hidden="true"></i></span> -->
             </div>
             <div class="coach-item hover" ng-click="local_go(course.course_id)" ng-repeat="course in courses">
                 <div class="coach-avatar">
@@ -59,23 +39,21 @@
                 </div>
                 <div class="coach-info">
                     <div class="long-title text-ellipsis">{{course.title}}</div>
-                    <div style="margin-bottom:10px;" class="text-transform">{{course.coach_name}}</div>
                     <span class="pull-right text-primary text-big">{{course.session_rate|currency:"$"}}</span>
-                    <div class="star text-ellipsis">
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >0}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >1}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >2}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >3}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':course.total_score >4}" aria-hidden="true"></i>
-                        <span>{{course.total_coment_num || "0"}} reviews</span>
-                        <!-- <span ng-if="course.total_coment_num ==0">暂无评价</span> -->
-                    </div>
-                    <div class="coach-meta">
-                        <span><i class="fa fa-bars" aria-hidden="true"></i>{{course.category_02_name}}</span>
-                        <!-- <span><i class="fa fa-user" aria-hidden="true"></i>by {{course.coach_name}}</span> -->
-                        <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{course.area}}</span>
-                        <span class="text-success open-map" ng-click="open_map(course,$event)"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Course location</span>
-                        
+                    <div style="margin-bottom:10px;" class="text-transform">{{course.coach_name}}</div>
+                    <div class="justified">
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>{{course.total_coment_num || "0"}} reviews</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <span>{{course.category_02_name}}</span>
+                        </div>
+                        <div ng-click="open_map(course,$event)">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>{{course.area}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,23 +76,14 @@
                 <div class="skill-input addon-btn">
                     <span class="zipcode">
                     <autocomplete value="input.zipcode"></autocomplete>
-                        <!-- <input type="text" class="full-width" ng-model="input.zipcode" placeholder="zipcode">
-                        <div class="zipcode-suggestion" ng-if="input.zipcode && input.suggestions.length>0">
-                            <span class="suggestion-item" ng-repeat="suggestion in input.suggestions | filter:input.zipcode" ng-click="select(suggestion)">{{suggestion.zipcode}}</span>
-                </div> -->
                 </span>
         </div>
         <button class="btn btn-primary btn-lg full-width" type="submit" ng-disabled="searchForm.$invalid">Search</button>
         </form>
         <div class="category-tab" ng-if="recommands.length>0">
-            <!-- <div class="tab-header clearfix">
-                <span ng-class="{'active':sidebar.title=='recommand'}" ng-click="change_sidebar('recommand')">Recommand</span>
-                <span ng-class="{'active':sidebar.title=='hot'}" ng-click="change_sidebar('hot')">Hot</span>
-            </div> -->
             <p>Recommand</p>
             <div class="tab-content">
                 <a class="tab-content-item" ng-repeat="recommand in recommands" ng-href="#/list?category={{recommand.name}}&category_id={{recommand.catetory_id}}">
-                    <!-- <img ng-src="{{staticImageUrl + recommand.big_image_01}}" alt="" err-src="../images/error.jpg" onload> -->
                     <imageview data-rate="5/3" center-only src="staticImageUrl + recommand.big_image_01"></imageview>
                     <div class="caption">
                         <h3>{{recommand.name}}</h3>
