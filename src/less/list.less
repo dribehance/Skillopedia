@@ -1,18 +1,68 @@
-.search-form p {
-    position: relative;
-    text-align: center;
-    // background-color: #f3e7d9;
-    // padding-bottom: 15px;
-    // margin: 0;
-    &:before {
-        content: "";
-        position: absolute;
-        display: block;
-        left: 50%;
-        bottom: -15px;
-        width: 60px;
-        margin-left: -30px;
-        border-bottom: 4px solid @brand-primary;
+.search-form {
+    .skill-input {
+        float: left;
+        width: 30%;
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    button {
+        padding: 14px;
+        width: 100px;
+        float: left;
+    }
+    .filter {
+        position: relative;
+        float: right;
+        padding: 14px 30px 14px 14px;
+        border: 1px solid #f0f0f0;
+        cursor: pointer;
+        &:before {
+            content: "\f107";
+            position: absolute;
+            right: 10px;
+            top: 14px;
+            display: inline-block;
+            font-family: FontAwesome;
+        }
+        &:hover {
+            &:before {
+                content: "\f106"
+            }
+            .rangeslider-wrap {
+                display: block;
+            }
+        }
+        .rangeslider-wrap {
+            position: absolute;
+            top: 46px;
+            right: 0;
+            width: 250px;
+            z-index: 100;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #f0f0f0;
+            display: none;
+        }
+        #rangeslider {
+            position: relative;
+            padding: 30px 0;
+            .range-point {
+                position: absolute;
+                top: 0px;
+                z-index: 5;
+            }
+            .rangeslider--horizontal {
+                height: 10px;
+            }
+            .rangeslider__handle {
+                top: -4px;
+                width:16px;
+                height: 16px;
+            }
+            .rangeslider__fill {
+                background:@brand-primary;
+            }
+        }
     }
 }
 
@@ -88,7 +138,7 @@
     input,
     textarea {
         -webkit-appearance: none;
--moz-appearance: none;
+        -moz-appearance: none;
         border: none;
         outline: none;
         padding: 15px;
@@ -106,7 +156,7 @@
     color: white;
     border: 1px solid #dadada;
     -webkit-appearance: none;
--moz-appearance: none;
+    -moz-appearance: none;
     border: none;
     outline: none;
 }
