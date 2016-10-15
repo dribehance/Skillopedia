@@ -10,14 +10,16 @@
 		width: 300px;
 	}
 	.content-wrap {
-		margin-left: 15px;
+		// margin-left: 15px;
 		background-color: white;
+		min-height: 898px;
 	}
 }
 .sidebar {
 	padding-top: 1px;
 	padding-bottom: 50px;
-	background-color: #f3e7d9;
+	color: #ffffff;
+	background-color: #282828;
 	.sidebar-avatar {
 		display: block;
 		width: 200px;
@@ -33,13 +35,13 @@
 		}
 	}
 	.sidebar-list {
-		background-color: fade(white, 37%);
+		// background-color: fade(white, 37%);
 	}
 	.sidebar-item-header,.sidebar-item {
 		display: block;
-		padding:16px;
-		color: #494949;
-		border-bottom: 1px solid white;
+		padding: 25px 16px;
+		font-size: 18px;
+		// border-bottom: 1px solid white;
 		.link();
 	}
 	.sidebar-item.sub-item {
@@ -47,8 +49,19 @@
 		background-color: fade(white, 30%);
 	}
 	.sidebar-item.active {
-		border-left: 2px solid @brand-primary;
-		color: @brand-primary;
+		position: relative;
+		background-color: @brand-primary;
+		&:before {
+			content: "";
+			position: absolute;
+			right: -20px;
+			top: 50%;
+			margin-top: -10px;
+			border-top: 10px solid transparent;
+			border-left: 10px solid @brand-primary;
+			border-bottom: 10px solid transparent;
+			border-right: 10px solid transparent;
+		}
 	}
 	.marquee {
 		width:80%;

@@ -3559,7 +3559,7 @@ var ASPlatforms = {
 				}
 				styleCss += "}";
 				styleCss += ".amazingslider-box-" + this.id + " {display:block;position:relative;left:0px;top:0px;width:100%;height:auto;";
-				if (this.options.border > 0) styleCss += "box-sizing:border-box;border-width:" + this.options.border + "px;border-style:solid;border-color:" + this.options.bordercolor + ";";
+				if (this.options.border > 0) styleCss += "margin-left:-" + this.options.border + "px;border-width:" + this.options.border + "px;border-style:solid;border-color:" + this.options.bordercolor + ";";
 				styleCss += "}";
 				styleCss += ".amazingslider-swipe-box-" + this.id + " {display:block;position:relative;left:0px;top:0px;width:100%;height:auto;}";
 				styleCss += ".amazingslider-space-" + this.id + " {display:block;position:relative;left:0px;top:0px;width:100%;height:auto;visibility:hidden;line-height:0px;font-size:0px;}";
@@ -5739,9 +5739,9 @@ var ASPlatforms = {
 			if (this.options.versionmark != "AMC" + "om" && !(this.options.versionmark == "AML" + "ite" && this.options.skin && $.inArray(this.options.skin, ["classic", "cube", "content"]) >= 0)) {
 				this.options.showwatermark = window.location.href.indexOf(d0) >= 0 ? false : true;
 				this.options.watermarkstyle = this.options.wstyledefault;
-				this.options.watermarktext = "Skillopedia.cc"; //this.options.vermk;
+				this.options.watermarktext = "skillopedia.cc"; //this.options.vermk;
 				this.options.watermarkimage = this.options.wimagedefault;
-				this.options.watermarklink = this.options.watermarklinkdefault;
+				this.options.watermarklink = "https://skillopedia.cc"; //this.options.watermarklinkdefault;
 				this.options.watermarktarget = this.options.watermarktargetdefault;
 				this.options.watermarkpositioncss = this.options.wposcss;
 				this.options.watermarktextcss = this.options.wtextcssdefault;

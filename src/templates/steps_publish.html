@@ -1,11 +1,10 @@
 <!-- header -->
-<link href="lib/css/account.css" rel="stylesheet"> 
-<link href="lib/css/media.css" rel="stylesheet" />
+<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
     <div class="section account-section">
         <!-- sidebar -->
-        <sidebar active="" class="sidebar-wrap"></sidebar>
+        <sidebar active="'/comments'" class="sidebar-wrap"></sidebar>
         <div class="content-wrap">
         	<div class="tabs clearfix">
                 <!-- <label class="tab-item pull-left" ng-class="{'active':input.step_status == '1'}">
@@ -16,9 +15,9 @@
                 </label> -->
                 <a class="tab-item pull-left" ng-href="#/comments">Comments</a>
                 <a class="tab-item pull-left active">Steps</a>
-                <div class="btn-group pull-right clearfix">
-                    <a class="btn btn-success" ng-href="#/create_step" target="_blank"><i class="fa fa-paper-plane-o " style="margin-right:8px"></i>Create my step</a>
-                </div>
+                <a ng-href="#/create_step" target="_blank" class="pull-right clearfix tab-item-action">
+                    <i class="fa fa-paper-plane-o " style="margin-right:8px"></i> Create my step
+                </a>
             </div>
             <a class="step-item" ng-repeat="step in steps" ng-href="#/step?id={{step.experience_id}}" target="_blank">
                 <!-- <div class="coach-avatar">
@@ -28,7 +27,7 @@
                     <div class="step-info">
                         <span class="step-title"><span class="text-danger" ng-if="step.status=='2'"> [ draft ] </span>{{step.title}}</span>
                         <div ng-bind-html="step.content" class="step-content"></div>
-                        {{step.post_time}}
+                        <span class="pull-left btn" style="padding:6px 0">{{step.post_time}}</span>
                         <div class="btn-group pull-right">
                             <button class="btn btn-success" ng-click="edit_step(step.experience_id,$event)"><i class="fa fa-edit" style="margin-right:8px"></i>edit</button>
                             <button class="btn btn-danger" ng-click="remove_step(step.experience_id,$event)"><i class="fa fa-trash" style="margin-right:8px"></i>delete</button>

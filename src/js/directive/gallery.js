@@ -31,8 +31,6 @@ angular.module("Skillopedia").directive('dribehanceGallery', function($rootScope
 				}
 			};
 			scope.$on("onRepeatDone", function() {
-				console.log("onRepeatDone")
-					// return;
 				$timeout(function() {
 					$("#amazingslider-1").amazingslider({
 

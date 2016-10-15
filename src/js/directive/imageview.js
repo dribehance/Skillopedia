@@ -68,7 +68,7 @@ angular.module("Skillopedia")
 						image_loaded_width = image_loaded.width(),
 						image_loaded_height = image_loaded.height(),
 						actural_rate = parseFloat(image_loaded_width) / parseFloat(image_loaded_height);
-					if (actural_rate < $scope.rate) {
+					if (actural_rate > $scope.rate) {
 						image_loaded.css({
 							"display": "inline-block",
 							"height": "100%",

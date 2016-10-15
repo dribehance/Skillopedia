@@ -1,6 +1,5 @@
 <!-- header -->
-<link href="lib/css/account.css" rel="stylesheet">
-<link href="lib/css/media.css" rel="stylesheet" />
+<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
     <div class="section account-section">
@@ -10,33 +9,15 @@
             <div class="tabs clearfix">
                 <a class="tab-item pull-left active">Order manament</a>
             </div>
-            <!-- 订单详情 -->
-            <div class="goods clearfix">
-                <ul>
-                    <li class="active">
-                        <div class="comments">
-                            <div class="comment-header">
-                                <div class="comment-avatar">
-                                    <img ng-src="{{staticImageUrl + order.Course.course_image_01}}" err-src="../images/head.png" class="full-width" alt="">
-                                </div>
-                                <div class="comment-meta">
-                                    <span class="comment-name">
-                                        {{order.Course.course_nickname}}
-                                    </span>
-                                    <div class="clearfix">
-                                        <span class="pull-left">
-                                            {{order.leave_message||"no message"}}
-                                        </span>
-                                        <span class="pull-right">
-                                            <a class="btn btn-success font-white" ng-href="#/show?user_id={{order.Course.user_id}}" target="_blank">查看</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div class="clearfix order-header">
+                <div class="pull-left" style="display:block;width:70px;margin-right:15px">
+                    <imageview data-rate="1" src="staticImageUrl + order.Course.buy_image_01"></imageview>
+                </div>
+                <b>{{order.Course.buy_nickname}}</b>
+                <div>{{order.leave_message}}</div>
+                <a ng-href="/show?user_id={{order.Course.user_id}}" class="btn btn-success pull-right">Detail</a>
             </div>
+            <!-- 订单详情 -->
             <div class="list-group">
                 <div class="list-group-item clearfix" ng-class="{'text-success':schedule.status == '1','text-primary':schedule.status=='20' && schedule.refund_status=='10','text-danger':schedule.status=='3' && schedule.refund_status=='10'}" ng-repeat="schedule in order.OrdersSchedules">
                     <div class="col-xs-3">session{{$index+1}}</div>
@@ -55,6 +36,18 @@
                     <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='31'">refunded</div>
                 </div>
             </div>
+            <div class="section sm">
+                <div class="btn-group clearfix text-center">
+                    <!-- coach cancel course -->
+                    <a class="btn btn-success" ng-if="order.button_status1 == '1'" ng-href="#/order_cancel">cancel</a>
+                    <!-- confirm course time -->
+                    <a class="btn btn-success" ng-if="order.button_status2 == '1'" ng-href="#/order_confirm">confirm</a>
+                    <!-- finish course -->
+                    <a class="btn btn-success" ng-if="order.button_status3 == '1'" ng-href="#/order_finish">finish</a>
+                    <span class="btn btn-danger" ng-if="order.button_status4 == '1'" ng-click="remove(order)">delete</span>
+                </div>
+            </div>
+            <div class="line"></div>
             <div class="tit">
                 Teaching location
             </div>
@@ -74,20 +67,9 @@
                     <li><a href="">Total:<em>{{order.total_session_rate|currency:"$"}}</em></a></li>
                 </ul>
             </div>
-            <div class="section sm">
-                <div class="btn-group clearfix text-center">
-                    <!-- coach cancel course -->
-                    <a class="btn btn-success" ng-if="order.button_status == '1'" ng-href="#/order_cancel">cancel</a>
-                    <!-- confirm course time -->
-                    <a class="btn btn-success" ng-if="order.button_status == '2'" ng-href="#/order_confirm">confirm</a>
-                    <!-- finish course -->
-                    <a class="btn btn-success" ng-if="order.button_status == '3'" ng-href="#/order_finish">confirm</a>
-                    <span class="btn btn-danger" ng-if="order.button_status=='4'" ng-click="remove(order)">delete</span>
-                </div>
-            </div>
             <div class="tit clearfix">
                 <p>Transaction ID:{{order.order_number}}</p>
-                <p>Time:{{order.post_time}}</p>
+                <div>Time:{{order.post_time}}</div>
             </div>
             <a class="coach-item" ng-href="#/detail?course_id={{order.Course.course_id}}">
                 <div class="coach-avatar">
@@ -96,22 +78,22 @@
                 </div>
                 <div class="coach-info">
                     <div class="long-title text-ellipsis">{{order.Course.title}}</div>
-                    <div style="margin-bottom:10px;">{{order.Course.course_nickname}}</div>
                     <span class="pull-right" style="margin-left:8px;">x{{order.buy_amount}}</span>
                     <span class="pull-right text-primary text-big">{{order.Course.session_rate|currency:"$"}}</span>
-                    <div class="star text-ellipsis">
-                        <i class="fa fa-star" ng-class="{'active':order.Course.total_score >0}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':order.Course.total_score >1}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':order.Course.total_score >2}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':order.Course.total_score >3}" aria-hidden="true"></i>
-                        <i class="fa fa-star" ng-class="{'active':order.Course.total_score >4}" aria-hidden="true"></i>
-                        <span ng-if="order.Course.total_coment_num >0">共{{order.Course.total_coment_num}}条评价</span>
-                        <span ng-if="order.Course.total_coment_num ==0">暂无评价</span>
-                    </div>
-                    <div class="coach-meta">
-                        <span><i class="fa fa-bars" aria-hidden="true"></i>{{order.Course.category_02_name}}</span>
-                        <!-- <span><i class="fa fa-user" aria-hidden="true"></i>by {{order.Course.coach_name}}</span> -->
-                        <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{order.Course.area}}</span>
+                    <div style="margin-bottom:10px;" class="text-transform">{{order.Course.course_nickname}}</div>
+                    <div class="justified">
+                        <div>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>{{order.Course.total_coment_num || "0"}} reviews</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <span>{{order.Course.category_02_name}}</span>
+                        </div>
+                        <div>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>{{order.Course.area}}</span>
+                        </div>
                     </div>
                 </div>
             </a>

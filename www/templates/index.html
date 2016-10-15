@@ -1,9 +1,5 @@
-<script src="//cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="lib/js/jquery.animate-enhanced.min.js"></script>
-<script src="lib/js/jquery.superslides.js"></script>
-<script src="lib/js/main.js"></script>
-<link href="lib/css/superslides.css" rel="stylesheet">
-<link href="lib/css/index.css" rel="stylesheet">
+<myresource css-resource="{'superslides':'lib/css/superslides.css','index_css':'lib/css/index.css'}" js-resource="{'easing':'//cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js','animate_enhanced':'lib/js/jquery.animate-enhanced.min.js','superslides':'lib/js/jquery.superslides.js','main_js':'lib/js/main.js'}">
+</myresource>
 <!-- nav -->
 <div class="nav">
     <span class="nav-btn">
@@ -25,8 +21,8 @@
                 <i class="fa fa-bookmark" aria-hidden="true"></i>Teach with Skillopdia
             </a>
             <a class="menu-item" ng-href="#/messages">
-                        <i class="fa fa-user" aria-hidden="true"></i>Messages
-                    </a>
+                <i class="fa fa-user" aria-hidden="true"></i>Messages
+            </a>
             <a class="menu-item" ng-click="logout()">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>Sign out
             </a>
@@ -153,7 +149,7 @@
                 <span class="block text-transform">{{single.coach_name}}</span>
             </div>
         </a>
-    </div>  
+    </div>
 </div>
 <!-- confirm -->
 <confirm confirm="confirm" class="hide"></confirm>
