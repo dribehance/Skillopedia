@@ -4,7 +4,8 @@ angular.module("Skillopedia").directive('myresource', function() {
 		restrict: 'E',
 		scope: {
 			cssResource: "=",
-			jsResource: "="
+			jsResource: "=",
+			jsLoaded: "&"
 		},
 		link: function(scope, element, attrs) {
 			angular.forEach(scope.cssResource, function(value, key) {
@@ -14,6 +15,8 @@ angular.module("Skillopedia").directive('myresource', function() {
 					$("head").append(css_resource);
 				}
 			})
+			var js_resource_size = Object.keys(scope.jsResource).length;
+			scope.jsLoaded = scope.jsLoaded || angular.noop;
 			angular.forEach(scope.jsResource, function(value, key) {
 				var js_resource_id = "myjsresource-" + key,
 					js_resource = "<script id='" + js_resource_id + "' type='text/javascript' src='" + value + "'></script>";
@@ -25,6 +28,12 @@ angular.module("Skillopedia").directive('myresource', function() {
 					js = document.createElement("script");
 					js.id = js_resource_id;
 					js.src = value;
+					js.onload = function() {
+						js_resource_size--;
+						if (js_resource_size == 0) {
+							scope.jsLoaded();
+						}
+					}
 					rjs.parentNode.insertBefore(js, rjs);
 				}
 			})
