@@ -1,5 +1,5 @@
 <div ng-include="'templates/header.html'"></div>
-<div class="wrap" ng-cloak ng-if="payment">
+<div class="section sm wrap bg-white" ng-cloak ng-if="payment">
     <p>Payment amount</p>
     <span class="text-primary text-big">{{payment.total_total_session_rate|currency:"$"}}</span><span class="text-line-through">{{payment.total_original_total_session_rate|currency:"$"}}</span>
     <div class="section sm">
@@ -7,8 +7,8 @@
     </div>
     <!-- <a href="" ng-click="pay('1')" class="alipay"></a> -->
     <div class="paypal">
-       <!--  <form name="paypalForm" action="https://www.paypal.com/cgibin/webscr" method="post"> -->
-       <!-- paypal沙盒支付测试地址 -->
+        <!--  <form name="paypalForm" action="https://www.paypal.com/cgibin/webscr" method="post"> -->
+        <!-- paypal沙盒支付测试地址 -->
         <form id="pay_form" name="paypalForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
             <!-- Payment amount-->
             <input type="hidden" name="amount" value="{{payment.total_total_session_rate}}">
@@ -24,7 +24,7 @@
             System.currentTimeMillis()
              -->
             <input type="hidden" name="invoice" value="{{id}}">
-             <!--支付成功后台通知地址-->
+            <!--支付成功后台通知地址-->
             <input type="hidden" name="notify_url" id="notify_url" value="https://www.skillopedia.cc/PaypalNotify">
             <!--支付成功返回地址-->
             <input type="hidden" name="return" id="return" value="https://www.skillopedia.cc/">
@@ -37,25 +37,17 @@
             <input type="image" src="../images/paypal.png" border="0" name="submit" alt="Make payments with PayPal it's st, free and secure!">
         </form>
     </div>
-    <!-- <div class="visa">
-        <form name="visaForm" action="https://www.paypal.com/cgibin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="admin@skillopedia.cc">
-            <input type="hidden" name="item_name" value="SKILLOPEDIA">
-            <input type="hidden" name="amount" value="{{payment.total_total_session_rate}}">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="lc" value="US">
-            <input type="hidden" name="return" value="http://skillopedia.cc/app/Pays/paypalAysn">
-            <input type="hidden" name="custom" value="order_id#{{id}}">
-            <input type="image" src="images/visa.jpg" border="0" name="submit" alt="Make payments with PayPal it's st, free and secure!">
+    <div class="visa">
+        <form name="visaForm" ng-submit="ajaxForm()" class="visa-form clearfix">
+            <div class="visa-caret"></div>
+            <div class="visa-content">
+                <input type="number" placeholder="Card number" required name="visa_card_id" ng-model="input.visa_card_id">
+                <input type="number" placeholder="Month" class="month" min="0" max="12" required name="visa_card_id" ng-model="input.visa_card_month">
+                <input type="number" placeholder="Year" class="year" min="0" max="99" required name="visa_card_year" ng-model="input.visa_card_year">
+                <button type="submit" class="btn btn-primary full-width btn-md" ng-disabled="visaForm.$invalid">Confirm</button>
+            </div>
         </form>
-    </div> -->
-    <!-- <a class="btn btn-second btn-md" ng-click="pay('1')">pay with alipay</a>
-    <a class="btn btn-primary btn-md" ng-click="pay('2')"><i class="fa fa-cc-visa" aria-hidden="true"></i>pay with visa</a>
-    <a class="btn btn-success btn-md" ng-click="pay('3')"><i class="fa fa-cc-paypal" aria-hidden="true"></i>pay with paypal</a> -->
-</div>
-<div class="wrap" ng-cloak ng-if="error_msg">
-    {{error_msg}}
+    </div>
 </div>
 <!-- alipay -->
 <form name="alipayForm" method="post" id="alipayForm" action="https://mapi.alipay.com/gateway.do?_input_charset=utf-8">
@@ -76,5 +68,8 @@
     <input type="hidden" name="sign" value="{{alipay.sign}}">
     <input type="hidden" name="sign_type" value="{{alipay.sign_type}}">
 </form>
+<div class="wrap" ng-cloak ng-if="error_msg">
+    {{error_msg}}
+</div>
 <!-- footer -->
 <div ng-include="'templates/footer.html'"></div>

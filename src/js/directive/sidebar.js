@@ -4,32 +4,14 @@ angular.module("Skillopedia").directive('sidebar', function($rootScope, $timeout
 		restrict: 'E',
 		templateUrl: "templates/sidebar.html",
 		scope: {
-			active: "="
+			active: "=",
+			user: "=",
+			go: "&"
 		},
 		link: function(scope, element, attrs) {
 			scope.staticImageUrl = config.imageUrl;
-			scope.user = $rootScope.user;
-			scope.go = $rootScope.go;
-			// var offset = "";
-			// $timeout(function() {
-			// 	offset = $(element).offset();
-			// }, 0)
-			// $(window).resize(function() {
-			// 	offset = $(element).offset();
-			// })
-			// $(document).scroll(function() {
-			// 	if (offset.top < $("body").scrollTop()) {
-			// 		$(element).css({
-			// 			"position": "fixed",
-			// 			"left": offset.left,
-			// 		})
-			// 	} else {
-			// 		$(element).css({
-			// 			"position": "absolute",
-			// 			"left": 0,
-			// 		})
-			// 	}
-			// })
+			// scope.user = $rootScope.user;
+			// scope.go = $rootScope.go;
 		}
 	};
 });

@@ -56,13 +56,11 @@ $(document).ready(function() {
 	}, function() {
 		$(this).parent().removeClass("hover-right")
 	});
-	$(".image-gallaxy").each(function() {
-		$(this).magnificPopup({
-			delegate: 'a', // the selector for gallery item
-			type: 'image',
-			gallery: {
-				enabled: true
-			}
-		});
+	$(document).magnificPopup({
+		delegate: '.image-gallaxy a', // the selector for gallery item
+		type: 'image',
+		gallery: {
+			enabled: true
+		}
 	});
 })

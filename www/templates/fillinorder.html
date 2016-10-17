@@ -1,9 +1,8 @@
+<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <!-- header -->
-<!-- <link href="lib/css/account.css" rel="stylesheet" />
-<link href="lib/css/media.css" rel="stylesheet" /> -->
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
-    <div class="section detail-section">
+    <div class="section sm detail-section">
         <!-- left -->
         <div class="detail-left">
             <div class="coach-item">
@@ -155,7 +154,7 @@
                 </p>
             </div>
             <div class="clearfix row text-center">
-                <a class="col-xs-6 wrap bg-primary hover text-white" ng-click="fillinorder('1')">Add to cart</a>
+                <a class="col-xs-6 wrap bg-primary hover text-white" ng-click="fillinorder('1')" style="text-indent:30px;"><img ng-src="../images/cart.png" alt="" err-src="../images/example_7.png" style="position:absolute;left:15px;top:8px;width:30px">Add to cart</a>
                 <a class="col-xs-6 wrap bg-success hover text-white" ng-click="fillinorder('11')">Pay now</a>
             </div>
             <div class="section sm">

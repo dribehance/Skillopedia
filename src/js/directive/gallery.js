@@ -406,19 +406,17 @@ angular.module("Skillopedia").directive('dribehanceGallery', function($rootScope
 
 						lightboxshowtitle: true,
 
-						slide: {
+						fade: {
 
 							duration: 1000,
 
 							easing: "easeOutCubic",
 
-							checked: true,
-
-							effectdirection: 0
+							checked: true
 
 						},
 
-						transition: "slide",
+						transition: "fade",
 
 						scalemode: "fill",
 

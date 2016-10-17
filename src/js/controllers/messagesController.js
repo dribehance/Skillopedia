@@ -19,6 +19,7 @@ angular.module("Skillopedia").controller("messagesController", function($scope, 
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.messages = $scope.messages.concat(data.Result.Comments.list);
 				$scope.no_more = $scope.messages.length == data.Result.Comments.totalRow ? true : false;
+				$rootScope.user.read_number > 0 && userServices.sync();
 			} else {
 				errorServices.autoHide("Server error");
 			}

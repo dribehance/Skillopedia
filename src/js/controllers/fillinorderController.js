@@ -373,7 +373,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             $rootScope.signin();
             return;
         }
-        if ($scope.input.message.length > 400) {
+        if ($scope.input.message && $scope.input.message.length > 400) {
             errorServices.autoHide("message too long");
             return;
         }

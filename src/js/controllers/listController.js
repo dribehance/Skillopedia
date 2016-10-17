@@ -30,7 +30,8 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 		category_02_id: $scope.input.category.id,
 		category_02_name: $scope.input.category.name,
 		distances: $scope.input.distance,
-		prioritys: $scope.input.priority
+		prioritys: $scope.input.priority,
+		session_rate: $scope.input.session_rate
 	}
 	$scope.loadMore = function() {
 		toastServices.show();
@@ -71,7 +72,8 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 			price_type: $scope.input.price,
 			review_type: $scope.input.review,
 			hot_type: $scope.input.hot,
-			travel_to_session: $scope.input.travel
+			travel_to_session: $scope.input.travel,
+			session_rate: $scope.input.session_rate
 		})
 		$scope.loadMore();
 	};
@@ -142,14 +144,20 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 			course_id: id
 		});
 	};
+	$scope.$on("slideEnd", function(e, m) {
+		$scope.input.session_rate = m;
+		$timeout(function() {
+			$scope.reload();
+		}, 100)
+	});
 	// recommand and hot
-	toastServices.show();
-	skillopediaServices.query_recommand_category().then(function(data) {
-		toastServices.hide()
-		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-			$scope.recommands = data.Result.Catetorys;
-		} else {
-			errorServices.autoHide(data.message);
-		}
-	})
+	// toastServices.show();
+	// skillopediaServices.query_recommand_category().then(function(data) {
+	// 	toastServices.hide()
+	// 	if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+	// 		$scope.recommands = data.Result.Catetorys;
+	// 	} else {
+	// 		errorServices.autoHide(data.message);
+	// 	}
+	// })
 })

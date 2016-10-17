@@ -3,7 +3,7 @@
 <div class="wrap">
     <div class="section account-section">
         <!-- sidebar -->
-        <sidebar active="" class="sidebar-wrap"></sidebar>
+        <sidebar active="" class="sidebar-wrap" user="user" go="go"></sidebar>
         <div class="content-wrap">
             <div class="tabs clearfix">
                 <a class="tab-item pull-left" ng-class="{'active':day.schedule_data == current_day}" ng-click="query_schedule(day.schedule_data)" ng-repeat="day in days">{{day.schedule_data}}</a>

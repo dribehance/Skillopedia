@@ -4,6 +4,7 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 		rediect();
 		return;
 	}
+	$scope.input = {};
 	$scope.id = new Date().getTime() + $routeParams.id;
 	toastServices.show();
 	orderServices.query_payment({
@@ -39,13 +40,31 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 			}
 		})
 	};
+	$scope.ajaxForm = function() {
+		toastServices.show();
+		orderServices.pay_by_visa({
+			amount: $scope.payment.total_total_session_rate,
+			orders_ids: $routeParams.id,
+			cardNumber: $scope.input.visa_card_id,
+			expirationDate: $scope.input.visa_card_month.toString() + $scope.input.visa_card_year.toString()
+		}).then(function(data) {
+			toastServices.hide()
+			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+				errorServices.autoHide(data.message);
+				$timeout(function() {
+					$location.path("orders").replace();
+				}, 3000);
+			} else {
+				errorServices.autoHide(data.message);
+			}
+		})
+	}
 	$scope.pay_by_paypal = function() {
-		console.log("dd")
 		angular.element("#paypalForm").submit();
 	}
 
 	function rediect() {
-		$scope.error_msg = "找不到该页面，正在为你跳转首页...";
+		$scope.error_msg = "page not found";
 		$timeout(function() {
 			$location.path("index").search("id", null).replace();
 		}, 2000)
