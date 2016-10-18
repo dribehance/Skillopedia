@@ -3559,7 +3559,7 @@ var ASPlatforms = {
 				}
 				styleCss += "}";
 				styleCss += ".amazingslider-box-" + this.id + " {display:block;position:relative;left:0px;top:0px;width:100%;height:auto;";
-				if (this.options.border > 0) styleCss += "margin-left:-" + this.options.border + "px;border-width:" + this.options.border + "px;border-style:solid;border-color:" + this.options.bordercolor + ";";
+				if (this.options.border > 0) styleCss += "-webkit-box-sizing:border-box;box-sizing:border-box;border-width:" + this.options.border + "px;border-style:solid;border-color:" + this.options.bordercolor + ";";
 				styleCss += "}";
 				styleCss += ".amazingslider-swipe-box-" + this.id + " {display:block;position:relative;left:0px;top:0px;width:100%;height:auto;}";
 				styleCss += ".amazingslider-space-" + this.id + " {display:block;position:relative;left:0px;top:0px;width:100%;height:auto;visibility:hidden;line-height:0px;font-size:0px;}";
