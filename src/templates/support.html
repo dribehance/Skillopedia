@@ -1,33 +1,35 @@
 <!-- header -->
 <div ng-include="'templates/header.html'"></div>
-<div class="about-poster"></div>
-<div class="wrap">
-    <div class="section">
-        <h1 class="text-center">How it work</h1>
-        <div class="tabs clearfix text-center">
-            <!-- <a class="tab-item pull-left" ng-href="#/courses">Courses</a> -->
-            <a class="tab-item" ng-class="{'active':view == 'customers'}" ng-click="jump('customers')">Customers</a>
-            <a class="tab-item" ng-class="{'active':view == 'coaches'}" ng-click="jump('coaches')">Coaches</a>
-        </div>
-        <div class="section-content" ng-if="view == 'customers'">
-            <h3>1. Sign up</h3>
-            <p>We recommend our customer sign up a Skillopedia account first, it is easy and quick. After we verify email address, your account is ready to use.</p>
-            <h3>2. Search</h3>
-            <p>Enter the training goal and your prefer location, Skillopedia will list all available coach in your location, sorting the result by distance, price and rating to find the coach fit your needs.</p>
-            <h3>3. Reservation&Pay</h3>
-            <p>When you decide your coach, click “Make reservation” button on your coach’s profile, you can set up the time and location for your session. Location set up is only available when our coach offer travel service. After you book your coach, you will receive your coach’s contact information.Tips: time schedule is available after payment.</p>
-            <h3>4. Training</h3>
-            <p>Now you are ready to go! Our customer service will help to confirm the time and location is correct, feel the difference as you get a experienced here!</p>
-        </div>
-        <div class="section-content" ng-if="view == 'coaches'">
-            <h3>1. Sign up & sign in</h3>
-            <p>You should sign up a Skillopedia account first, it is easy and quick. After we verify email address, your account is ready to use. Please sign in it and set up a great profile.</p>
-            <h3>2. Apply for coaching</h3>
-            <p>After sign in your account, go to personal center, click “apply for coaching”, we need some base information from you and verify you with a official ID(Driver License, Passport etc), we will reply your application within 48 hours.</p>
-            <h3>3. Reservation&payment</h3>
-            <p>If we accept your application, you are now working with Skillopedia and free to publish your courses. Go to personal center and click “As a coach” button, you can publish your first course now. Fill out “Basic Information”,“Extension”, ”Teaching ”, “Course Time”, and you are good to go!</p>
+<!-- <div class="about-poster"></div> -->
+<div class="section sm">
+    <div class="wrap bg-white">
+        <div class="section">
+            <h1 class="text-center">How it work</h1>
+            <div class="tabs clearfix text-center">
+                <!-- <a class="tab-item pull-left" ng-href="#/courses">Courses</a> -->
+                <a class="tab-item" ng-class="{'active':view == 'customers'}" ng-click="jump('customers')">Customers</a>
+                <a class="tab-item" ng-class="{'active':view == 'coaches'}" ng-click="jump('coaches')">Coaches</a>
+            </div>
+            <div class="section-content" ng-if="view == 'customers'">
+                <h3>1. Sign up</h3>
+                <p>We recommend our customer sign up a Skillpier account first, it is easy and quick. After we verify email address, your account is ready to use.</p>
+                <h3>2. Search</h3>
+                <p>Enter the training goal and your prefer location, Skillpier will list all available coach in your location, sorting the result by distance, price and rating to find the coach fit your needs.</p>
+                <h3>3. Reservation&Pay</h3>
+                <p>When you decide your coach, click “Make reservation” button on your coach’s profile, you can set up the time and location for your session. Location set up is only available when our coach offer travel service. After you book your coach, you will receive your coach’s contact information.Tips: time schedule is available after payment.</p>
+                <h3>4. Training</h3>
+                <p>Now you are ready to go! Our customer service will help to confirm the time and location is correct, feel the difference as you get a experienced here!</p>
+            </div>
+            <div class="section-content" ng-if="view == 'coaches'">
+                <h3>1. Sign up & sign in</h3>
+                <p>You should sign up a Skillpier account first, it is easy and quick. After we verify email address, your account is ready to use. Please sign in it and set up a great profile.</p>
+                <h3>2. Apply for coaching</h3>
+                <p>After sign in your account, go to personal center, click “apply for coaching”, we need some base information from you and verify you with a official ID(Driver License, Passport etc), we will reply your application within 48 hours.</p>
+                <h3>3. Reservation&payment</h3>
+                <p>If we accept your application, you are now working with Skillpier and free to publish your courses. Go to personal center and click “As a coach” button, you can publish your first course now. Fill out “Basic Information”,“Extension”, ”Teaching ”, “Course Time”, and you are good to go!</p>
+            </div>
         </div>
     </div>
 </div>
 <!-- footer -->
-<div ng-include="'templates/footer.html'"></div>
+<div ng-include="'templates/footer_index.html'"></div>

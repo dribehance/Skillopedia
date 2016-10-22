@@ -3,7 +3,7 @@
 <!-- nav -->
 <div class="nav">
     <span class="nav-btn">
-        Skillopedia<i class="fa fa-angle-down hover-spin-reverse" aria-hidden="true"></i>
+        Skillpier<i class="fa fa-angle-down hover-spin-reverse" aria-hidden="true"></i>
     </span>
     <div class="nav-action" ng-controller="headerController">
         <span class="signin-btn btn btn-black" ng-click="signin()" ng-if="!is_signin()">Sign in</span>
@@ -50,7 +50,7 @@
                 Info
             </div>
             <div class="info-list">
-                <a class="info-item" ng-href="#/about">About Skillopedia</a>
+                <a class="info-item" ng-href="#/about">About Skillpier</a>
                 <a class="info-item" ng-href="#/support">Support</a>
                 <a class="info-item" ng-href="#/contact">Contact Us</a>
                 <a class="info-item" ng-href="#/services">Terms of Services</a>
@@ -75,7 +75,7 @@
 <div class="wrap search-wrap">
     <form class="search-input" ng-submit="ajaxForm()" name="searchForm" ng-controller="searchFormController">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" ng-required placeholder="Find your private coach or lesson">
+        <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" ng-required="true"placeholder="Find your private coach or lesson">
         <span class="category-suggestion" ng-if="input.focus && input.categorys.length>0">
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
         </span>
