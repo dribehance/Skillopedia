@@ -3,12 +3,14 @@ angular.module("Skillopedia").directive('myresource', function() {
 	return {
 		restrict: 'E',
 		scope: {
-			cssResource: "=",
-			jsResource: "=",
+			csResource: "=?",
+			jsResource: "=?",
 			jsLoaded: "&"
 		},
 		link: function(scope, element, attrs) {
-			angular.forEach(scope.cssResource, function(value, key) {
+			scope.csResource = scope.csResource || {};
+			scope.jsResource = scope.jsResource || {};
+			angular.forEach(scope.csResource, function(value, key) {
 				var css_resource_id = "mycssresource-" + key,
 					css_resource = "<link id='" + css_resource_id + "' rel='stylesheet' type='text/css' href='" + value + "'>";
 				if ($("#" + css_resource_id).length == 0) {

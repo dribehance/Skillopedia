@@ -1,5 +1,5 @@
 <!-- header -->
-<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
+<myresource cs-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
     <div class="section account-section">
@@ -29,8 +29,8 @@
                         <div ng-bind-html="step.content" class="step-content"></div>
                         <span class="pull-left btn" style="padding:6px 0">{{step.post_time}}</span>
                         <div class="btn-group pull-right">
-                            <button class="btn btn-success" ng-click="edit_step(step.experience_id,$event)"><i class="fa fa-edit" style="margin-right:8px"></i>edit</button>
-                            <button class="btn btn-danger" ng-click="remove_step(step.experience_id,$event)"><i class="fa fa-trash" style="margin-right:8px"></i>delete</button>
+                            <button class="btn btn-success" ng-click="edit_step(step.experience_id,$event)">edit</button>
+                            <button class="btn btn-danger" ng-click="remove_step(step.experience_id,$event)">delete</button>
                         </div>
                     </div>
                 </div>

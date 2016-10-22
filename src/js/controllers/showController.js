@@ -32,7 +32,15 @@ angular.module("Skillopedia").controller("showController", function($scope, $rou
 				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
-				$scope.page.message = $scope.courses.length + " records found";
+				if ($scope.courses.length == 0) {
+					$scope.page.message = "No record found";
+				}
+				if ($scope.courses.length == 1) {
+					$scope.page.message = data.Result.Courses.totalRow + " record found ";
+				}
+				if ($scope.courses.length > 1) {
+					$scope.page.message = data.Result.Courses.totalRow + " records found ";
+				}
 			}
 			$scope.page.pn++;
 		})

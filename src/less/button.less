@@ -21,6 +21,9 @@
     @line-height-base;
     @btn-border-radius-base);
     .user-select(none);
+    min-width: 100px;
+    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
     &,
     &:active,
     &.active {
@@ -49,6 +52,12 @@
         cursor: @cursor-disabled;
         .opacity(.65);
         .box-shadow(none);
+        background-color:#cccccc;
+        border-color:#cccccc;
+        &:hover {
+            background-color: #cccccc !important;
+            border-color:#cccccc !important;
+        }
     }
     a& {
         &.disabled,
@@ -61,9 +70,12 @@
 // Alternate buttons
 // --------------------------------------------------
 .btn-default {
-    .button-variant(@btn-default-color;
-    @btn-default-bg;
-    @btn-default-border);
+    // .button-variant(@btn-default-color;
+    // @btn-default-bg;
+    // @btn-default-border);
+    .button-variant(white;
+    #90e1d5;
+    #90e1d5);
 }
 
 .btn-primary {
@@ -101,7 +113,7 @@
 }
 .btn-second {
     .button-variant(white;
-    fade(@brand-primary,50%);
+    @brand-second;
     transparent);
 }
 // Link buttons

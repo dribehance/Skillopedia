@@ -144,20 +144,10 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 			course_id: id
 		});
 	};
-	$scope.$on("slideEnd", function(e, m) {
-		$scope.input.session_rate = m;
+	$scope.price_callback = function(position, value) {
+		$scope.input.session_rate = value;
 		$timeout(function() {
 			$scope.reload();
 		}, 100)
-	});
-	// recommand and hot
-	// toastServices.show();
-	// skillopediaServices.query_recommand_category().then(function(data) {
-	// 	toastServices.hide()
-	// 	if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-	// 		$scope.recommands = data.Result.Catetorys;
-	// 	} else {
-	// 		errorServices.autoHide(data.message);
-	// 	}
-	// })
+	}
 })

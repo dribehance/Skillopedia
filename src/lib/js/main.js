@@ -40,8 +40,8 @@ function close_right(e) {
 
 
 $(document).ready(function() {
-	$(".nav-btn").bind("click", open_dropdown);
-	$(".dropdown-cover").bind("click", close_dropdown);
+	$(".nav-btn").live("click", open_dropdown);
+	$(".dropdown-cover").live("click", close_dropdown);
 	$(".feature-left").hover(function() {
 		$(this).parent().addClass("hover-left")
 	}, function() {

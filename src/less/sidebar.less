@@ -1,83 +1,154 @@
 .account-section {
-	position: relative;
-	padding-left: 300px;
-	min-height: 1000px;
-	margin: 0;
-	.sidebar-wrap {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 300px;
-	}
-	.content-wrap {
-		// margin-left: 15px;
-		background-color: white;
-		min-height: 898px;
-	}
+    position: relative;
+    padding-left: 300px;
+    min-height: 1000px;
+    margin: 0;
+    .sidebar-wrap {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 300px;
+    }
+    .content-wrap {
+        // margin-left: 15px;
+        background-color: white;
+        min-height: 898px;
+    }
 }
+
 .sidebar {
-	padding-top: 1px;
-	padding-bottom: 50px;
-	color: #ffffff;
-	background-color: #282828;
-	.sidebar-avatar {
-		display: block;
-		width: 200px;
-		height: 200px;
-		margin: auto auto;
-		border-radius: 100%;
-		overflow: hidden;
-		text-align: center;
-		// border: 3px solid @brand-primary;
-		img {
-			width: 100%;
-			height: 100%;
-		}
-	}
-	.sidebar-list {
-		// background-color: fade(white, 37%);
-	}
-	.sidebar-item-header,.sidebar-item {
-		display: block;
-		padding: 25px 16px;
-		font-size: 18px;
-		// border-bottom: 1px solid white;
-		.link();
-	}
-	.sidebar-item.sub-item {
-		padding-left: 30px;
-		background-color: fade(white, 30%);
-	}
-	.sidebar-item.active {
-		position: relative;
-		background-color: @brand-primary;
-		&:before {
-			content: "";
-			position: absolute;
-			right: -20px;
-			top: 50%;
-			margin-top: -10px;
-			border-top: 10px solid transparent;
-			border-left: 10px solid @brand-primary;
-			border-bottom: 10px solid transparent;
-			border-right: 10px solid transparent;
-		}
-	}
-	.red-dot {
-		display: inline-block;
-		float: right;
-		width:20px;
-		height: 20px;
-		line-height: 20px;
-		color: white;
-		font-size: 13px;
-		text-align: center;
-		vertical-align: middle;
-		background-color: @brand-danger;
-		-webkit-border-radius:100%;
-		border-radius: 100%;
-	}
-	.marquee {
-		width:80%;
-	}
+    padding-top: 1px;
+    padding-bottom: 50px;
+    color: #ffffff;
+    background-color: #282828;
+    .sidebar-avatar {
+        display: block;
+        width: 200px;
+        height: 200px;
+        margin: auto auto;
+        border-radius: 100%;
+        overflow: hidden;
+        text-align: center;
+        // border: 3px solid @brand-primary;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .sidebar-list {
+        // background-color: fade(white, 37%);
+    }
+    .sidebar-item-header,
+    .sidebar-item {
+        display: block;
+        padding: 25px 16px;
+        font-size: 18px;
+        // border-bottom: 1px solid white;
+        .link();
+    }
+    .sidebar-item.sub-item {
+        padding-left: 30px;
+        background-color: fade(white, 30%);
+    }
+    .sidebar-item.active {
+        position: relative;
+        background-color: @brand-primary;
+        &:before {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            margin-top: -10px;
+            border-top: 10px solid transparent;
+            border-left: 10px solid @brand-primary;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+    }
+    .red-dot {
+        display: inline-block;
+        float: right;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        color: white;
+        font-size: 13px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: @brand-danger;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+    }
+    .marquee {
+        width: 80%;
+    }
+    .account-item {
+        display: block;
+        width: 80%;
+        padding:10px;
+        margin: 40px auto 0;
+        .link();
+        font-size: 18px;
+        border: 1px solid #fcb244;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        color: #fcb244;
+        text-align: center;
+    }
+    .fa {
+        position: relative;
+        top: 5px;
+    }
+}
+
+.sidebar-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 35px;
+    height: 30px;
+    margin-right: 15px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    &.sidebar-order {
+        position: relative;
+        top: -2px;
+        background-image: url("../images/order.png");
+        background-size: 80%;
+    }
+    &.sidebar-coach {
+        position: relative;
+        top: -1px;
+        background-image: url("../images/coach.png");
+        background-size: 80%;
+    }
+    &.sidebar-message {
+        position: relative;
+        top: -1px;
+        background-image: url("../images/message.png");
+        background-size: 80%;
+    }
+    &.sidebar-comment {
+        position: relative;
+        top: -2px;
+        background-image: url("../images/experience.png");
+        background-size: 90%;
+    }
+    &.sidebar-fav {
+        position: relative;
+        top: -2px;
+        background-image: url("../images/collection.png");
+        background-size: 80%;
+    }
+    &.sidebar-coupon {
+        position: relative;
+        top: -1px;
+        background-image: url("../images/coupon.png");
+        background-size: 90%;
+    }
+    &.sidebar-setting {
+        position: relative;
+        top: -1px;
+        background-image: url("../images/setting.png");
+        background-size: 70%;
+    }
 }

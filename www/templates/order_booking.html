@@ -15,7 +15,7 @@
                         <p class="text-center">schedule</p>
                         <div class="result-item" ng-click="calendar.remove(select)" ng-repeat="select in calendar.selected">
                             <i class="pull-right fa fa-times"></i>
-                            <div>{{select.from.day}}</div>
+                            <div>{{parse_day(select.from.day)}}</div>
                             {{get_from_time(select.from.hour)}} to {{get_to_time(select.to.hour)}}
                         </div>
                         <div class="result-item" ng-if="calendar.selected.length==0">
@@ -26,8 +26,11 @@
                                 you now has book all you time! 
                             </span>
                         </div>
-                        <div class="result-item" ng-if="calendar.selected.length>0">
-                            there are {{get_left()}} couse you can book !
+                        <div class="result-item" ng-if="calendar.selected.length>0 && get_left()>0">
+                            {{get_left()}} sessions remain!
+                        </div>
+                        <div class="result-item" ng-if="calendar.selected.length>0 && get_left() == 0">
+                            You have booked all sessions.
                         </div>
                         <div class="clearfix" ng-if="calendar.selected.length>0">
                             <p class="btn-group text-center">

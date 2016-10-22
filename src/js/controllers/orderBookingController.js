@@ -62,7 +62,11 @@ angular.module("Skillopedia").controller("orderBookingController", function($sco
 	$scope.get_to_time = function(t) {
 		return t.split("-")[1]
 	};
-	// confirm booking
+	$scope.parse_day = function(day) {
+			var days = day.split("-");
+			return days[1] + " / " + days[2] + " / " + days[0];
+		}
+		// confirm booking
 	$scope.booking = function() {
 		toastServices.show();
 		orderServices.booking({

@@ -1,5 +1,5 @@
 <!-- header -->
-<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
+<myresource cs-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
     <div class="section">
@@ -91,16 +91,16 @@
                     </div>
                 </div>
                 <div class="title-input">
-                    <span class="clearfix"><b class="text-danger"> * </b>About myself<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.overview.$invalid">at least 200 letter</b></span>
-                    <textarea class="full-width" rows="8" name="overview" ng-model="input.overview" ng-required="true" placeholder="About myself (at least 200 letter)"></textarea>
+                    <span class="clearfix"><b class="text-danger"> * </b>About myself<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.overview.$invalid"> (at least 200 character)</b></span>
+                    <textarea class="full-width" rows="8" name="overview" ng-model="input.overview" ng-required="true" placeholder="Tell us your experience and story "></textarea>
                 </div>
                 <div class="title-input">
-                    <span class="clearfix"><b class="text-danger"> * </b>Achievements<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.achievements.$invalid"></b></span>
-                    <textarea class="full-width" rows="8" name="achievements" ng-model="input.achievements" ng-required="true" placeholder="Achievements"></textarea>
+                    <span class="clearfix"><b class="text-danger"> * </b>Achievements<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.achievements.$invalid"> (at least 50 character)</b></span>
+                    <textarea class="full-width" rows="8" name="achievements" minlength="50" ng-model="input.achievements" ng-required="true" placeholder="Your achievement"></textarea>
                 </div>
                 <div class="title-input">
-                    <span class="clearfix"><b class="text-danger"> * </b>Specialist<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.specialist.$invalid">at least 50 letter</b></span>
-                    <textarea class="full-width" rows="8" name="specialist" minlength="50" ng-model="input.specialist" ng-required="true" placeholder="Specialist (at least 50 letter)"></textarea>
+                    <span class="clearfix"><b class="text-danger"> * </b>Specialist<b class="text-danger" ng-if="stepForm1.$dirty && stepForm1.specialist.$invalid"></b></span>
+                    <textarea class="full-width" rows="8" name="specialist" ng-model="input.specialist" ng-required="true" placeholder="Tell us your specialist. Something like backend, forehand, serve if you are a tennis player."></textarea>
                 </div>
                 <div class="section text-center">
                     <button type="button" class="btn btn-success col-xs-4 btn-md col-xs-offset-4" ng-click="show_step(2)" ng-disabled="createCourseForm.stepForm1.$invalid">Next</button>
@@ -112,8 +112,8 @@
                     <div ng-if="(stepForm1.coverForm.$invalid || input.covers.length == 0)&&stepForm1.$dirty">* Cover of course is required</div>
                     <div ng-if="stepForm1.videoForm.$invalid &&stepForm1.$dirty">* Video url is required</div>
                     <div ng-if="stepForm1.overview.$invalid &&stepForm1.$dirty">* About myself is required - 200 characters minimum</div>
-                    <div ng-if="stepForm1.achievements.$invalid &&stepForm1.$dirty">* Achievements is required</div>
-                    <div ng-if="stepForm1.specialist.$invalid &&stepForm1.$dirty">* Specialist is required - 200 characters minimum</div>
+                    <div ng-if="stepForm1.achievements.$invalid &&stepForm1.$dirty">* Achievements is required - 50 characters minimum</div>
+                    <div ng-if="stepForm1.specialist.$invalid &&stepForm1.$dirty">* Specialist is required</div>
                 </div>
             </div>
             <!-- 新建课程第2步 -->
@@ -125,7 +125,9 @@
                         <span><b class="text-danger"> * </b>Session Length</span>
                         <!-- 下拉框 -->
                         <div class="course-select">
-                            <select name="course_duration" ng-model="input.course_duration" ng-options="course_duration for course_duration in course_durations"></select>
+                            <select name="course_duration" ng-model="input.course_duration" ng-required>
+                                <option value="60">60 mins</option>
+                            </select>
                             <i class="fa fa-caret-down" aria-hidden="true"></i>
                         </div>
                     </div>
@@ -161,8 +163,10 @@
                                     <option value="">Select Option</option>
                                     <option value="4+">4+</option>
                                     <option value="7+">7+</option>
+                                    <option value="10+">10+</option>
                                     <option value="15+">15+</option>
                                     <option value="18+">18+</option>
+                                    <option value="No preference">No preference</option>
                                 </select>
                                 <i class="fa fa-caret-down" aria-hidden="true"></i>
                             </div>
@@ -172,8 +176,9 @@
                 <!-- session -->
                 <div class="title-input">
                     <div class="clearfix">
-                        <div class="m-session pull-left">
-                            <span><b class="text-danger"> * </b>Number of Extra Partners Per Session<b class="text-danger" ng-if="stepForm2.partner.$invalid && stepForm2.partner.$dirty"> (Number Only) </b></span>
+                        <div class="m-session pull-left" style="position:relative">
+                            <span><b class="text-danger"> * </b>Number of Extra Partners <i class="fa fa-question-circle-o hover" aria-hidden="true" title="" style="color:blue;"  ng-mouseover="show()" ng-mouseleave="hide()"></i> <b class="text-danger" ng-if="stepForm2.partner.$invalid && stepForm2.partner.$dirty"> (Number Only) </b></span>
+                            <div class="hovertips" ng-show="show">If you don’t allow group session for your customer, please enter 0 .</div>
                             <div class="u-input">
                                 <input type="number" min="0" name="partner" ng-model="input.partner" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Partner Limit" class="full-width" />
                             </div>
@@ -181,7 +186,7 @@
                         <div class="m-session pull-right">
                             <span><b class="text-danger"> * </b>Surcharge for Each Extra Partner ($)<b class="text-danger" ng-if="stepForm2.surcharge.$invalid && stepForm2.surcharge.$dirty"> (Number Only) </b></span>
                             <div class="u-input">
-                                <input type="number" min="0" name="surcharge" ng-model="input.surcharge" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Surcharge for Each Extra Partner ($)" class="full-width" />
+                                <input type="number" min="0" name="surcharge" ng-required="input.partner > 0" ng-disabled="input.partner == 0" ng-model="input.surcharge" ng-required="true" ng-pattern="/^\d+$/" class="full-width" placeholder="Surcharge for Each Extra Partner ($)" class="full-width" />
                             </div>
                         </div>
                     </div>
@@ -260,11 +265,11 @@
                     <div class="m-check clearfix">
                         <label class="u-check" ng-class="{'text-primary':input.travel_to_session == '1'}">
                             <input type="radio" class="hide" ng-model="input.travel_to_session" value="1">
-                            <i class="btn fa fa-circle-o"></i>Yes, I am willing to travel to sessions.
+                            <i class="fa" ng-class="{'fa-circle':input.travel_to_session == '1','fa-circle-o':input.travel_to_session == '0'}"></i> Yes, I am willing to travel to sessions.
                         </label>
                         <label class="u-check" ng-class="{'text-primary':input.travel_to_session == '0'}">
                             <input type="radio" class="hide" ng-model="input.travel_to_session" value="0">
-                            <i class="btn fa fa-circle-o"></i>No, I am not willing to travel to sessions
+                            <i class="fa" ng-class="{'fa-circle':input.travel_to_session == '0','fa-circle-o':input.travel_to_session == '1'}"></i> No, I am not willing to travel to sessions
                         </label>
                     </div>
                 </div>
@@ -310,7 +315,7 @@
                 </div>
                 <div ng-show="location_mode == 'edit'" ng-form="locationForm">
                     <div class="title-input">
-                        <span><b class="text-danger"> * </b>Location - <b class="text-danger" ng-if="street_error">{{street_error}}</b></span>
+                        <span><b class="text-danger"> * </b>Location<b class="text-danger" ng-if="street_error"> - {{street_error}}</b></span>
                         <div class="course-input">
                             <input type="text" name="street" ng-model="input.street" ng-required="true" class="full-width" placeholder="Street address, P.O. box, company name, c/o." />
                         </div>

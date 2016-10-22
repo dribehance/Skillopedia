@@ -7,7 +7,7 @@
                 <!-- <p>Search on Skillopedia</p> -->
                 <div class="skill-input addon">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" required placeholder="Find your private coach or lesson">
+                    <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" ng-required placeholder="Find your private coach or lesson">
                     <span class="category-suggestion" ng-if="input.focus && input.categorys.length>0">
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
                     </span>
@@ -21,7 +21,8 @@
                 <div class="filter">
                     More filters
                     <div class="rangeslider-wrap">
-                        <rangeslider  max="50" title="'Distance (miles)'"></rangeslider>
+                        <rangeslider  max="50" range-title="'Distance (miles)'" slide-callback="distance_callback"></rangeslider>
+                        <rangeslider  max="50" range-title="'Price ($)'" slide-callback="price_callback"></rangeslider>
                     </div>
                 </div>
             </form>

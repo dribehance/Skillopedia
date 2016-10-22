@@ -1,4 +1,4 @@
-<myresource css-resource="{'superslides':'lib/css/superslides.css','index_css':'lib/css/index.css'}" js-resource="{'easing':'//cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js','animate_enhanced':'lib/js/jquery.animate-enhanced.min.js','superslides':'lib/js/jquery.superslides.js','main_js':'lib/js/main.js'}">
+<myresource cs-resource="{'superslides':'lib/css/superslides.css','index_css':'lib/css/index.css'}" js-resource="{'easing':'//cdn.bootcss.com/jquery-easing/1.3/jquery.easing.min.js','animate_enhanced':'lib/js/jquery.animate-enhanced.min.js','superslides':'lib/js/jquery.superslides.js','main_js':'lib/js/main.js'}">
 </myresource>
 <!-- nav -->
 <div class="nav">
@@ -75,7 +75,7 @@
 <div class="wrap search-wrap">
     <form class="search-input" ng-submit="ajaxForm()" name="searchForm" ng-controller="searchFormController">
         <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" required placeholder="Find your private coach or lesson">
+        <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" ng-required placeholder="Find your private coach or lesson">
         <span class="category-suggestion" ng-if="input.focus && input.categorys.length>0">
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
         </span>

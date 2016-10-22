@@ -1,4 +1,4 @@
-<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
+<myresource cs-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <!-- header -->
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
@@ -70,6 +70,11 @@
             </div>
             <div class="section sm">
                 <div class="wrap bg-white">
+                    <a style="font-size:20px;" class="hover" ng-click="go('contact')">Questions? Ask us</a>
+                </div>
+            </div>
+            <div class="section sm">
+                <div class="wrap bg-white">
                     <span style="font-size:20px;">Teaching Location</span> <small style="color:#969696">Specific location will be made available after payment.</small>
                 </div>
                 <div class="section-content">
@@ -79,7 +84,45 @@
         </div>
         <div class="detail-right">
             <div class="settlement" style="position: relative">
-                <p class="text-center">
+                <div class="settlement-price-group">
+                    <div class="total-price">
+                        <span class="text-primary">Total price</span>
+                        <div class="pull-right">
+                            {{input.discount_total_price|currency:"$"}}
+                        </div>
+                    </div>
+                    <p class="line" style="background:#dadada"></p>
+                    <div>
+                        <span>Course price * {{input.amount}}</span>
+                        <div class="pull-right">
+                            <b ng-class="{'underline':input.discount_total_course_price>0&&input.discount_total_course_price!=input.total_course_price}">{{input.total_course_price|currency:"$"}}</b>
+                            <b ng-if="input.discount_total_course_price>0&&input.discount_total_course_price!=input.total_course_price">{{input.discount_total_course_price|currency:"$"}}</b>
+                        </div>
+                    </div>
+                    <div ng-if="input.total_traffic_cost>0" style="margin-top:8px">
+                        <span>Travel Fee</span>
+                        <div class="pull-right">
+                            <b>{{input.total_traffic_cost|currency:"$"}}</b>
+                        </div>
+                    </div>
+                    <div ng-if="input.total_service_fee>0" style="margin-top:8px;position:relative">
+                        <span>One times service fee <i class="fa fa-question-circle-o hover" aria-hidden="true" title="" style="color:blue;"  ng-mouseover="show()" ng-mouseleave="hide()"></i></span>
+                        <span class="hovertips" ng-show="show">This fee is used for maintain coach service, you won't be charged in the future when you purchase the same course with this coach.</span>
+                        <div class="pull-right">
+                            <b>{{input.total_service_fee|currency:"$"}}</b>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px">
+                        <span> {{input.partner}} additional partner * {{input.amount}}</span>
+                        <div class="pull-right">
+                            <b ng-class="{'underline':input.discount_total_partner_fee>0&&input.discount_total_partner_fee!=input.total_partner_fee}">{{input.total_partner_fee|currency:"$"}}</b>
+                            <b ng-if="input.discount_total_partner_fee>0&&input.discount_total_partner_fee!=input.total_partner_fee">{{input.discount_total_partner_fee|currency:"$"}}</b>
+                        </div>
+                    </div>
+                    <p class="line" style="background:#dadada"></p>
+                    <div class="text-center">{{course.session_length||'60'}} mins per session</div>
+                </div>
+                <!-- <p class="text-center">
                     Session fee 
                     <span ng-if="input.total_fee>0">+One times service fee &nbsp;
                     <span><i class="fa fa-question-circle-o" aria-hidden="true" title="" style="color:blue;"  ng-mouseover="show()" ng-mouseleave="hide()"></i>
@@ -94,8 +137,8 @@
                     <span ng-if="input.total_fee>0">+ {{input.total_fee|currency:"$"}}</span>
                     <span ng-if="input.total_traffic_cost>0">+ {{input.total_traffic_cost|currency:"$"}}</span>
                 </p>
-                <p class="text-center">per session {{course.session_length||'60'}}min</p>
-                <p class="clearfix settlement-action">
+                <p class="text-center">per session {{course.session_length||'60'}}min</p> -->
+                <p class="clearfix settlement-action settlement-line">
                     Session quantity :
                     <span class="control">
                     <span class="settlement-minus" ng-click="minus_amount()">-</span>
@@ -119,7 +162,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="clearfix settlement-action" ng-if="course.additional_partner>0">
+                <p class="clearfix settlement-action settlement-line" ng-if="course.additional_partner>0">
                     Additional partner :
                     <span class="control">
                     <span class="settlement-minus" ng-click="minus_partner()">-</span>
@@ -127,12 +170,12 @@
                     <span class="settlement-plus" ng-click="add_partner()">+</span>
                     </span>
                 </p>
-                <div ng-if="course.additional_partner>0">
+                <div class="settlement-line" ng-if="course.additional_partner>0">
                     <small style="color:#969696">{{course.surcharge_for_each|currency:"$"}} extra for each partner. Up to {{course.additional_partner}} partners allowed.
                     </small>
                 </div>
-                <div class="settlement-fee">
-                    <p></p>
+                <!-- <div class="settlement-fee settlement-line">
+                    
                     <div class="line" ng-if="course.first_joint_fee>0"></div>
                     <div ng-if="course.first_joint_fee>0">
                         <p>One time service fee : {{course.first_joint_fee}}%</p>
@@ -142,8 +185,8 @@
                         <p>Travel Fee : {{course.travel_to_session_trafic_surcharge|currency:"$"}}</p>
                     </div>
                     <div class="line"></div>
-                </div>
-                <p class="clearfix">
+                </div> -->
+                <p class="clearfix settlement-line">
                     <span class="col-xs-4" style="padding-top:6px">
                         Coupons:
                     </span>
@@ -155,11 +198,11 @@
             </div>
             <div class="clearfix row text-center">
                 <a class="col-xs-6 wrap bg-primary hover text-white" ng-click="fillinorder('1')" style="text-indent:30px;"><img ng-src="../images/cart.png" alt="" err-src="../images/example_7.png" style="position:absolute;left:15px;top:8px;width:30px">Add to cart</a>
-                <a class="col-xs-6 wrap bg-success hover text-white" ng-click="fillinorder('11')">Pay now</a>
+                <a class="col-xs-6 wrap bg-danger hover text-white" ng-click="fillinorder('11')">Pay now</a>
             </div>
-            <div class="section sm">
+            <div class="section sm" style="margin-bottom:0">
                 <div class="wrap bg-white">
-                    <div class="input-group">
+                    <div class="">
                         <textarea class="form-control full-width" rows="7" ng-model="input.message" placeholder="Leave message for coach"></textarea>
                     </div>
                 </div>

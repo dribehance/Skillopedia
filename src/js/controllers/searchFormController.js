@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("searchFormController", function($scope, $timeout, $location, googleMapServices, skillopediaServices, filterFilter, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("searchFormController", function($scope, $timeout, $routeParams, $location, googleMapServices, skillopediaServices, filterFilter, errorServices, toastServices, localStorageService, config) {
 	$scope.input = {
 		keyword: "",
 		zipcode: "",
@@ -28,6 +28,8 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 	// $scope.$watch("input.zipcode", function(n, o) {
 	// 	$scope.input.suggestions = filterFilter(suggestions, n);
 	// })
+	$scope.input.zipcode = $routeParams.zipcode || "";
+	$scope.input.keyword = $routeParams.keyword || "";
 	$scope.select = function(s) {
 		$scope.input.zipcode = s.zipcode;
 		$timeout(function() {

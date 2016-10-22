@@ -5,11 +5,14 @@ angular.module("Skillopedia").directive('rangeslider', function($timeout) {
 		templateUrl: "../templates/rangeslider.html",
 		scope: {
 			max: "=",
-			title: "="
+			rangeTitle: "=",
+			slideCallback: "&"
 		},
 		link: function(scope, element, attrs) {
 			// function body
 			var point = $(element).find(".range-point");
+			// scope.slideCallback = scope.slideCallback;
+			scope.slideCallback = scope.slideCallback();
 			var inputRange = $('input[type="range"]').rangeslider({
 
 				// Feature detection the default is `true`.
@@ -38,10 +41,10 @@ angular.module("Skillopedia").directive('rangeslider', function($timeout) {
 						scope.value = value
 					})
 				},
-
 				// Callback function
 				onSlideEnd: function(position, value) {
-					scope.$emit("slideEnd", value)
+					// scope.$emit("slideEnd", value)
+					scope.slideCallback(position, value);
 				}
 			});
 			$timeout(function() {

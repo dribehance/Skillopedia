@@ -99,7 +99,7 @@ angular.module("Skillopedia").controller("signinController", function($scope, $r
 					errorServices.autoHide(data.message)
 				}
 				if (data.code == config.request.SUCCESS && data.status == 4) {
-					$window.location.href = "https://www.skillopedia.cc/landingFacebook";
+					$window.location.href = "https://www.skillpier.com/landingFacebook";
 					// $window.location.href = "http://localhost:9000/landing_facebook.html";
 				}
 			})

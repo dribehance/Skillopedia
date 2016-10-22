@@ -20,13 +20,13 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 		id: $routeParams.category_id || "0"
 	};
 	// query category list;
-	skillopediaServices.query_all_second_category().then(function(data) {
-		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-			$scope.categorys = data.Result.Categorys;
-		} else {
-			errorServices.autoHide(data.message);
-		}
-	});
+	// skillopediaServices.query_all_second_category().then(function(data) {
+	// 	if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+	// 		$scope.categorys = data.Result.Categorys;
+	// 	} else {
+	// 		errorServices.autoHide(data.message);
+	// 	}
+	// });
 	// query course list;
 	$scope.courses = [];
 	$scope.page = {
@@ -41,6 +41,7 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 		category_02_name: $scope.input.category.name,
 		distances: $scope.input.distance,
 		prioritys: $scope.input.priority,
+		session_rate: $scope.input.session_rate,
 		result: ""
 	}
 	$scope.loadMore = function() {
@@ -55,12 +56,28 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.courses = $scope.courses.concat(data.Result.Courses.list);
 				$scope.no_more = $scope.courses.length == data.Result.Courses.totalRow ? true : false;
-				$scope.page.result = data.Result.Courses.totalRow + "records about '" + $scope.page.kw + "'";
+				if ($scope.courses.length == 0) {
+					$scope.page.result = "No record found in this area";
+				}
+				if ($scope.courses.length == 1) {
+					$scope.page.result = data.Result.Courses.totalRow + " record found";
+				}
+				if ($scope.courses.length > 1) {
+					$scope.page.result = data.Result.Courses.totalRow + " records found";
+				}
 			} else {
 				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
-				$scope.page.message = $scope.courses.length + " records found";
+				if ($scope.courses.length == 0) {
+					$scope.page.message = "No record found";
+				}
+				if ($scope.courses.length == 1) {
+					$scope.page.message = data.Result.Courses.totalRow + " record found ";
+				}
+				if ($scope.courses.length > 1) {
+					$scope.page.message = data.Result.Courses.totalRow + " records found ";
+				}
 			}
 			$scope.page.pn++;
 		})
@@ -81,7 +98,8 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 			category_02_id: $scope.input.category.id,
 			category_02_name: $scope.input.category.name,
 			distances: $scope.input.distance,
-			prioritys: $scope.input.priority
+			prioritys: $scope.input.priority,
+			session_rate: $scope.input.session_rate
 		}
 		$scope.no_more = false;
 		$scope.loadMore();
@@ -103,18 +121,18 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 	$scope.remove = function(condition) {
 		$scope.input[condition] = "";
 	}
-	$scope.$on("slideEnd", function(e, m) {
-		$scope.input.distance = m;
+	$scope.price_callback = function(position, value) {
+		$scope.input.session_rate = value;
 		$timeout(function() {
 			$scope.reload();
 		}, 100)
-	});
-	// $scope.sidebar = {
-	// 	title: "recommand"
-	// }
-	// $scope.change_sidebar = function(title) {
-	// 	$scope.sidebar.title = title;
-	// }
+	}
+	$scope.distance_callback = function(position, value) {
+		$scope.input.distance = value;
+		$timeout(function() {
+			$scope.reload();
+		}, 100)
+	};
 	$scope.open_map = function(course, e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -145,13 +163,13 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 		});
 	};
 	// recommand and hot
-	toastServices.show();
-	skillopediaServices.query_recommand_category().then(function(data) {
-		toastServices.hide()
-		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-			$scope.recommands = data.Result.Catetorys;
-		} else {
-			errorServices.autoHide(data.message);
-		}
-	})
+	// toastServices.show();
+	// skillopediaServices.query_recommand_category().then(function(data) {
+	// 	toastServices.hide()
+	// 	if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+	// 		$scope.recommands = data.Result.Catetorys;
+	// 	} else {
+	// 		errorServices.autoHide(data.message);
+	// 	}
+	// })
 })

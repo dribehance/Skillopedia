@@ -13,7 +13,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             $scope.course = data.Course;
             $scope.old_course = angular.copy($scope.course);
             $scope.teaching_location_map = $scope.get_map($scope.course.city, $scope.course.area, $scope.course.street, $scope.course.address, 1);
-            $scope.input.total_price = $scope.course.session_rate;
+            $scope.input.total_course_price = $scope.course.session_rate;
             // discount handle
             $scope.discounts = [];
             if ($scope.course.discount_price_01 > 0) {
@@ -288,34 +288,29 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
         }
     }
     $scope.calculate = function() {
-        var discount_price = 0;
+        $scope.input.discount_total_course_price = $scope.input.discount_total_partner_fee = 0;
         // 总价 = 课程费用+小伙伴费用+首次服务费用+交通费用
         // 课程费用+小伙伴费用 = 课程单价*课程数量+小伙伴单价*小伙伴数量*课程数量
-        // 课程费用+小伙伴费用参与打折
-        // 本次仅计算 课程费用+小伙伴费用
-        $scope.input.total_price = parseFloat($scope.course.session_rate) * parseFloat($scope.input.amount) + parseFloat($scope.course.surcharge_for_each) * parseFloat($scope.input.partner) * parseFloat($scope.input.amount);
-        // by total money; discard
-        // if ($scope.course.discount_type == 1) {
-        //  angular.forEach($scope.discounts, function(discount) {
-        //      if (parseFloat($scope.input.total_price) > parseFloat(discount.purchase) - 1) {
-        //          $scope.input.temp_discount_price = discount.off;
-        //          discount_price = parseFloat($scope.input.total_price) - parseFloat(discount.off);
-        //      }
-        //  });
-        // }
+        // 课程费用
+        $scope.input.total_course_price = parseFloat($scope.course.session_rate) * parseFloat($scope.input.amount);
+        // 小伙伴费用
+        $scope.input.total_partner_fee = parseFloat($scope.course.surcharge_for_each) * parseFloat($scope.input.partner) * parseFloat($scope.input.amount);
         // by total amount
+        // 课程费用+小伙伴费用参与打折
+        $scope.input.discount_total_course_price = $scope.input.discount_total_course_price || $scope.input.total_course_price;
+        $scope.input.discount_total_partner_fee = $scope.input.discount_total_partner_fee || $scope.input.total_partner_fee;
         if ($scope.course.discount_type == 2) {
             angular.forEach($scope.discounts, function(discount) {
                 if (parseFloat($scope.input.amount) > parseFloat(discount.purchase) - 1) {
                     $scope.input.temp_discount_price = discount.off;
                     // dscount percentage
-                    discount_price = parseFloat($scope.input.total_price) * (1 - parseFloat(discount.off) / 100);
+                    $scope.input.discount_total_course_price = parseFloat($scope.input.total_course_price) * (1 - parseFloat(discount.off) / 100);
+                    $scope.input.discount_total_partner_fee = parseFloat($scope.input.total_partner_fee) * (1 - parseFloat(discount.off) / 100);
                 }
             });
         }
-        $scope.input.discount_price = discount_price;
         $scope.input.coupons.all = $scope.coupons.filter(function(coupon) {
-            return parseFloat($scope.input.discount_price) > parseFloat(coupon.consume_money);
+            return parseFloat($scope.input.discount_total_course_price) > parseFloat(coupon.consume_money);
         });
         if ($scope.input.coupons.all.length > 0 && !$scope.is_watch) {
             $scope.input.coupons.selected = $scope.input.coupons.all[0];
@@ -328,7 +323,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             };
         }
         if ($scope.input.coupons.selected.coupon_money) {
-            $scope.input.discount_price = parseFloat($scope.input.discount_price) - parseFloat($scope.input.coupons.selected.coupon_money);
+            $scope.input.discount_total_course_price = parseFloat($scope.input.discount_total_course_price) - parseFloat($scope.input.coupons.selected.coupon_money);
         }
         // 交通费用，如果选择上门
         $scope.input.total_traffic_cost = 0;
@@ -339,7 +334,9 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             $scope.input.total_traffic_cost = parseFloat($scope.course.travel_to_session_trafic_surcharge) * parseFloat($scope.input.amount);
         }
         // 首次服务费用 百分比,仅仅单节课程费用的百分比
-        $scope.input.total_fee = parseFloat($scope.course.session_rate) * parseFloat($scope.course.first_joint_fee) / 100;
+        $scope.input.total_service_fee = parseFloat($scope.course.session_rate) * parseFloat($scope.course.first_joint_fee) / 100;
+        // 计算总价格 课程价格+首次服务费+交通费
+        $scope.calculate_total_price();
     }
     $scope.is_watch = false;
     $scope.$watch("input.coupons.selected", function(n, o) {
@@ -366,6 +363,12 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             });
         }, 1000)
     };
+    $scope.calculate_total_price = function() {
+        var total_price = parseFloat($scope.input.total_course_price) + parseFloat($scope.input.total_partner_fee) + parseFloat($scope.input.total_service_fee) + parseFloat($scope.input.total_traffic_cost),
+            discount_total_price = parseFloat($scope.input.discount_total_course_price) + parseFloat($scope.input.discount_total_partner_fee) + parseFloat($scope.input.total_service_fee) + parseFloat($scope.input.total_traffic_cost);
+        $scope.input.total_price = total_price;
+        $scope.input.discount_total_price = discount_total_price;
+    };
     // 加入购物车;
     // 下单;
     $scope.fillinorder = function(type) {
@@ -378,9 +381,10 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             return;
         }
         // 首单服务费+交通费
-        var total_session_rate = $scope.input.discount_price || $scope.input.total_price,
-            total_session_rate = parseFloat(total_session_rate) + parseFloat($scope.input.total_fee) + parseFloat($scope.input.total_traffic_cost),
-            original_total_session_rate = parseFloat($scope.input.total_price) + parseFloat($scope.input.total_fee) + parseFloat($scope.input.total_traffic_cost);
+        $scope.calculate_total_price();
+        // var total_session_rate = $scope.input.discount_total_course_price || $scope.input.total_course_price,
+        //     total_session_rate = parseFloat(total_session_rate) + parseFloat($scope.input.total_service_fee) + parseFloat($scope.input.total_traffic_cost),
+        //     original_total_session_rate = parseFloat($scope.input.total_course_price) + parseFloat($scope.input.total_service_fee) + parseFloat($scope.input.total_traffic_cost);
         toastServices.show();
         orderServices.fillinorder({
             order_type: type,
@@ -406,12 +410,12 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             discount_price: $scope.input.temp_discount_price,
             take_partner_num: $scope.input.partner,
             surcharge_for_each_cash: $scope.course.surcharge_for_each,
-            total_session_rate: total_session_rate,
-            original_total_session_rate: original_total_session_rate,
+            total_session_rate: $scope.input.discount_total_price,
+            original_total_session_rate: $scope.input.total_price,
             schedule_datas: $scope.calendar.selected.map(function(c) {
                 return c.from.day + "A" + c.from.hour_index + "A" + c.to.hour_index;
             }).join("#"),
-            first_joint_fee: $scope.input.total_fee
+            first_joint_fee: $scope.input.total_service_fee
         }).then(function(data) {
             toastServices.hide()
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {

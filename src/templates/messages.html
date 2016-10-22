@@ -1,5 +1,5 @@
 <!-- header -->
-<myresource css-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
+<myresource cs-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <div ng-include="'templates/header.html'"></div>
 <div class="wrap">
     <div class="section account-section">
@@ -21,7 +21,7 @@
                     </dd>
                     <dd class="clearfix">
                         <ul>
-                            <li><a class="">{{message.comment_name || "Administrator"}}</a></li>
+                            <li ng-if="message.comment_name"><a class="">{{message.comment_name || "Administrator"}}</a></li>
                             <li class="btn-group">
                                 <a ng-click="remove(message)" class="text-danger">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>

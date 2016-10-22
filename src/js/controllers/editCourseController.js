@@ -290,6 +290,19 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 			$scope.input.discount_3.off = n.off;
 		}
 	}, true);
+	//鼠标移入提示 
+	$scope.show = function() {
+		if ($(".hovertips").hasClass("active")) {
+			$(".hovertips").removeClass("active")
+		} else {
+			$(".hovertips").addClass("active")
+		}
+	}
+	$scope.hide = function() {
+		if ($(".hovertips").hasClass("active")) {
+			$(".hovertips").removeClass("active")
+		}
+	};
 	// 第三步
 	$scope.input.travel_to_session = "1";
 	$scope.input.distance = "";

@@ -7,24 +7,28 @@
     </div>
     <div class="sidebar-list">
         <a class="sidebar-item clearfix" ng-href="#/orders" ng-class="{'active':highlight('/orders')}">
-            Orders
+            <i class="sidebar-icon sidebar-order"></i> Orders
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
         </a>
         <a class="sidebar-item clearfix" ng-href="#/skillopedia" ng-class="{'active':highlight('/skillopedia')}">
+            <i class="sidebar-icon sidebar-coach"></i>
             <span class="marquee" ng-if="user.agent_level == '1'">Be a private coach</span>
             <span class="marquee" ng-if="user.agent_level == '2'">As a coach</span>
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
         </a>
         <a class="sidebar-item clearfix" ng-href="#/messages" ng-class="{'active':highlight('/messages')}">
+            <i class="sidebar-icon sidebar-message"></i>
             Message
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
             <span class="red-dot" ng-if="user.read_number>0">{{user.read_number}}</span>
         </a>
         <a class="sidebar-item clearfix" ng-href="#/comments" ng-class="{'active':highlight('/comments')}">
+            <i class="sidebar-icon sidebar-comment"></i>
             Comments & Steps
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
         </a>
         <a class="sidebar-item clearfix" ng-href="#/favourite" ng-class="{'active':highlight('/favourite')}">
+            <i class="sidebar-icon sidebar-fav"></i>
             Favourite
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
         </a>
@@ -33,12 +37,18 @@
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
         </a> -->
         <a class="sidebar-item clearfix" ng-href="#/coupons" ng-class="{'active':highlight('/coupons')}">
+            <i class="sidebar-icon sidebar-coupon"></i>
             Coupons
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
         </a>
-        <a class="sidebar-item clearfix" ng-href="#/account" ng-class="{'active':highlight('/account')}">
+        <!-- <a class="sidebar-item clearfix" ng-href="#/account" ng-class="{'active':highlight('/account')}">
+            <i class="sidebar-icon sidebar-setting"></i>
             My Account
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
-        </a>
+        </a> -->
     </div>
+    <a ng-href="#/account" ng-class="{'active':highlight('/account')}" class="account-item clearfix">
+        <i class="sidebar-icon sidebar-setting"></i>
+            Account setting
+    </a>
 </div>

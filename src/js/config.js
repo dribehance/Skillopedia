@@ -1,6 +1,6 @@
 angular.module("Skillopedia").constant("config", {
-	url: "https://www.skillopedia.cc",
-	imageUrl: "https://www.skillopedia.cc/files/image?name=",
+	url: "https://www.skillpier.com",
+	imageUrl: "https://www.skillpier.com/files/image?name=",
 	request: {
 		"SUCCESS": "200",
 		"TOKEN_INVALID": "405"

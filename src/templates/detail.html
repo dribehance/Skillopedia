@@ -110,7 +110,7 @@
         </div>
         <div class="detail-right">
             <div class="settlement">
-                <p class="price text-center">{{course.session_rate|currency:"$"}}</p>
+                <div class="single-price text-center">{{course.session_rate|currency:"$"}}</div>
                 <p class="text-center"> {{course.session_length}} mins per session</p>
                 <p class="text-center">
                     <a class="btn btn-warning btn-lg" ng-href="#/fillinorder?course_id={{course.course_id}}">Get Started</a>
@@ -148,7 +148,7 @@
                     Attention! This course is suspend.
                 </div>
                 <div class="wrap bg-primary text-white text-center" style="opacity:0.5" ng-if="course.is_stop_course != '1'">
-                    Avalibale
+                    Availability
                 </div>
                 <!-- <div ng-include="'templates/calendar.html'"></div> -->
                 <calendar calendar="calendar" class="small-calendar"></calendar>

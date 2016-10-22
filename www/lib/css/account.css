@@ -1126,7 +1126,7 @@
 
 .input-select .fa {
     position: absolute;
-    z-index: -1;
+    // z-index: -1;
     right: 15px;
     top: 15px;
     color: #5D5D5D;
@@ -1200,11 +1200,11 @@
     -webkit-box-sizing: border-box;
     box-sizing: boder-box;
     overflow: hidden;
-    font-size: 15px;
+    // font-size: 15px;
 }
 
-.course-input input {
-    // outline: none;
+.course-input input:focus {
+    outline: none;
     // border: none;
 }
 
@@ -1320,7 +1320,7 @@
 
 .m-check {
     display: block;
-    margin: 0 0 30px 0;
+    // margin: 0 0 30px 0;
 }
 
 

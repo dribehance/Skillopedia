@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
     <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+<meta name="google-site-verification" content="Sk3QH8ZjK229x9nYWtS-98claSyNrnc3pyQYZ_ZHVxc" />
     <meta name="renderer" content="webkit">
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <#if flag=0 >
@@ -58,7 +59,7 @@
 		<#if message??>:${(message)!''}
 		<script type="text/javascript">
 			setTimeout(function(){
-				window.location.href="http://www.skillopedia.cc";
+				window.location.href="http://www.skillpier.com";
 			},3000)
 		</script>
 	</#if>
@@ -75,10 +76,10 @@
                 <form name="signinForm" ng-submit="bind_twitter()">
                     <div class="section">
                         <div class="input-group">
-                            <input type="email" class="full-width form-control" ng-model="twitter_email" ng-init="twitter_email='${(email)!''}'" required placeholder="Enter your email" readonly>
+                            <input type="email" class="full-width form-control" ng-model="twitter_email" ng-init="twitter_email='${(email)!''}'" ng-required placeholder="Enter your email" readonly>
                         </div>
                         <div class="input-group">
-                            <input type="password" class="full-width form-control " ng-model="input.binding_password" required placeholder="Enter your password">
+                            <input type="password" class="full-width form-control " ng-model="input.binding_password" ng-required placeholder="Enter your password">
                         </div>
                         <div class="input-group">
                             <button type="submit" class="btn btn-primary btn-lg full-width" ng-disabled="signinForm.$invalid">Bingding</button>
