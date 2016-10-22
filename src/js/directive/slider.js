@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").directive('dribehanceSlider', function($rootScope, $timeout) {
+angular.module("Skillopedia").directive('dribehanceSlider', function($rootScope, $interval, $timeout) {
 	return {
 		restrict: 'E',
 		templateUrl: "templates/slider.html",
@@ -13,14 +13,16 @@ angular.module("Skillopedia").directive('dribehanceSlider', function($rootScope,
 			})
 			scope.staticImageUrl = $rootScope.staticImageUrl;
 			scope.$on("onRepeatDone", function() {
-				// $('#slides').superslides("update");
-				$timeout(function() {
-					$('#slides').superslides({
-						animation: 'fade',
-						play: 2500
-					});
-				}, 0)
-			});
+				var interval_timer = $interval(function() {
+					if ($('#slides').superslides) {
+						$interval.cancel(interval_timer);
+						$('#slides').superslides({
+							animation: 'fade',
+							play: 2500
+						});
+					}
+				}, 100)
+			})
 		}
 	};
 });
