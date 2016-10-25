@@ -4,8 +4,13 @@ angular.module("Skillopedia").factory("tokenInterceptor", function($location, $r
 	return {
 		// optional method
 		'request': function(config) {
-			++request_count == 1 && toastServices.start();
 			// do something on success
+			++request_count == 1 && toastServices.start();
+			// The language can be configured any other way.
+
+			// We'll eventually use $("html").attr("lang").
+
+			config.headers["Accept-Language"] = "en";
 			return config;
 		},
 		// optional method

@@ -78,6 +78,12 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 			}
 		})
 	};
+	$scope.parse_age = function(age) {
+		if (age && age.split("+").length > 0) {
+			return true;
+		}
+		return false;
+	};
 	// schedule
 	$scope.calendar = {
 		mode: "",

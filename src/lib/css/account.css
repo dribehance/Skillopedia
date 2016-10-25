@@ -1334,7 +1334,9 @@
 
 
 /****************教练认证*******************/
-
+form.authen-step {
+    padding:0 0 15px 15px;
+}
 .authen-step span {
     display: block;
     padding: 20px 0;

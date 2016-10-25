@@ -28,10 +28,14 @@ angular.module("Skillopedia").controller("signinController", function($scope, $r
 					userServices.sync();
 					$rootScope.close_popup_signin();
 					$route.reload();
-				} else {
-					errorServices.autoHide(data.message);
+				}
+				if (data.code == config.request.SUCCESS && data.status == 5) {
+					$scope.reconfirm_signin = true;
+					$scope.input.signin_password = "";
+					return;
 				}
 				$scope.input.signin_password = "";
+				errorServices.autoHide(data.message);
 			})
 		})
 	}
@@ -47,10 +51,16 @@ angular.module("Skillopedia").controller("signinController", function($scope, $r
 				errorServices.autoHide(data.message, 5000);
 				$timeout(function() {
 					$rootScope.close_popup_signin();
-				}, 5000)
-			} else {
-				errorServices.autoHide(data.message);
+				}, 5000);
+				return;
 			}
+			if (data.code == config.request.SUCCESS && data.status == 3) {
+				$scope.input.signup_password = "";
+				$scope.reconfirm_signup = true;
+				return;
+			}
+			$scope.input.signup_password = "";
+			errorServices.autoHide(data.message);
 		})
 	}
 	$scope.forget_action = function() {
@@ -64,6 +74,24 @@ angular.module("Skillopedia").controller("signinController", function($scope, $r
 				$timeout(function() {
 					$rootScope.close_popup_signin();
 				}, 1000)
+			} else {
+				errorServices.autoHide(data.message);
+			}
+		})
+	};
+	$scope.resend_email = function(email) {
+		toastServices.show();
+		userServices.resend_email({
+			email: email
+		}).then(function(data) {
+			toastServices.hide()
+			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+				errorServices.autoHide(data.message, 5000);
+				$timeout(function() {
+					$scope.reconfirm_signup = false;
+					$scope.reconfirm_signin = false;
+					$rootScope.close_popup_signin();
+				}, 5000);
 			} else {
 				errorServices.autoHide(data.message);
 			}

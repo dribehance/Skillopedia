@@ -41,6 +41,16 @@ angular.module("Skillopedia").factory("userServices", function($rootScope, $http
 				return data.data;
 			});
 		},
+		resend_email: function(input) {
+			return $http({
+				// by dribehance <dribehance.kksdapp.com>
+				url: config.url + "/app/UserCenter/resetSendEmailActivate",
+				method: "GET",
+				params: angular.extend({}, config.common_params, input)
+			}).then(function(data) {
+				return data.data;
+			});
+		},
 		reset: function(input) {
 			return $http({
 				// by dribehance <dribehance.kksdapp.com>

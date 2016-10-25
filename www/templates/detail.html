@@ -127,7 +127,7 @@
                     <span ng-if="course.travel_to_session == '1'"><b>Travel: </b> Yes</span><span ng-if="course.travel_to_session == '0'"><b>Travel: </b> No</span>
                 </p>
                 <p><b>Session Duration: </b> {{course.session_length}}min</p>
-                <p><b>Ages: </b> at least {{course.teaching_age}} years old</p>
+                <p><b>Ages: </b> <span ng-if="parse_age(course.teaching_age)">at least {{course.teaching_age}} years old</span> <span ng-if="!parse_age(course.teaching_age)">{{course.teaching_age}}</span></p>
                 <p><span ng-if="course.travel_to_session == '1'"><b>Travel Distance: </b>  {{course.travel_to_session_distance}} miles</span></p>
             </div>
             <div class="section sm bg-white wrap detail-group">
@@ -143,7 +143,7 @@
                 <p ng-if="course.travel_to_session == '1'">Travel distance: {{course.travel_to_session_distance}}miles</p>
                 <span>Specific location will be made available after payment.</span> -->
             </div>
-            <div class="section sm bg-white">
+            <div class="section sm bg-white" style="margin-bottom: 0">
                 <div class="wrap bg-primary text-white text-center" ng-if="course.is_stop_course == '1'">
                     Attention! This course is suspend.
                 </div>

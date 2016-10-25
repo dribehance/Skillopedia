@@ -20,14 +20,19 @@
             Sign in
             <div class="section">
                 <div class="input-group">
-                    <input type="email" class="full-width form-control" name="email" ng-model="input.signin_email" ng-ng-required="true"placeholder="Enter your email">
+                    <input type="email" class="full-width form-control" name="email" ng-model="input.signin_email" ng-ng-required="true" placeholder="Enter your email">
                     <small class="text-danger" style="position:absolute;left:0;bottom:-15px" ng-if="signinForm.email.$invalid && signinForm.email.$dirty">Please Enter correct email here</small>
                 </div>
                 <div class="input-group">
-                    <input type="password" class="full-width form-control " ng-model="input.signin_password" ng-ng-required="true"placeholder="Enter your password">
+                    <input type="password" class="full-width form-control " ng-model="input.signin_password" ng-ng-required="true" placeholder="Enter your password">
                 </div>
                 <div class="input-group">
                     <button type="submit" class="btn btn-primary btn-lg full-width">Sign in</button>
+                </div>
+            </div>
+            <div class="resend" ng-if="reconfirm_signin">
+                <div class="resend-content">
+                    Skillpier go to <span class="text-danger">{{input.signin_email}}</span> to complete the sign-up process. <span class="btn btn-primary hover" ng-click="resend_email(input.signin_email)">Resend email</span>
                 </div>
             </div>
             <div class="text-center">
@@ -39,19 +44,24 @@
         Sign up
         <form class="section" name="signupForm" ng-submit="signup_action()">
             <div class="input-group">
-                <input type="text" class="full-width form-control" ng-model="input.username" ng-required="true"placeholder="Username">
+                <input type="text" class="full-width form-control" ng-model="input.username" ng-required="true" placeholder="Username">
             </div>
             <div class="input-group">
-                <input type="email" class="full-width form-control" name="email" ng-model="input.signup_email" ng-required="true"placeholder="Enter your email/account">
+                <input type="email" class="full-width form-control" name="email" ng-model="input.signup_email" ng-required="true" placeholder="Enter your email">
                 <small class="text-danger" style="position:absolute;left:0;bottom:-15px" ng-if="signupForm.email.$invalid && signupForm.email.$dirty">Please Enter correct email here</small>
             </div>
             <div class="input-group">
-                <input type="password" class="full-width form-control" ng-model="input.signup_password" ng-required="true"placeholder="Enter your password,at least 6">
+                <input type="password" class="full-width form-control" ng-model="input.signup_password" ng-required="true" placeholder="Enter your password,at least 6">
             </div>
             <div class="input-group">
                 <button type="submit" class="btn btn-primary btn-lg full-width" ng-disabled="signupForm.$invalid">Sign up</button>
             </div>
         </form>
+        <div class="resend" ng-if="reconfirm_signup">
+            <div class="resend-content">
+                Skillpier go to <span class="text-danger">{{input.signup_email}}</span> to complete the sign-up process. <span class="btn btn-primary hover" ng-click="resend_email(input.signup_email)">Resend email</span>
+            </div>
+        </div>
         <div class="text-center">
             <span>Already have an account? <b ng-click="signin()" class="hover" style="color:blue;text-decoration:underline">Sign in here.</b></span>
         </div>
@@ -60,7 +70,7 @@
         Forgot your password?
         <form class="section" name="forgetForm" ng-submit="forget_action()">
             <div class="input-group">
-                <input type="email" class="full-width form-control" ng-model="input.forget_email" ng-required="true"placeholder="Enter your email/account">
+                <input type="email" class="full-width form-control" ng-model="input.forget_email" ng-required="true" placeholder="Enter your email">
             </div>
             <div class="input-group">
                 <button type="submit" class="btn btn-primary btn-lg full-width" ng-disabled="forgetForm.$invalid">Find your password</button>
@@ -70,5 +80,4 @@
             <span ng-click="signin()" class="btn">Sign in</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ng-click="signup()" class="btn">Sign up</span>
         </div>
     </div>
-   
 </div>
