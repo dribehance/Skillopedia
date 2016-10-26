@@ -8,6 +8,8 @@ angular.module("Skillopedia").directive('confirm', function() {
 		templateUrl: "templates/confirm.html",
 		link: function(scope, element, attrs) {
 			// function body
+			scope.input = {};
+			scope.input.location = {};
 			scope.confirm = angular.extend({}, {
 				title: "Tips",
 				content: "Are You Sure?",
@@ -31,7 +33,8 @@ angular.module("Skillopedia").directive('confirm', function() {
 					}
 				},
 				ok_submit: function() {
-					scope.confirm.content = $(element).find("input").val();
+					scope.confirm.content = scope.input.location.street; //$(element).find("input").val();
+					scope.confirm.location = scope.input.location;
 					if (!scope.confirm.content) return;
 					$(element).hide();
 					if (typeof scope.confirm.ok_callback == "function") {

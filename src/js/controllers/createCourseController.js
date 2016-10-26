@@ -220,12 +220,13 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 	$scope.input.travel_to_session = "1";
 	$scope.input.distance = "";
 	$scope.input.traffic_cost = "";
-	$scope.input.street = "";
-	$scope.input.apt = "";
-	$scope.input.city = "";
-	$scope.input.state = "";
+	$scope.input.location = {};
+	$scope.input.location.street = "";
+	$scope.input.location.apt = "";
+	$scope.input.location.city = "";
+	$scope.input.location.state = "";
 	// zipcode
-	// $scope.input.zipcode = "";
+	$scope.input.location.zipcode = "";
 	// var suggestions = [];
 	// toastServices.show();
 	// skillopediaServices.query_zipcode().then(function(data) {
@@ -252,9 +253,9 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 	}
 	$scope.save_location = function() {
 		toastServices.show();
-		// $scope.map_url = $scope.get_map($scope.input.state, $scope.input.city, $scope.input.street, $scope.input.apt);
+		// $scope.map_url = $scope.get_map($scope.input.location.state, $scope.input.location.city, $scope.input.location.street, $scope.input.location.apt);
 		googleMapServices.geocoding({
-			address: $scope.input.street + "," + $scope.input.apt + "," + $scope.input.city + "," + $scope.input.state + "," + $scope.input.zipcode
+			address: $scope.input.location.street + "," + ($scope.input.location.apt || "") + "," + $scope.input.location.city + "," + $scope.input.location.state + "," + $scope.input.location.zipcode
 		}).then(function(data) {
 			toastServices.hide();
 			var result = data.results.filter(function(r) {
@@ -390,11 +391,11 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 			travel_to_session: $scope.input.travel_to_session,
 			travel_to_session_distance: $scope.input.distance,
 			travel_to_session_trafic_surcharge: $scope.input.traffic_cost,
-			city: $scope.input.state,
-			area: $scope.input.city,
-			street: $scope.input.street,
-			address: $scope.input.apt,
-			zipcode: $scope.input.zipcode,
+			city: $scope.input.location.state,
+			area: $scope.input.location.city,
+			street: $scope.input.location.street,
+			address: $scope.input.location.apt,
+			zipcode: $scope.input.location.zipcode,
 			latitude: $scope.lat_lng.lat,
 			longitude: $scope.lat_lng.lng,
 			additional_partner: $scope.input.partner,

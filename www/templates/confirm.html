@@ -8,7 +8,7 @@
             {{confirm.content}}
         </div>
         <div class="confirm-content" ng-if="confirm.content_type =='autocomplete'">
-            <autocomplete value="input.zipcode"></autocomplete>
+            <autocomplete location="input.location"></autocomplete>
         </div>
         <div class="confirm-content" ng-if="confirm.content_type =='input'">
             <input type="text" class="full-width" ng-model="confirm.content" placeholder="Enter your plan">
@@ -17,7 +17,6 @@
             <span class="btn btn-default" ng-click="confirm.cancel()">{{confirm.cancel_text}}</span>
             <span class="btn btn-primary" ng-if="confirm.content_type =='content'" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
             <span class="btn btn-primary" ng-if="confirm.content_type =='input'" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
-            <span class="btn btn-primary" ng-if="confirm.content_type =='autocomplete'" ng-click="confirm.ok_submit()">{{confirm.ok_text}}</span>
         </div>
     </div>
 </div>
@@ -26,7 +25,7 @@
         <div class="confirm-content">
             <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
             <p class="text-center">{{confirm.content_text}}</p>
-            <autocomplete value="input.zipcode"></autocomplete>
+            <autocomplete location="input.location"></autocomplete>
             <p class="text-center">
                 <span class="btn btn-primary block full-width btn-lg btn-md" ng-if="confirm.content_type =='autocomplete'" ng-click="confirm.ok_submit()">{{confirm.ok_text}}</span>
             </p>

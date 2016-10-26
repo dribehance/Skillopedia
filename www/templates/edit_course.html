@@ -317,27 +317,27 @@
                     <div class="title-input">
                         <span><b class="text-danger"> * </b>Location<b class="text-danger" ng-if="street_error"> - {{street_error}}</b></span>
                         <div class="course-input">
-                            <input type="text" name="street" ng-model="input.street" ng-required="true" class="full-width" placeholder="Street address, P.O. box, company name, c/o." />
+                            <autocomplete location="input.location" placeholder="'Street address, P.O. box, company name, c/o.'"></autocomplete>
                         </div>
                         <div class="course-input z-margin">
-                            <input type="text" name="apt" ng-model="input.apt" class="full-width" placeholder="Apartment, suite, unit, building, floor, etc. (Not Required)" />
+                            <input type="text" name="apt" ng-model="input.location.apt" class="full-width" placeholder="Apartment, suite, unit, building, floor, etc. (Not Required)" />
                         </div>
                     </div>
                     <div class="title-input clearfix">
                         <div class="m-session z-margin pull-left">
                             <div class="u-input">
-                                <input type="text" name="city" ng-model="input.city" class="full-width" placeholder="City, e.g. San Francisco" />
+                                <input type="text" name="city" ng-required="true" ng-model="input.location.city" class="full-width" placeholder="City, e.g. San Francisco" />
                             </div>
                         </div>
                         <div class="m-session z-margin pull-right">
                             <div class="u-input">
-                                <input type="text" name="state" ng-model="input.state" ng-required="true" class="full-width" placeholder="State, e.g. CA" />
+                                <input type="text" name="state" ng-required="true" ng-model="input.location.state" ng-required="true" class="full-width" placeholder="State, e.g. CA" />
                             </div>
                         </div>
                     </div>
                     <div class="m-session z-margin">
                         <div class="u-input" style="position:relative">
-                            <input type="text" name="zipcode" ng-model="input.zipcode" ng-required="true" class="full-width" placeholder="Zip Code, e.g. 94105" />
+                            <input type="text" autocomplete="off" name="zipcode" ng-pattern="/[0-9]/" ng-model="input.location.zipcode" ng-required="true" class="full-width" placeholder="Zip Code, e.g. 94105" />
                         </div>
                     </div>
                     <div class="section text-center">

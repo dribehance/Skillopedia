@@ -5,18 +5,12 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 		zipcode: "",
 		suggestions: []
 	}
+	$scope.input.keyword = $routeParams.keyword || "";
+	if ($routeParams.location) {
+		$scope.input.location = JSON.parse($routeParams.location);
+	}
 	var suggestions = [],
 		categorys = [];
-	// query zipcode
-	// toastServices.show();
-	// skillopediaServices.query_zipcode().then(function(data) {
-	// 	toastServices.hide()
-	// 	if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-	// 		suggestions = data.Result.CityBeans;
-	// 	} else {
-	// 		errorServices.autoHide(data.message);
-	// 	}
-	// });
 	// query category list;
 	skillopediaServices.query_all_second_category().then(function(data) {
 		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
@@ -25,11 +19,6 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 			errorServices.autoHide(data.message);
 		}
 	});
-	// $scope.$watch("input.zipcode", function(n, o) {
-	// 	$scope.input.suggestions = filterFilter(suggestions, n);
-	// })
-	$scope.input.zipcode = $routeParams.zipcode || "";
-	$scope.input.keyword = $routeParams.keyword || "";
 	$scope.select = function(s) {
 		$scope.input.zipcode = s.zipcode;
 		$timeout(function() {
@@ -58,7 +47,21 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 		}, 100)
 	}
 	$scope.ajaxForm = function() {
-		var address = $("#autocomplete").val()
+		// var address = $("#autocomplete").val();
+		var address = "";
+		if ($scope.input.location.street) {
+			address += $scope.input.location.street + ", ";
+		}
+		if ($scope.input.location.city) {
+			address += $scope.input.location.city + ", ";
+		}
+		if ($scope.input.location.state) {
+			address += $scope.input.location.state + ", ";
+		}
+		if ($scope.input.location.zipcode) {
+			address += $scope.input.location.zipcode + ", ";
+		}
+		address = address.substring(0, address.length - 2);
 		if (!address) {
 			$scope.confirm.title = "";
 			$scope.confirm.content_text = "Please tell us your location so we can introduce coaches fit you";
@@ -69,10 +72,12 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 			$scope.confirm.cancle_callback = function() {
 				$location.path("search").search({
 					keyword: $scope.input.keyword,
-					zipcode: address
+					zipcode: address,
+					location: JSON.stringify($scope.input.location)
 				});
 			}
 			$scope.confirm.ok_callback = function() {
+				$scope.input.location = $scope.confirm.location;
 				$scope.search($scope.confirm.content)
 			}
 			return;
@@ -86,6 +91,7 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 			$location.path("search").search({
 				keyword: $scope.input.keyword,
 				zipcode: address,
+				location: JSON.stringify($scope.input.location),
 				lat: data.lat,
 				lng: data.lng,
 			});

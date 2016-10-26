@@ -68,13 +68,13 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 			$scope.input.travel_to_session = $scope.course.travel_to_session;
 			$scope.input.distance = $scope.course.travel_to_session_distance;
 			$scope.input.traffic_cost = $scope.course.travel_to_session_trafic_surcharge;
-			$scope.input.street = $scope.course.street;
-			$scope.input.apt = $scope.course.address;
-			$scope.input.city = $scope.course.area;
-			$scope.input.state = $scope.course.city;
+			$scope.input.location.street = $scope.course.street;
+			$scope.input.location.apt = $scope.course.address;
+			$scope.input.location.city = $scope.course.area;
+			$scope.input.location.state = $scope.course.city;
 			$scope.parse_weeks();
 			// zipcode
-			$scope.input.zipcode = $scope.course.zipcode;
+			$scope.input.location.zipcode = $scope.course.zipcode;
 			$scope.input.poster = $scope.course.user_images_01;
 			// pickadate
 			// $timeout(function() {
@@ -307,12 +307,13 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 	$scope.input.travel_to_session = "1";
 	$scope.input.distance = "";
 	$scope.input.traffic_cost = "";
-	$scope.input.street = "";
-	$scope.input.apt = "";
-	$scope.input.city = "";
-	$scope.input.state = "";
+	$scope.input.location = {};
+	$scope.input.location.street = "";
+	$scope.input.location.apt = "";
+	$scope.input.location.city = "";
+	$scope.input.location.state = "";
 	// zipcode
-	$scope.input.zipcode = "";
+	$scope.input.location.zipcode = "";
 	// var suggestions = [];
 	// toastServices.show();
 	// skillopediaServices.query_zipcode().then(function(data) {
@@ -323,11 +324,11 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 	// 		errorServices.autoHide(data.message);
 	// 	}
 	// })
-	// $scope.$watch("input.zipcode", function(n, o) {
+	// $scope.$watch("input.location.zipcode", function(n, o) {
 	// 	$scope.input.suggestions = filterFilter(suggestions, n);
 	// })
 	// $scope.select = function(s) {
-	// 	$scope.input.zipcode = s;
+	// 	$scope.input.location.zipcode = s;
 	// 	$timeout(function() {
 	// 		$scope.input.suggestions = [];
 	// 	}, 100)
@@ -340,7 +341,7 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 	$scope.save_location = function() {
 		toastServices.show();
 		googleMapServices.geocoding({
-			address: $scope.input.street + "," + $scope.input.apt + "," + $scope.input.city + "," + $scope.input.state + "," + $scope.input.zipcode
+			address: $scope.input.location.street + "," + $scope.input.location.apt + "," + $scope.input.location.city + "," + $scope.input.location.state + "," + $scope.input.location.zipcode
 		}).then(function(data) {
 			toastServices.hide();
 			var result = data.results.filter(function(r) {
@@ -485,11 +486,11 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 			travel_to_session: $scope.input.travel_to_session,
 			travel_to_session_distance: $scope.input.distance,
 			travel_to_session_trafic_surcharge: $scope.input.traffic_cost,
-			city: $scope.input.state,
-			area: $scope.input.city,
-			street: $scope.input.street,
-			address: $scope.input.apt,
-			zipcode: $scope.input.zipcode,
+			city: $scope.input.location.state,
+			area: $scope.input.location.city,
+			street: $scope.input.location.street,
+			address: $scope.input.location.apt,
+			zipcode: $scope.input.location.zipcode,
 			latitude: $scope.lat_lng.lat,
 			longitude: $scope.lat_lng.lng,
 			additional_partner: $scope.input.partner,

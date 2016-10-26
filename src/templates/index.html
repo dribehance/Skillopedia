@@ -80,7 +80,7 @@
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
         </span>
         <span class="zipcode">
-            <autocomplete value="input.zipcode"></autocomplete>
+            <autocomplete location="input.location"></autocomplete>
         </span>
         <button class="btn" type="submit" ng-disabled="searchForm.$invalid" ng-class="{'highlight':!searchForm.$invalid}">Search</button>
     </form>

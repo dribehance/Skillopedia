@@ -1,16 +1,19 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").directive('autocomplete', function($window) {
+angular.module("Skillopedia").directive('autocomplete', function($window, $timeout) {
 	return {
 		restrict: 'E',
 		scope: {
-			value: "="
+			location: "=",
+			placeholder: "=?"
 		},
 		templateUrl: "../templates/autocomplete.html",
 		link: function(scope, element, attrs) {
 			// function body
 			// This example displays an address form, using the autocomplete feature
 			// of the Google Places API to help users fill in the information.
-
+			scope.placeholder = scope.placeholder || "Street address or Zip Code";
+			// set default value
+			scope.location = scope.location || {};
 			var placeSearch, autocomplete;
 			var componentForm = {
 				street_number: 'short_name',
@@ -41,23 +44,38 @@ angular.module("Skillopedia").directive('autocomplete', function($window) {
 			function fillInAddress() {
 				// Get the place details from the autocomplete object.
 				var place = autocomplete.getPlace();
+				// angular.element("#autocomplete").val("");
 				// for (var component in componentForm) {
-				// 	document.getElementById(component).value = '';
+				// 	document.getElementById(component).location = '';
 				// 	document.getElementById(component).disabled = false;
 				// }
-
+				console.log(place);
 				// Get each component of the address from the place details
 				// and fill the corresponding field on the form.
-				// var address = {};
-				// for (var i = 0; i < place.address_components.length; i++) {
-				// 	var addressType = place.address_components[i].types[0];
-				// 	if (componentForm[addressType]) {
-				// 		var val = place.address_components[i][componentForm[addressType]];
-				// 		// address[addressType] = val;
-				// 		// document.getElementById(addressType).value = val;
-				// 	}
-				// }
-				// scope.value = address;
+				var address = {};
+				for (var i = 0; i < place.address_components.length; i++) {
+					var addressType = place.address_components[i].types[0];
+					if (componentForm[addressType]) {
+						var val = place.address_components[i][componentForm[addressType]];
+						address[addressType] = val;
+						// document.getElementById(addressType).location = val;
+					}
+				}
+				// assign to scope.location
+				scope.$apply(function() {
+					scope.location.street = "";
+					if (address.street_number) {
+						scope.location.street += address.street_number;
+					}
+					if (address.route) {
+						scope.location.street += " " + address.route;
+					}
+					angular.element("#autocomplete").val(scope.location.street);
+					scope.location.city = address.locality || "";
+					scope.location.state = address.administrative_area_level_1 || "";
+					scope.location.zipcode = address.postal_code || "";
+				});
+				// scope.location = address;
 			}
 			// [END region_fillform]
 

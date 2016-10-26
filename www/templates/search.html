@@ -14,7 +14,7 @@
                 </div>
                 <div class="skill-input addon-btn">
                     <span class="zipcode">
-                        <autocomplete value="input.zipcode"></autocomplete>
+                        <autocomplete location="input.location"></autocomplete>
                 </span>
                 </div>
                 <button class="btn btn-primary" type="submit" ng-disabled="searchForm.$invalid">Search</button>
@@ -22,7 +22,7 @@
                     More filters
                     <div class="rangeslider-wrap">
                         <rangeslider  max="50" range-title="'Distance (miles)'" slide-callback="distance_callback"></rangeslider>
-                        <rangeslider  max="50" range-title="'Price ($)'" slide-callback="price_callback"></rangeslider>
+                        <rangeslider  max="500" range-title="'Price ($)'" slide-callback="price_callback"></rangeslider>
                     </div>
                 </div>
             </form>

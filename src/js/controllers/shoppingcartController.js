@@ -37,10 +37,10 @@ angular.module("Skillopedia").controller("shoppingcartController", function($sco
 					$scope.page.message = "No record found";
 				}
 				if ($scope.courses.length == 1) {
-					$scope.page.message = data.Result.Courses.totalRow + " record found ";
+					$scope.page.message = data.Result.Carts.totalRow + " record found ";
 				}
 				if ($scope.courses.length > 1) {
-					$scope.page.message = data.Result.Courses.totalRow + " records found ";
+					$scope.page.message = data.Result.Carts.totalRow + " records found ";
 				}
 			}
 		})
