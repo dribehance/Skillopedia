@@ -47,7 +47,7 @@ angular.module("Skillopedia").directive('dribehanceGallery', function($rootScope
 
 					width: 900,
 
-					height: 500,
+					height: 580,
 
 					skinsfoldername: "",
 
@@ -171,7 +171,7 @@ angular.module("Skillopedia").directive('dribehanceGallery', function($rootScope
 
 					arrowhideonmouseleave: 1000,
 
-					navthumbnavigationarrowimage: "../images/../images/carouselarrows-32-32-0.png",
+					navthumbnavigationarrowimage: "../images/carouselarrows-32-32-0.png",
 
 					navshowplaypausestandalone: true,
 

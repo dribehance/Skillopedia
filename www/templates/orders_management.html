@@ -45,7 +45,7 @@
                     <span class="pull-left text-line-through" ng-if="order.total_session_rate != order.original_total_session_rate" style="margin-left:8px;">{{order.original_total_session_rate|currency:"$"}}</span>
                     <div class="btn-group clearfix pull-right">
                         <!-- coach cancel course -->
-                        <a class="btn btn-success" ng-if="order.button_status1 == '1'" ng-href="#/order_cancel?id={{order.orders_id}}">cancel</a>
+                        <!-- <a class="btn btn-success" ng-if="order.button_status1 == '1'" ng-href="#/order_cancel?id={{order.orders_id}}">cancel</a> -->
                         <!-- confirm course time -->
                         <a class="btn btn-success" ng-if="order.button_status2 == '1'" ng-href="#/order_confirm?id={{order.orders_id}}">confirm</a>
                         <!-- finish course -->

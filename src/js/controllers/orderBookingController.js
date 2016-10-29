@@ -79,10 +79,17 @@ angular.module("Skillopedia").controller("orderBookingController", function($sco
 		}).then(function(data) {
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-				errorServices.autoHide(data.message);
-				$timeout(function() {
+				// errorServices.autoHide(data.message);
+				$scope.confirm.ok_text = "ok";
+				$scope.confirm.content = data.message;
+				$scope.confirm.content_type = "dialog"
+				$scope.confirm.open();
+				$scope.confirm.cancle_callback = function() {
 					$route.reload();
-				}, 2000)
+				}
+				$scope.confirm.ok_callback = function() {
+					$route.reload();
+				}
 			} else {
 				errorServices.autoHide(data.message);
 			}

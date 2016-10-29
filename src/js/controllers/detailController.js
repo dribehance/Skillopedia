@@ -79,7 +79,7 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 		})
 	};
 	$scope.parse_age = function(age) {
-		if (age && age.split("+").length > 0) {
+		if (age && age.split("+").length > 1) {
 			return true;
 		}
 		return false;

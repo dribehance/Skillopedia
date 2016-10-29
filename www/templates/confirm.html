@@ -1,25 +1,36 @@
-<div class="confirm-box" ng-if="confirm.content_type !='autocomplete'">
+<!-- input confirm box -->
+<div class="confirm-box" ng-if="confirm.content_type =='input'">
     <div class="confirm-body">
         <div class="confirm-header">
             {{confirm.title}}
             <i class="pull-right fa fa-times close" ng-click="confirm.cancel()"></i>
         </div>
-        <div class="confirm-content" ng-if="confirm.content_type =='content'">
-            {{confirm.content}}
-        </div>
-        <div class="confirm-content" ng-if="confirm.content_type =='autocomplete'">
-            <autocomplete location="input.location"></autocomplete>
-        </div>
-        <div class="confirm-content" ng-if="confirm.content_type =='input'">
+        <div class="confirm-content">
             <input type="text" class="full-width" ng-model="confirm.content" placeholder="Enter your plan">
         </div>
         <div class="confirm-footer">
             <span class="btn btn-default" ng-click="confirm.cancel()">{{confirm.cancel_text}}</span>
-            <span class="btn btn-primary" ng-if="confirm.content_type =='content'" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
-            <span class="btn btn-primary" ng-if="confirm.content_type =='input'" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+            <span class="btn btn-primary" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
         </div>
     </div>
 </div>
+<!-- content confirm box yes or no -->
+<div class="confirm-box" ng-if="confirm.content_type =='content'">
+    <div class="confirm-body">
+        <div class="confirm-header">
+            {{confirm.title}}
+            <i class="pull-right fa fa-times close" ng-click="confirm.cancel()"></i>
+        </div>
+        <div class="confirm-content">
+            {{confirm.content}}
+        </div>
+        <div class="confirm-footer">
+            <span class="btn btn-default" ng-click="confirm.cancel()">{{confirm.cancel_text}}</span>
+            <span class="btn btn-primary" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+        </div>
+    </div>
+</div>
+<!-- autocomplete confirm box for location autocomplete -->
 <div class="confirm-box" ng-if="confirm.content_type =='autocomplete'">
     <div class="confirm-body">
         <div class="confirm-content">
@@ -33,6 +44,21 @@
                 <small class="hover" ng-click="confirm.cancel()">{{confirm.cancel_text}}</small>
             </p>
             
+        </div>
+    </div>
+</div>
+<!-- dialog confirm box for just message feedback -->
+<div class="confirm-box" ng-if="confirm.content_type =='dialog'">
+    <div class="confirm-body">
+        <div class="confirm-header">
+            {{confirm.title}}
+            <i class="pull-right fa fa-times close" ng-click="confirm.cancel()"></i>
+        </div>
+        <div class="confirm-content">
+            {{confirm.content}}
+        </div>
+        <div class="confirm-footer">
+            <span class="btn btn-default" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
         </div>
     </div>
 </div>
