@@ -68,7 +68,8 @@ angular.module("Skillopedia").controller("uploadIdcardController", function($sco
 			extension = ext;
 			return ext;
 		})
-		filename = new Date().getTime() + extension;
+		filename = Math.round(Math.random()*100000000);
+		filename += new Date().getTime() + extension;
 		flow.opts.target = config.url + "/app/Experiences/updatePic";
 		flow.opts.testChunks = false;
 		flow.opts.fileParameterName = "image_01";

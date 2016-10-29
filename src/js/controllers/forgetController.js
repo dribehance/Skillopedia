@@ -10,7 +10,7 @@ angular.module("Skillopedia").controller("forgetController", function($scope, $r
 	}
 	$scope.forget_action = function() {
 		if ($scope.input.password_1 != $scope.input.password_2) {
-			errorServices.autoHide("两次密码不一致");
+			errorServices.autoHide("twice password is different");
 			return;
 		}
 		toastServices.show();

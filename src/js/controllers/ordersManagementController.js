@@ -59,7 +59,7 @@ angular.module("Skillopedia").controller("ordersManagementController", function(
 		$.magnificPopup.open({
 			items: {
 				// src: "https://maps.google.com/maps?q=" + course.city + course.area + course.street
-				src: "<div style='height:300px;border:1px solid #d2d2d2;background-color:white' id='map'></div>"
+				src: "<div style='height:500px;width:80%;max-width:800px;margin:auto auto;border:1px solid #d2d2d2;background-color:white' id='map'></div>"
 			},
 			type: "inline"
 		});

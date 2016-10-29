@@ -1,7 +1,8 @@
 // by dribehance <dribehance.kksdapp.com>
 angular.module("Skillopedia").controller("landingController", function($scope, $rootScope, $location, $route, $window, $timeout, facebookServices, userServices, errorServices, toastServices, localStorageService, config) {
 	if ($rootScope.is_signin()) {
-		$rootScope.back();
+		// $rootScope.back();
+		$location.path("index").replace();
 	}
 	if (localStorageService.get("facebook_entry")) {
 		$scope.facebook_entry = localStorageService.get("facebook_entry");
