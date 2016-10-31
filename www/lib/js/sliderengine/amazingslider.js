@@ -5739,7 +5739,7 @@ var ASPlatforms = {
 			if (this.options.versionmark != "AMC" + "om" && !(this.options.versionmark == "AML" + "ite" && this.options.skin && $.inArray(this.options.skin, ["classic", "cube", "content"]) >= 0)) {
 				this.options.showwatermark = window.location.href.indexOf(d0) >= 0 ? false : true;
 				this.options.watermarkstyle = this.options.wstyledefault;
-				this.options.watermarktext = "skillpier.com"; //this.options.vermk;
+				this.options.watermarktext = ""; //"skillpier.com"; //this.options.vermk;
 				this.options.watermarkimage = this.options.wimagedefault;
 				this.options.watermarklink = "https://www.skillpier.com"; //this.options.watermarklinkdefault;
 				this.options.watermarktarget = this.options.watermarktargetdefault;
