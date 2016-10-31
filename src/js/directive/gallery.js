@@ -57,7 +57,7 @@ angular.module("Skillopedia").directive('dribehanceGallery', function($rootScope
 
 					fullwidth: false,
 
-					donotresize: false,
+					donotresize: true,
 
 					enabletouchswipe: true,
 
@@ -425,7 +425,7 @@ angular.module("Skillopedia").directive('dribehanceGallery', function($rootScope
 
 					transition: "fade",
 
-					scalemode: "fill",
+					scalemode: "fit",
 
 					isfullscreen: false,
 
