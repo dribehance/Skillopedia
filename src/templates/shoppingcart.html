@@ -8,7 +8,7 @@
         <div class="content-wrap">
             <div class="tabs clearfix">
                 <a class="tab-item pull-left active">Cart</a>
-                <a class="pull-right clearfix tab-item-action" ng-click="pay()">pay now</a>
+                <a class="pull-right clearfix tab-item-action hover" ng-click="pay()">pay now</a>
                 <a class="pull-right clearfix tab-item">${{get_total()}}</a>
                 <a class="pull-right clearfix tab-item" ng-class="{'text-primary':shoppingcart_size==normal_courses.length}" ng-click="check_all()"><i class="fa" ng-class="{'fa-check-square-o':shoppingcart_size==normal_courses.length,'fa-square-o':shoppingcart_size!=normal_courses.length}"></i> All</a>
                 <!-- <div class="btn-group pull-right clearfix" ng-if="normal_courses.length>0">

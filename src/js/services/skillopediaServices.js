@@ -109,5 +109,15 @@ angular.module("Skillopedia").factory("skillopediaServices", function($http, loc
 				return data.data;
 			});
 		},
+		// 获取美国State
+		query_us_state: function(input) {
+			return $http({
+				// by dribehance <dribehance.kksdapp.com>
+				url: "lib/remote/us_state.json",
+				method: "GET",
+			}).then(function(data) {
+				return data.data;
+			});
+		},
 	}
 });

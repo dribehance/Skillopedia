@@ -2,8 +2,68 @@
 <div class="section sm wrap bg-white" ng-cloak ng-if="payment">
     <p>Payment amount</p>
     <span class="text-primary text-big">{{payment.total_total_session_rate|currency:"$"}}</span><span class="text-line-through">{{payment.total_original_total_session_rate|currency:"$"}}</span>
+    <form name="visaForm" ng-submit="ajaxForm()" class="visa-form clearfix">
+
+        <div class="visa-caret"></div>
+        <div class="visa-content">
+            <div class="clearfix">
+                <div class="visa-input">
+                    <div class="visa-label">First <b class="text-danger">*</b></div>
+                    <input type="text" placeholder="Your First Name" name="first_name" ng-model="input.first_name" required>
+                </div>
+                <div class="visa-input">
+                    <div class="visa-label">Last <b class="text-danger">*</b></div>
+                    <input type="text" placeholder="Your Last Name" name="last_name" ng-model="input.last_name" required>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="visa-input">
+                    <div class="visa-label">Street <b class="text-danger">*</b></div>
+                    <input type="text" placeholder="Street" name="street" ng-model="input.street" required>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="visa-input">
+                    <div class="visa-label">City/Town <b class="text-danger">*</b></div>
+                    <input type="text" placeholder="City" name="city" ng-model="input.city" required>
+                </div>
+                <div class="visa-input">
+                    <div class="visa-label">State <b class="text-danger">*</b></div>
+                    <!-- <input type="text" placeholder="State" name="state" ng-model="input.state" required> -->
+                    <select name="state" id="state" ng-model="input.state" ng-options="state.name as state.name for state in states"></select>
+                </div>
+                <div class="visa-input">
+                    <div class="visa-label">Zip Code <b class="text-danger">*</b></div>
+                    <input type="text" placeholder="Zip Code" name="zipcode" ng-model="input.zipcode" required>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="visa-input">
+                    <div class="visa-label">Phone Number <b class="text-danger">*</b><span class="text-danger" ng-if="visaForm.phone.$dirty && visaForm.phone.$invalid">eg: xxx-xxx-xxxx</span> </div>
+                    <input type="text" placeholder="Phone" name="phone" mark ng-model="input.phone" required>
+                </div>
+            </div>
+            <div class="visa-tip">
+                <b>Enter Your Credit Card</b> This card is only used to reserve your room. You may choose another form at check-in.
+            </div>
+            <div class="clearfix">
+                <div class="visa-input">
+                    <input type="number" placeholder="Card number" required name="visa_card_id" ng-model="input.visa_card_id">
+                </div>
+                <div class="visa-input">
+                    <input type="number" placeholder="Month" class="month" min="0" max="12" required name="visa_card_id" ng-model="input.visa_card_month">
+                    <input type="number" placeholder="Year" class="year" min="0" max="99" required name="visa_card_year" ng-model="input.visa_card_year">
+                </div>
+                <div class="visa-input">
+                    <input type="number" placeholder="Security code" class="code" min="0" required name="visa_card_code" ng-model="input.visa_card_code">
+                </div>
+            </div>
+            <p></p>
+            <button type="submit" class="btn btn-primary" ng-disabled="visaForm.$invalid">Confirm</button>
+        </div>
+    </form>
     <div class="section sm">
-        Payment methods
+        <b>Or your can use Paypal to check-in.</b>
     </div>
     <!-- <a href="" ng-click="pay('1')" class="alipay"></a> -->
     <div class="paypal">
@@ -35,17 +95,6 @@
             <!--商户邮件-->
             <input type="hidden" name="business" value="administrator@skillpier.com">
             <input type="image" src="../images/paypal.png" border="0" name="submit" alt="Make payments with PayPal it's st, free and secure!">
-        </form>
-    </div>
-    <div class="visa">
-        <form name="visaForm" ng-submit="ajaxForm()" class="visa-form clearfix">
-            <div class="visa-caret"></div>
-            <div class="visa-content">
-                <input type="number" placeholder="Card number" required name="visa_card_id" ng-model="input.visa_card_id">
-                <input type="number" placeholder="Month" class="month" min="0" max="12" required name="visa_card_id" ng-model="input.visa_card_month">
-                <input type="number" placeholder="Year" class="year" min="0" max="99" required name="visa_card_year" ng-model="input.visa_card_year">
-                <button type="submit" class="btn btn-primary full-width btn-md" ng-disabled="visaForm.$invalid">Confirm</button>
-            </div>
         </form>
     </div>
 </div>
