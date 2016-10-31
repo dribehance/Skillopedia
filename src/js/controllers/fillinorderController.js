@@ -199,7 +199,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
         size: 1
     }
     $scope.query_schedule = function(day) {
-        // $scope.calendar.selected = [];
+        $scope.calendar.selected = $scope.calendar.selected || [];
         var selected = $scope.calendar.selected.map(function(t) {
             return t.from.day + " " + t.from.hour + "to" + t.to.day + " " + t.to.hour;
         }).join("#");
