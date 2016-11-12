@@ -1,12 +1,9 @@
 <!-- header -->
 <myresource cs-resource="{'account_css':'lib/css/account.css','media_css':'lib/css/media.css'}"></myresource>
 <div ng-include="'templates/header.html'"></div>
-<div class="wrap">
-    <div class="section">
+<div class="section sm">
+    <div class="wrap bg-white">
         <form name="createStepForm">
-            <div class="tabs clearfix">
-                <a class="tab-item pull-left active">Write</a>
-            </div>
             <div class="title-input">
                 <span>Experience Title</span>
                 <div class="course-input">
@@ -16,7 +13,7 @@
             <div class="title-input">
                 <span>Experience Content</span>
             </div>
-                <text-angular ng-model="input.content" class="text-angular"></text-angular>
+            <text-angular ng-model="input.content" class="text-angular"></text-angular>
             <div class="title-input">
                 <span>cover</span>
                 <div class="open-img" ng-repeat="cover in input.covers track by $index" ng-form="coverForm">

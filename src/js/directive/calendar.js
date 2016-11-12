@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").directive('calendar', function($filter) {
+angular.module("Skillopedia").directive('calendar', function($filter, localStorageService) {
 	return {
 		restrict: 'E',
 		templateUrl: 'templates/calendar.html',
@@ -10,11 +10,12 @@ angular.module("Skillopedia").directive('calendar', function($filter) {
 			var today = new Date();
 			today.setDate(today.getDate() - 1);
 			scope.nowaday = $filter("date")(today, "yyyy-MM-dd");
+
 			scope.calendar = angular.extend({}, scope.calendar);
-			scope.calendar.day = $filter("date")(new Date());
+			scope.calendar.day = scope.calendar.day || $filter("date")(new Date());
 			// edit mode
 			scope.$watch("calendar.day", function(n, o) {
-				if (n && n != o && typeof scope.calendar.onDayChange == "function") {
+				if (n && typeof scope.calendar.onDayChange == "function") {
 					scope.calendar.onDayChange()
 				}
 			})

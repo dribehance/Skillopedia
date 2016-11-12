@@ -38,14 +38,14 @@
             </div>
             <div class="section sm bg-white">
                 <div class="calendar-wrap">
-                    <div class="calendar-header" ng-if="course.is_stop_course == '1'">
+                    <div class="calendar-header" style="background-color: #ffb342;color:white" ng-if="course.is_stop_course == '1'">
                         Attention! This course is suspend.
                     </div>
                     <div class="calendar-header" ng-if="course.is_stop_course != '1'">
                         Select and book your preferred time.
                     </div>
-                    <calendar calendar="calendar" class="calendar-left"></calendar>
-                    <div class="calendar-right">
+                    <calendar calendar="calendar" class="calendar-left" ng-show="course.is_stop_course != 1"></calendar>
+                    <div class="calendar-right" ng-if="course.is_stop_course != 1">
                         <div class="calendar-result">
                             <div class="calendar-title text-center">schedule</div>
                             <div class="result-item" ng-click="calendar.remove(select)" ng-repeat="select in calendar.selected">
@@ -196,7 +196,7 @@
                     </span>
                 </p>
             </div>
-            <div class="clearfix row text-center">
+            <div class="clearfix row text-center" ng-if="course.is_stop_course != 1">
                 <a class="col-xs-6 wrap bg-primary hover text-white" ng-click="fillinorder('1')" style="text-indent:30px;"><img ng-src="../images/cart.png" alt="" err-src="../images/example_7.png" style="position:absolute;left:15px;top:8px;width:30px">Add to cart</a>
                 <a class="col-xs-6 wrap bg-danger hover text-white" ng-click="fillinorder('11')">Pay now</a>
             </div>

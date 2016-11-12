@@ -137,11 +137,12 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 		}, 0)
 	};
 	// go to detail
-	$scope.local_go = function(id) {
+	$scope.local_go = function(course) {
+		localStorageService.set("freeCourseDay", course.freeCourseDay);
 		$location.path("detail").search({
 			category: null,
 			cagegory_id: null,
-			course_id: id
+			course_id: course.course_id
 		});
 	};
 	$scope.price_callback = function(position, value) {

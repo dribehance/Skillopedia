@@ -151,8 +151,8 @@
                     Availability
                 </div>
                 <!-- <div ng-include="'templates/calendar.html'"></div> -->
-                <calendar calendar="calendar" class="small-calendar"></calendar>
-                <div class="wrap"><span class="calender-tip unavailable">unavailable</span>
+                <calendar calendar="calendar" class="small-calendar" ng-show="course.is_stop_course != 1"></calendar>
+                <div class="wrap" ng-if="course.is_stop_course != 1"><span class="calender-tip unavailable">unavailable</span>
                     <span class="calender-tip confirm">booked</span></div>
                 <!-- <span class="calender-tip busy">unavailable, coach busy</span> -->
             </div>

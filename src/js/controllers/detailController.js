@@ -10,11 +10,14 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 		toastServices.hide()
 		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 			$scope.course = data.Result.Course;
+			// query schedule
+			$scope.calendar = angular.extend({}, $scope.calendar);
+			$scope.calendar.day = $scope.course.freeCourseDay;
 		} else {
 			errorServices.autoHide(data.message);
 		}
 	}).then(function(data) {
-		$scope.query_schedule($filter("date")(new Date().getTime(), "yyyy-MM-dd"));
+		$scope.query_schedule($filter("date")(new Date($scope.calendar.day).getTime(), "yyyy-MM-dd"));
 	});
 	$scope.open_map = function(course, e) {
 		e.preventDefault();

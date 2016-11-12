@@ -39,11 +39,15 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             });
             // coupons handle
             $scope.query_coupons();
+            // query schedule
+            $scope.calendar = angular.extend({}, $scope.calendar);
+            $scope.calendar.day = $scope.course.freeCourseDay;
+
         } else {
             errorServices.autoHide(data.message);
         }
     }).then(function(data) {
-        $scope.query_schedule($filter("date")(new Date().getTime(), "yyyy-MM-dd"));
+        $scope.query_schedule($filter("date")(new Date($scope.calendar.day).getTime(), "yyyy-MM-dd"))
     });
     // 优惠券
     $scope.coupons = [];
@@ -306,6 +310,8 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
                     // dscount percentage
                     $scope.input.discount_total_course_price = parseFloat($scope.input.total_course_price) * (1 - parseFloat(discount.off) / 100);
                     $scope.input.discount_total_partner_fee = parseFloat($scope.input.total_partner_fee) * (1 - parseFloat(discount.off) / 100);
+                    $scope.input.discount_total_course_price = Math.max(0, $scope.input.discount_total_course_price);
+                    $scope.input.discount_total_partner_fee = Math.max(0, $scope.input.discount_total_partner_fee);
                 }
             });
         }
@@ -324,6 +330,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
         }
         if ($scope.input.coupons.selected.coupon_money) {
             $scope.input.discount_total_course_price = parseFloat($scope.input.discount_total_course_price) - parseFloat($scope.input.coupons.selected.coupon_money);
+            $scope.input.discount_total_course_price = Math.max(0, $scope.input.discount_total_course_price);
         }
         // 交通费用，如果选择上门
         $scope.input.total_traffic_cost = 0;

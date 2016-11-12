@@ -55,7 +55,7 @@
                     </span>
             </div>
         </div>
-        <div class="coach-item hover" ng-click="local_go(course.course_id)" ng-repeat="course in courses">
+        <div class="coach-item hover" ng-click="local_go(course)" ng-repeat="course in courses">
             <div class="coach-avatar">
                 <imageview data-rate="1" center-only src="staticImageUrl + course.coach_image"></imageview>
                 <span class="official-coach" ng-if="course.is_official"></span>
