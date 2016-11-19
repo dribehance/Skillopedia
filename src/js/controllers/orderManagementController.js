@@ -36,7 +36,7 @@ angular.module("Skillopedia").controller("orderManagementController", function($
 	};
 	// remove order
 	$scope.remove = function(order) {
-		$scope.confirm.content = "Are you sure to delete order ?";
+		$scope.confirm.content = "Delete order ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

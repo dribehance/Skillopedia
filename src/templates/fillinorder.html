@@ -47,7 +47,7 @@
                     <calendar calendar="calendar" class="calendar-left" ng-show="course.is_stop_course != 1"></calendar>
                     <div class="calendar-right" ng-if="course.is_stop_course != 1">
                         <div class="calendar-result">
-                            <div class="calendar-title text-center">schedule</div>
+                            <div class="calendar-title text-center">Schedule</div>
                             <div class="result-item" ng-click="calendar.remove(select)" ng-repeat="select in calendar.selected">
                                 <i class="pull-right fa fa-times"></i>
                                 <div>{{select.from.day}}</div>
@@ -57,7 +57,8 @@
                                 Your booking time will show up here.
                             </div>
                             <div class="result-item" ng-if="calendar.selected.length>0">
-                                you total can book {{calendar.size}} course ! you can change the amount before you can book more!
+                                Your booking will be showed below.</br>
+                                {{calendar.size}} booking time remained.
                             </div>
                         </div>
                         <div class="text-center">
@@ -196,9 +197,12 @@
                     </span>
                 </p>
             </div>
-            <div class="clearfix row text-center" ng-if="course.is_stop_course != 1">
+            <div class="clearfix row text-center" ng-if="course.is_stop_course != 1 && course.status == 1">
                 <a class="col-xs-6 wrap bg-primary hover text-white" ng-click="fillinorder('1')" style="text-indent:30px;"><img ng-src="../images/cart.png" alt="" err-src="../images/example_7.png" style="position:absolute;left:15px;top:8px;width:30px">Add to cart</a>
                 <a class="col-xs-6 wrap bg-danger hover text-white" ng-click="fillinorder('11')">Pay now</a>
+            </div>
+            <div class="clearfix row text-center" ng-if="course.status != 1">
+                The course is out date
             </div>
             <div class="section sm" style="margin-bottom:0">
                 <div class="wrap bg-white">

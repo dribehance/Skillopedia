@@ -17,7 +17,7 @@
                     <imageview data-rate="1" center-only src="staticImageUrl + order.Course.coach_image"></imageview>
                     <span class="official-coach" ng-if="order.Course.is_official"></span>
                 </div>
-                <div class="coach-info" ng-click="local_go(order.orders_id)">
+                <div class="coach-info" ng-click="local_go(order)">
                     <div class="long-title text-ellipsis">{{order.Course.title}}</div>
                     <span class="pull-right" style="margin-left:8px;">x{{order.buy_amount}}</span>
                     <span class="pull-right text-primary text-big">{{order.Course.session_rate|currency:"$"}}</span>
@@ -40,24 +40,25 @@
                 <div class="action-bar clearfix">
                     <!-- <span class="btn pull-left">{{get_status_message(order.status)}}</span> -->
                     <span class="pull-left text-big">{{order.total_session_rate|currency:"$"}}</span>
-                    <span class="pull-left text-line-through" ng-if="order.total_session_rate != order.original_total_session_rate" style="margin-left:8px;">{{order.original_total_session_rate|currency:"$"}}</span>
+                    <span class="pull-left text-line-through" style="position: absolute;margin-left:8px;" ng-if="order.total_session_rate != order.original_total_session_rate">{{order.original_total_session_rate|currency:"$"}}</span>
+                    <span class="pull-left" ng-if="order.status == '10'" style="position: relative;top:15px;margin-left: 8px;">The price of this course is modified, please order it again</span>
                     <div class="btn-group clearfix pull-right">
                         <!-- pay or delete status 11 -->
-                        <span class="btn btn-danger" ng-if="order.status == '10' || order.status == '11'" ng-click="remove(order)">delete</span>
-                        <span class="btn btn-success" ng-if="order.status == '11'" ng-click="pay(order)">pay now</span>
+                        <span class="btn btn-danger" ng-if="order.status == '10' || order.status == '11'" ng-click="remove(order)">Delete</span>
+                        <span class="btn btn-success" ng-if="order.status == '11'" ng-click="pay(order)">Pay now</span>
                         <!-- refund active #/order_refund-->
-                        <a class="btn btn-danger" ng-if="order.status == '21'" ng-href="#/order_refund?id={{order.orders_id}}">refund</a>
+                        <a class="btn btn-danger" ng-if="order.status == '21'" ng-href="#/order_refund?id={{order.orders_id}}">Refund</a>
                         <!-- refund disabled -->
                         <span class="btn btn-danger" disabled ng-if="order.status == '22'">refund</span>
-                        <!-- buy again when course is finish -->
-                        <a class="btn btn-default" ng-if="order.status == '30' || order.status == '40'" ng-href="#/detail?course_id={{order.Course.course_id}}">buy again</a>
+                        <!-- Buy again when course is finish -->
+                        <a class="btn btn-default" ng-if="order.status == '30' || order.status == '40'" ng-href="#/detail?course_id={{order.Course.course_id}}">Buy again</a>
                         <!-- comment when course is finish #/order_comment-->
-                        <a class="btn btn-second" ng-if="order.status == '30'" ng-href="#/order_comment?id={{order.orders_id}}">comment</a>
-                        <a class="btn btn-second" ng-if="order.status == '40'" ng-href="#/order_comment?id={{order.orders_id}}">update comment</a>
+                        <a class="btn btn-second" ng-if="order.status == '30'" ng-href="#/order_comment?id={{order.orders_id}}">Comment</a>
+                        <a class="btn btn-second" ng-if="order.status == '40'" ng-href="#/order_comment?id={{order.orders_id}}">Update comment</a>
                         <!-- booking active book_status #/order_booking-->
-                        <a class="btn btn-success" ng-if="order.booking_status == '1'" ng-href="#/order_booking?order_id={{order.orders_id}}&course_id={{order.Course.course_id}}">booking</a>
+                        <a class="btn btn-success" ng-if="order.booking_status == '1'" ng-href="#/order_booking?order_id={{order.orders_id}}&course_id={{order.Course.course_id}}">Booking</a>
                         <!-- booking disabled book_status-->
-                        <span class="btn btn-success" disabled ng-if="order.booking_status == '2'">booking</span>
+                        <span class="btn btn-success" disabled ng-if="order.booking_status == '2'">Booking</span>
                     </div>
                 </div>
             </div>

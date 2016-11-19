@@ -64,7 +64,7 @@ angular.module("Skillopedia").controller("skillopediaController", function($scop
 	$scope.remove_course = function(course_id, e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$scope.confirm.content = "Are you sure to delete course ?";
+		$scope.confirm.content = "Delete course ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

@@ -4,7 +4,7 @@ angular.module("Skillopedia").factory("facebookServices", function($rootScope, $
         var FB = $window.FB || undefined;
         if (!FB) return;
         FB.init({
-            appId: '217442991983314',
+            appId: '1679842542345876',
             xfbml: true,
             version: 'v2.6'
         });

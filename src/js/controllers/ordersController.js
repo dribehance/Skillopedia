@@ -28,7 +28,15 @@ angular.module("Skillopedia").controller("ordersController", function($scope, $r
 				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
-				$scope.page.message = $scope.orders.length + " records found";
+				if ($scope.orders.length == 0) {
+					$scope.page.message = "No record found";
+				}
+				if ($scope.orders.length == 1) {
+					$scope.page.message = data.Result.OrderList.totalRow + " record found ";
+				}
+				if ($scope.orders.length > 1) {
+					$scope.page.message = data.Result.OrderList.totalRow + " records found ";
+				}
 			}
 			$scope.page.pn++;
 		})
@@ -89,7 +97,7 @@ angular.module("Skillopedia").controller("ordersController", function($scope, $r
 	};
 	// remove order
 	$scope.remove = function(order) {
-		$scope.confirm.content = "Are you sure to delete order ?";
+		$scope.confirm.content = "Delete order ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {
@@ -115,7 +123,11 @@ angular.module("Skillopedia").controller("ordersController", function($scope, $r
 		var url = $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/payment?id=" + order.orders_id;
 		$window.location.href = url;
 	};
-	$scope.local_go = function(id) {
-		$location.path("order").search("id", id)
+	$scope.local_go = function(order) {
+		if (order.status == '10') {
+			$location.path("detail").search("course_id", order.course_id)
+		} else {
+			$location.path("order").search("id", order.orders_id)
+		}
 	}
 })

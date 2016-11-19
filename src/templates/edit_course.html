@@ -6,7 +6,13 @@
         <form class="crease_coursewrap" name="createCourseForm" ng-submit="ajaxForm()">
             <!-- 新建课程第1步 -->
             <div class="step" ng-show="step == 1" ng-form="stepForm1">
-                <img ng-src="../images/step_1.png" class="full-width" alt="">
+                <div class="step-wrap">
+                    <div class="step_1 hover" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover" ng-click="show_step(2)"></div>
+                    <div class="step_3 hover" ng-click="show_step(3)"></div>
+                    <div class="step_4 hover" ng-click="show_step(4)"></div>
+                    <img ng-src="../images/step_1.png" class="full-width" alt="">
+                </div>
                 <div class="title-input">
                     <span><b class="text-danger"> * </b>Course Title</span>
                     <div class="course-input">
@@ -119,7 +125,13 @@
             <!-- 新建课程第2步 -->
             <div class="step" ng-show="step == 2" ng-form="stepForm2">
                 <!-- 步骤框 -->
-                <img ng-src="../images/step_2.png" class="full-width" alt="">
+                <div class="step-wrap">
+                    <div class="step_1 hover" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover" ng-click="show_step(2)"></div>
+                    <div class="step_3 hover" ng-click="show_step(3)"></div>
+                    <div class="step_4 hover" ng-click="show_step(4)"></div>
+                    <img ng-src="../images/step_2.png" class="full-width" alt="">
+                </div>
                 <div class="title-input">
                     <div class="m-session pull-left">
                         <span><b class="text-danger"> * </b>Session Length</span>
@@ -249,17 +261,23 @@
                     <button type="button" class="btn btn-success col-xs-3 btn-md col-xs-offset-1" ng-click="show_step(3)" ng-disabled="createCourseForm.stepForm2.$invalid">Next</button>
                 </div>
                 <div class="section text-center text-danger">
-                    <div ng-if="stepForm2.rate.$invalid &&stepForm2.$dirty">* Session rate is number required</div>
+                    <div ng-if="stepForm2.rate.$invalid &&stepForm2.$dirty">* Session rate is required</div>
                     <div ng-if="stepForm2.teaching_since.$invalid &&stepForm2.$dirty">* Years of Experience is required</div>
                     <div ng-if="stepForm2.teaching_age.$invalid &&stepForm2.$dirty">* Preferred Age of Students is required</div>
-                    <div ng-if="stepForm2.partner.$invalid &&stepForm2.$dirty">* Parter is number required</div>
-                    <div ng-if="stepForm2.surcharge.$invalid &&stepForm2.$dirty">* Surcharge is number required</div>
-                    <div ng-if="stepForm2.byMoneyForm.$invalid &&stepForm2.$dirty">* Discount is number required</div>
+                    <div ng-if="stepForm2.partner.$invalid &&stepForm2.$dirty">* Parter is required</div>
+                    <div ng-if="stepForm2.surcharge.$invalid &&stepForm2.$dirty">* Surcharge is required</div>
+                    <div ng-if="stepForm2.byMoneyForm.$invalid &&stepForm2.$dirty">* Discount is required</div>
                 </div>
             </div>
             <!-- 新建课程第3步 -->
             <div class="step" ng-show="step == 3" ng-form="stepForm3">
-                <img ng-src="../images/step_3.png" class="full-width" alt="">
+                <div class="step-wrap">
+                    <div class="step_1 hover" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover" ng-click="show_step(2)"></div>
+                    <div class="step_3 hover" ng-click="show_step(3)"></div>
+                    <div class="step_4 hover" ng-click="show_step(4)"></div>
+                    <img ng-src="../images/step_3.png" class="full-width" alt="">
+                </div>
                 <div class="title-input">
                     <span><b class="text-danger"> * </b>Travel to Sessions</span>
                     <div class="m-check clearfix">
@@ -308,8 +326,8 @@
                         <button class="btn btn-success col-xs-3 btn-md col-xs-offset-1" type="button" ng-disabled="stepForm3.$invalid" ng-click="show_step(4)">Next</button>
                     </div>
                     <div class="section text-center text-danger">
-                        <div ng-if="stepForm3.distance.$invalid &&stepForm3.$dirty">* Travel distance is number required</div>
-                        <div ng-if="stepForm3.traffic_cost.$invalid &&stepForm3.$dirty">* traffic_cost number is required</div>
+                        <div ng-if="stepForm3.distance.$invalid &&stepForm3.$dirty">* Travel distance is required</div>
+                        <div ng-if="stepForm3.traffic_cost.$invalid &&stepForm3.$dirty">* traffic_cost is required</div>
                         <div ng-if="stepForm3.locationForm.$invalid &&stepForm3.$dirty">* street,city,state is required</div>
                     </div>
                 </div>
@@ -345,8 +363,8 @@
                         <button type="button" class="btn btn-danger col-xs-3 btn-md col-xs-offset-1" ng-click="save_location()" ng-disabled="locationForm.$invalid">Save</button>
                     </div>
                     <div class="section text-center text-danger">
-                        <div ng-if="stepForm3.distance.$invalid &&stepForm3.$dirty">* Travel distance is number required</div>
-                        <div ng-if="stepForm3.traffic_cost.$invalid &&stepForm3.$dirty">* traffic_cost number is required</div>
+                        <div ng-if="stepForm3.distance.$invalid &&stepForm3.$dirty">* Travel distance is required</div>
+                        <div ng-if="stepForm3.traffic_cost.$invalid &&stepForm3.$dirty">* traffic_cost is required</div>
                         <div ng-if="stepForm3.locationForm.$invalid &&stepForm3.$dirty">* street,city,state is required</div>
                     </div>
                 </div>
@@ -356,7 +374,13 @@
             </div>
             <!-- 新建课程 第四步 -->
             <div class="step" ng-show="step == 4" ng-form="stepForm4">
-                <img ng-src="../images/step_4.png" class="full-width" alt="">
+                <div class="step-wrap">
+                    <div class="step_1 hover" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover" ng-click="show_step(2)"></div>
+                    <div class="step_3 hover" ng-click="show_step(3)"></div>
+                    <div class="step_4 hover" ng-click="show_step(4)"></div>
+                    <img ng-src="../images/step_4.png" class="full-width" alt="">
+                </div>
                 <p>Select time frame for your course</p>
                 <div class="weekly row">
                     <div class="weekly-item" ng-repeat="week in weeks" ng-click="select_week(week)" ng-class="{'active':week.check}">

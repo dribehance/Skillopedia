@@ -70,7 +70,7 @@ angular.module("Skillopedia").controller("couponsController", function($scope, $
 	$scope.remove = function(coupon, e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$scope.confirm.content = "Are you sure to delete coupon ?";
+		$scope.confirm.content = "Delete coupon ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

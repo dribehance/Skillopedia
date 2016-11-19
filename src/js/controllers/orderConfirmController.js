@@ -101,7 +101,7 @@ angular.module("Skillopedia").controller("orderConfirmController", function($sco
 	$scope.input = {};
 	// confirm
 	$scope.confirm_course = function() {
-		$scope.confirm.content = "确定课程时间？";
+		$scope.confirm.content = "Confirm Booking ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {
@@ -127,7 +127,7 @@ angular.module("Skillopedia").controller("orderConfirmController", function($sco
 	};
 	// reject
 	$scope.reject_course = function() {
-		$scope.confirm.content = "拒绝";
+		$scope.confirm.content = "Decline Booking";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

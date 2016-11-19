@@ -14,8 +14,8 @@ angular.module("Skillopedia").directive('confirm', function() {
 				title: "Tips",
 				content: "Are You Sure?",
 				content_type: "content",
-				cancel_text: "cancel",
-				ok_text: "ok",
+				cancel_text: "Cancel",
+				ok_text: "Ok",
 				open: function() {
 					$(element).show();
 				},

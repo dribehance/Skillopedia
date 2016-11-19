@@ -33,7 +33,7 @@ angular.module("Skillopedia").controller("messagesController", function($scope, 
 	$scope.loadMore();
 	// remove message
 	$scope.remove = function(message) {
-		$scope.confirm.content = "Are you sure to delete message ?";
+		$scope.confirm.content = "Delete message ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

@@ -28,7 +28,15 @@ angular.module("Skillopedia").controller("ordersManagementController", function(
 				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
-				$scope.page.message = $scope.orders.length + " records found";
+				if ($scope.orders.length == 0) {
+					$scope.page.message = "No record found";
+				}
+				if ($scope.orders.length == 1) {
+					$scope.page.message = data.Result.OrderList.totalRow + " record found ";
+				}
+				if ($scope.orders.length > 1) {
+					$scope.page.message = data.Result.OrderList.totalRow + " records found ";
+				}
 			}
 			$scope.page.pn++;
 		})
@@ -89,7 +97,7 @@ angular.module("Skillopedia").controller("ordersManagementController", function(
 	};
 	// remove order
 	$scope.remove = function(order) {
-		$scope.confirm.content = "Are you sure to delete order ?";
+		$scope.confirm.content = "Delete order ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

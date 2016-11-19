@@ -92,7 +92,7 @@ angular.module("Skillopedia").controller("shoppingcartController", function($sco
 	};
 	// 删除购物车
 	$scope.remove = function(course) {
-		$scope.confirm.content = "Are you sure to delete course ?";
+		$scope.confirm.content = "Delete course ?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

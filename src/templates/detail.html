@@ -112,8 +112,11 @@
             <div class="settlement">
                 <div class="single-price text-center">{{course.session_rate|currency:"$"}}</div>
                 <p class="text-center"> {{course.session_length}} mins per session</p>
-                <p class="text-center">
+                <p class="text-center" ng-if="course.is_stop_course != 1 && course.status == 1">
                     <a class="btn btn-warning btn-lg" ng-href="#/fillinorder?course_id={{course.course_id}}">Get Started</a>
+                </p>
+                <p class="text-center" ng-if="course.status != 1">
+                    The course is out date.
                 </p>
             </div>
             <div class="section sm wrap bg-white detail-group">
