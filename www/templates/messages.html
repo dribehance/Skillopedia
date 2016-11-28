@@ -23,11 +23,11 @@
                         <ul>
                             <li ng-if="message.comment_name"><a class="">{{message.comment_name || "Administrator"}}</a></li>
                             <li class="btn-group">
-                                <a ng-click="remove(message)" class="text-danger">
+                                <a ng-click="remove(message)" class="text-danger hover">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     remove
                                 </a>
-                                <a ng-click="reply(message)" class="text-success" ng-if="message.type=='1'&& user.agent_level =='2'">
+                                <a ng-click="reply(message)" class="text-success hover" ng-if="message.type=='1'&& user.agent_level =='2'">
                                     <i class="fa fa-share" aria-hidden="true"></i>
                                     reply
                                 </a>

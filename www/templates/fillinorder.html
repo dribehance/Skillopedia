@@ -32,7 +32,7 @@
             </div>
             <div class="wrap bg-white">
                 <span>Travel location - </span>
-                <a class="hover text-success" ng-if="course.travel_to_session == '1'" ng-click="edit()"><span class="text-transform">{{course.nickname}}</span> offer travel to session ,edit location!</a>
+                <a class="hover text-success" ng-if="course.travel_to_session == '1'" ng-click="edit()"><span class="text-transform">{{course.nickname}}</span> offer travel service, please enter your location</a>
                 <a class="hover text-danger" ng-if="course.travel_to_session != '1'"><span class="text-transform">{{course.nickname}}</span> does not offer travel services.</a>
                 <div ng-if="input.travel_to_session == '1'"><span class="btn" ng-click="edit()">You want to have you course at : {{format_address}}</span></div>
             </div>

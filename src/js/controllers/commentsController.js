@@ -23,7 +23,15 @@ angular.module("Skillopedia").controller("commentsController", function($scope, 
 				errorServices.autoHide("Server error");
 			}
 			if ($scope.no_more) {
-				$scope.page.message = $scope.comments.length + " records found";
+				if ($scope.comments.length == 0) {
+					$scope.page.message = "No record found";
+				}
+				if ($scope.comments.length == 1) {
+					$scope.page.message = data.Result.Comments.totalRow + " record found ";
+				}
+				if ($scope.comments.length > 1) {
+					$scope.page.message = data.Result.Comments.totalRow + " records found ";
+				}
 			}
 			$scope.page.pn++;
 		})
