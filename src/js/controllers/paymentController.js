@@ -4,6 +4,9 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 		rediect();
 		return;
 	}
+	$scope.select_payment = function(pay_with) {
+		$scope.pay_with = pay_with;
+	}
 	$scope.input = {};
 	$scope.id = new Date().getTime() + $routeParams.id;
 	toastServices.show();

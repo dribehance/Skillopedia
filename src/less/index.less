@@ -442,6 +442,39 @@
     }
 }
 
+.payment-section {
+    display: block;
+    width: 100%;
+    max-width: 1160px;
+    margin:auto auto;
+    overflow: hidden;
+    // .clearfix;
+    .payment-left {
+        display: block;
+        padding: 15px;
+        margin-bottom: 15px;
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        box-sizing: border-box;
+        // background-color: white;
+    }
+    .payment-amount {
+        padding: 15px;
+        margin: 0 15px;
+        background-color: white;
+    }
+    @media (min-width: 730px) {
+        .payment-left {
+            float: left;
+            width: 65%;
+        }
+        .payment-right {
+            float: right;
+            width: 35%;
+        }
+    }
+}
+
 .alipay,
 .visa,
 .paypal {
@@ -449,7 +482,7 @@
     width: 250px;
     height: 100px;
     vertical-align: middle;
-    border: 1px solid #d6d6d6;
+    // border: 1px solid #d6d6d6;
     border-radius: 4px;
 }
 
@@ -483,7 +516,7 @@
     .visa-content {
         // width: 300px;
         padding: 15px;
-        border: 1px solid #d6d6d6;
+        border: 1px solid #eaeaea;
         background-color: #f4f4f4;
         border-radius: 4px;
     }
@@ -491,7 +524,7 @@
         .visa-label {
             margin-bottom: 15px;
         }
-        width:300px;
+        width:280px;
         margin-right: 20px;
         float: left;
     }
@@ -501,14 +534,15 @@
             font-size: 20px;
         }
     }
-    input,select {
+    input,
+    select {
         border-radius: 4px;
         padding: 13px 15px;
         margin-bottom: 15px;
         width: 100%;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        border: 1px solid #b3b3b3;
+        border: 1px solid #d6d6d6;
         &:focus {
             outline: 0;
         }
