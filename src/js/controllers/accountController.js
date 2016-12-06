@@ -68,12 +68,12 @@ angular.module("Skillopedia").controller("uploadAvatarController", function($sco
 				jpg: 1,
 				jpeg: 1
 			}[flow.getExtension()]) {
-			errorServices.autoHide("必须上传图片")
+			errorServices.autoHide("Picture is required")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 500) {
-			errorServices.autoHide("图片太大，保证图片在500kb以内")
+		if (parseFloat(flow.size) / 1000 > 20000) {
+			errorServices.autoHide("Suggested size: 520*296, below 2M")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
