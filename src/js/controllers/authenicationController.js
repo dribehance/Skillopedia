@@ -15,14 +15,17 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 			errorServices.autoHide(data.message);
 		}
 	});
+	$scope.progress = function(p) {
+		return Math.floor(p * 100);
+	}
 	$scope.telephone = 0;
 	// 身份证
 	$scope.input.idcards = [{
 		id: "",
-		url: "",
+		url: undefined,
 	}, {
 		id: "",
-		url: "",
+		url: undefined,
 	}];
 	// 提交认证
 	$scope.ajaxForm = function() {

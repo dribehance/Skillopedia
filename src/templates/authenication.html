@@ -22,7 +22,7 @@
                         <span>Phone Number<em class="text-danger text-sm">*</em> <em class="text-danger text-sm" ng-show="authenForm.telephone.$dirty && authenForm.telephone.$invalid">Enter Correct Telephone(xxx-xxx-xxxx)</em></span>
                         <div class="course-input">
                             <!-- /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/ -->
-                            <input type="text" name="telephone" ng-model="input.telephone" ng-required="true" ng-keydown="parse_telephone($event)" mark placeholder="Enter Your Phone Number,eg: 400-000-0000" class="full-width" />
+                            <input type="text" name="telephone" ng-model="input.telephone" ng-required="true" ng-keydown="parse_telephone($event)" mark placeholder="Enter Your Phone Number,eg: xxx-xxx-xxxx" class="full-width" />
                         </div>
                     </div>
                 </div>
@@ -88,9 +88,14 @@
                     <div class="m-session pull-left">
                         <img ng-src="../images/example_12.png" class="full-width full-height" alt="">
                     </div>
-                    <div class="m-session pull-left" flow-init="{singleFile:true}" ng-repeat="card in input.idcards" ng-controller="uploadIdcardController" ng-form="uploadIdcarForm">
-                        <input type="hidden" name="card_url" ng-model="card.url" ng-required="true">
+                    <div class="m-session pull-left" flow-init="{singleFile:true}" ng-repeat="card in input.idcards" ng-controller="uploadIdcardController" ng-form="uploadIdcarForm" style="position: relative;">
+                        <input type="hidden" name="card_url" ng-model="card.url">
                         <img ng-src="../images/example_13.png" flow-btn flow-img="$flow.files[0]" class="full-width full-height" alt="" style="max-width:367px;max-height:243px">
+                        <div class="progress progress-striped" ng-if="$flow.files[0].isUploading()">
+                            <div class="progress-bar" ng-style="{width: ($flow.files[0].progress() * 100) + '%'}">
+                                <span>{{progress($flow.files[0].progress())+"%"}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <label>
@@ -109,7 +114,7 @@
                         <span>Skillpier will review your application and response application within 48 hours</span>
                     </div>
                     <div class="nextbtn-addr">
-                        <div class="authen-number">customer service：400-300-3000</div>
+                        <div class="authen-number">customer service：714-213-9873</div>
                     </div>
                     <div class="anthen-tips">You have {{user.authen_num}} times to reapply, if you have any question, please contact us</div>
                 </div>
@@ -122,7 +127,7 @@
                         <span>We are sorry to inform you that your application has not been approved.</span>
                     </div>
                     <div class="nextbtn-addr">
-                        <div class="authen-number">customer service：400-300-3000</div>
+                        <div class="authen-number">customer service：714-213-9873</div>
                         <div class="authen-recertification" ng-click="reauthen()" ng-if="user.authen_num !='0'">Reapply</div>
                     </div>
                     <div class="anthen-tips">You can reapply {{user.authen_num}}  more times. If you have any questions, please contact us.

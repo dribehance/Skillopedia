@@ -255,6 +255,7 @@
     .clearfix();
     .account-avatar {
         display: block;
+        position: relative;
         width: 200px;
         height: 200px;
         margin: 0 auto 15px;
@@ -311,10 +312,13 @@ input.pickadate {
 
 .step-wrap {
     position: relative;
-    .step_1,.step_2,.step_3,.step_4 {
+    .step_1,
+    .step_2,
+    .step_3,
+    .step_4 {
         position: absolute;
-        width:25%;
-        top:0;
+        width: 25%;
+        top: 0;
         bottom: 0;
     }
     .step_1 {
@@ -328,5 +332,27 @@ input.pickadate {
     }
     .step_4 {
         left: 75%;
+    }
+}
+
+.progress {
+    position: absolute;
+    left: -1px;
+    right: -2px;
+    top: 50%;
+    height: 20px;
+    line-height: 20px;
+    margin-top: -10px;
+    border: 1px solid fade(black, 20%);
+    background-color: fade(black, 10%);
+    border-radius: 5px;
+    color: white;
+    .progress-bar {
+        background-color: fade(@brand-primary, 80%);
+        span {
+            display: block;
+            padding: 0;
+            text-align: right;
+        }
     }
 }

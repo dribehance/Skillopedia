@@ -14,6 +14,9 @@ angular.module("Skillopedia").controller("accountController", function($scope, $
 			errorServices.autoHide(data.message);
 		}
 	})
+	$scope.progress = function(p) {
+		return Math.floor(p * 100);
+	}
 	$scope.ajaxForm = function() {
 		if ($scope.input.password_1 != $scope.input.password_2) {
 			errorServices.autoHide("Password not the same")
@@ -57,6 +60,7 @@ angular.module("Skillopedia").controller("uploadAvatarController", function($sco
 		flow.opts.testChunks = false;
 		flow.opts.fileParameterName = "image_01";
 		flow.opts.query = {
+			"invoke": "h5",
 			"token": localStorageService.get("token")
 		};
 		flow.upload();
@@ -77,5 +81,8 @@ angular.module("Skillopedia").controller("uploadAvatarController", function($sco
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
+	});
+	$scope.$on('flow::fileSuccess', function(file, message, chunk) {
+		errorServices.autoHide("Upload successfully");
 	});
 })

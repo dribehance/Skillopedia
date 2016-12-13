@@ -13,6 +13,11 @@
                 <div class="account-center-left" flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-attrs="{accept:'image/*'}" ng-controller="uploadAvatarController">
                     <div class="account-avatar">
                         <img ng-src="{{staticImageUrl + user.image_01}}" err-src="../images/example_7.png" flow-img="$flow.files[0]" alt="">
+                        <div class="progress progress-striped" ng-if="$flow.files[0].isUploading()">
+                            <div class="progress-bar" ng-style="{width: ($flow.files[0].progress() * 100) + '%'}">
+                                <span>{{progress($flow.files[0].progress())+"%"}}</span>
+                            </div>
+                        </div>
                     </div>
                     <button class="btn btn-second btn-block" flow-btn >Upload Image</button>
                 </div>

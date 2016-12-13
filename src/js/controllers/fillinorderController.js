@@ -145,6 +145,9 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
         $scope.calculate();
         $.magnificPopup.close();
     };
+    $scope.query_remain = function() {
+        return parseFloat($scope.calendar.size) - parseFloat($scope.calendar.selected.length);
+    };
     // parse iframe map url
     $scope.get_map = function(state, city, street, unit, type) {
         // var map_url = "https://maps.google.com/maps?q=" + state + city + street + "&output=embed";
