@@ -37,7 +37,7 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 			telephone: $scope.input.telephone,
 			cover_ID_01: $scope.input.idcards[0].url,
 			cover_ID_02: $scope.input.idcards[1].url,
-			category_name: $scope.input.category.category_02_name,
+			category_name: $scope.input.category && $scope.input.category.category_02_name,
 			experiences: $scope.input.experience
 		}).then(function(data) {
 			toastServices.hide()
@@ -67,7 +67,7 @@ angular.module("Skillopedia").controller("uploadIdcardController", function($sco
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
 		if (is_big) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 			extension = ext;
 			return ext;
 		})
@@ -81,7 +81,7 @@ angular.module("Skillopedia").controller("uploadIdcardController", function($sco
 			"token": localStorageService.get("token"),
 			"filename": filename
 		};
-		toastServices.show();
+		// toastServices.show();
 		flow.upload();
 	});
 	$scope.$on('flow::fileAdded', function(event, flowFile, flow) {
@@ -96,7 +96,7 @@ angular.module("Skillopedia").controller("uploadIdcardController", function($sco
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 20000) {
+		if (parseFloat(flow.size) / 1000 > 2000) {
 			is_big = true;
 			toastServices.hide();
 			errorServices.autoHide("Suggested size: 520*296, below 2M")

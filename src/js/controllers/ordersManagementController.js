@@ -32,10 +32,10 @@ angular.module("Skillopedia").controller("ordersManagementController", function(
 					$scope.page.message = "No record found";
 				}
 				if ($scope.orders.length == 1) {
-					$scope.page.message = data.Result.OrderList.totalRow + " record found ";
+					$scope.page.message = data.Result.CoachOrderList.totalRow + " record found ";
 				}
 				if ($scope.orders.length > 1) {
-					$scope.page.message = data.Result.OrderList.totalRow + " records found ";
+					$scope.page.message = data.Result.CoachOrderList.totalRow + " records found ";
 				}
 			}
 			$scope.page.pn++;
