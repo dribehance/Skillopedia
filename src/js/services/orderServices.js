@@ -131,6 +131,19 @@ angular.module("Skillopedia").factory("orderServices", function($http, localStor
 				return data.data;
 			});
 		},
+		// 提交账单地址
+		post_billing_address: function(input) {
+			return $http({
+				// by dribehance <dribehance.kksdapp.com>
+				url: config.url + "/app/Pays/verifyVisaWebPayments",
+				method: "GET",
+				params: angular.extend({}, config.common_params, {
+					token: localStorageService.get("token")
+				}, input)
+			}).then(function(data) {
+				return data.data;
+			});
+		},
 		// 发起支付
 		pay_by_visa: function(input) {
 			return $http({

@@ -460,8 +460,8 @@ angular.module("Skillopedia").controller("uploadController", function($scope, er
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 2000) {
-			errorServices.autoHide("Suggested size: 520*296, below 2M")
+		if (parseFloat(flow.size) / 1000 > 3000) {
+			errorServices.autoHide("Suggested size: 520*296, below 3M")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
@@ -504,8 +504,8 @@ angular.module("Skillopedia").controller("uploadCoversController", function($sco
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		// if (parseFloat(flow.size) / 1000 > 2000) {
-		// 	errorServices.autoHide("Suggested size: 520*296, below 2M")
+		// if (parseFloat(flow.size) / 1000 > 3000) {
+		// 	errorServices.autoHide("Suggested size: 520*296, below 3M")
 		// 	event.preventDefault(); //prevent file from uploading
 		// 	return;
 		// }
@@ -552,8 +552,8 @@ angular.module("Skillopedia").controller("uploadPosterController", function($sco
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 2000) {
-			errorServices.autoHide("Suggested size: 520*296, below 2M")
+		if (parseFloat(flow.size) / 1000 > 3000) {
+			errorServices.autoHide("Suggested size: 520*296, below 3M")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}

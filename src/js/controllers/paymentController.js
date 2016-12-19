@@ -4,10 +4,21 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 		rediect();
 		return;
 	}
+	$scope.is_billing = false;
 	$scope.select_payment = function(pay_with) {
 		$scope.pay_with = pay_with;
 	}
-	$scope.input = {};
+	$scope.input = {
+		last_time: new Date().getTime()
+	};
+	if (localStorageService.get("billing_address")) {
+		// 缓存一个小时
+		if (new Date().getTime() - localStorageService.get("billing_address").last_time > 3600000) {
+			localStorageServicel.remove("billing_address");
+		} else {
+			$scope.input = angular.extend({}, $scope.input, localStorageService.get("billing_address"));
+		}
+	}
 	$scope.id = new Date().getTime() + $routeParams.id;
 	toastServices.show();
 	orderServices.query_payment({
@@ -58,6 +69,25 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 		$timeout(function() {
 			$location.path("index").search("id", null).replace();
 		}, 2000)
+	}
+	$scope.ajaxBilling = function() {
+		localStorageService.set("billing_address", $scope.input);
+		toastServices.show();
+		orderServices.post_billing_address({
+			first_name: $scope.input.first_name,
+			last_name: $scope.input.last_name,
+			street: $scope.input.street,
+			city: $scope.input.city,
+			state: $scope.input.state,
+			phone: $scope.input.phone,
+		}).then(function(data) {
+			toastServices.hide()
+			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+				$scope.is_billing = true;
+			} else {
+				errorServices.autoHide(data.message);
+			}
+		})
 	}
 	$scope.ajaxForm = function() {
 		toastServices.show();

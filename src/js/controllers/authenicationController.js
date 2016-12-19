@@ -96,10 +96,10 @@ angular.module("Skillopedia").controller("uploadIdcardController", function($sco
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 2000) {
+		if (parseFloat(flow.size) / 1000 > 3000) {
 			is_big = true;
 			toastServices.hide();
-			errorServices.autoHide("Suggested size: 520*296, below 2M")
+			errorServices.autoHide("Suggested size: 520*296, below 3M")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
