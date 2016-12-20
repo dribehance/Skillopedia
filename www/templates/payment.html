@@ -50,7 +50,7 @@
                         <input type="text" placeholder="Phone" name="phone" mark ng-model="input.phone" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="billingForm.$invalid">Next</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="billingForm.$invalid">Continue</button>
             </form>
             <div class="payment-step-2" ng-if="is_billing">
                 <p>Pay with</p>
@@ -124,6 +124,7 @@
                         </form>
                     </div>
                 </div>
+                <span class="hover" style="color: blue" ng-click="last_step()"> Back</span>
             </div>
         </div>
     </div>

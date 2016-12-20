@@ -135,7 +135,7 @@ angular.module("Skillopedia").factory("orderServices", function($http, localStor
 		post_billing_address: function(input) {
 			return $http({
 				// by dribehance <dribehance.kksdapp.com>
-				url: config.url + "/app/Pays/verifyVisaWebPayments",
+				url: config.url + "/app/OrdersManage/updateOrdersInfo",
 				method: "GET",
 				params: angular.extend({}, config.common_params, {
 					token: localStorageService.get("token")

@@ -12,12 +12,15 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 		last_time: new Date().getTime()
 	};
 	if (localStorageService.get("billing_address")) {
-		// 缓存一个小时
-		if (new Date().getTime() - localStorageService.get("billing_address").last_time > 3600000) {
-			localStorageServicel.remove("billing_address");
+		// 缓存2分钟
+		if (new Date().getTime() - localStorageService.get("billing_address").last_time > 120000) {
+			localStorageService.remove("billing_address");
 		} else {
 			$scope.input = angular.extend({}, $scope.input, localStorageService.get("billing_address"));
 		}
+	}
+	$scope.last_step = function() {
+		$scope.is_billing = false;
 	}
 	$scope.id = new Date().getTime() + $routeParams.id;
 	toastServices.show();
@@ -77,9 +80,11 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 			first_name: $scope.input.first_name,
 			last_name: $scope.input.last_name,
 			street: $scope.input.street,
-			city: $scope.input.city,
+			city_town: $scope.input.city,
 			state: $scope.input.state,
+			zip_code: $scope.input.zipcode,
 			phone: $scope.input.phone,
+			orders_ids: $routeParams.id,
 		}).then(function(data) {
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
@@ -97,12 +102,12 @@ angular.module("Skillopedia").controller("paymentController", function($scope, $
 			cardNumber: $scope.input.visa_card_id,
 			expirationDate: $scope.input.visa_card_month.toString() + $scope.input.visa_card_year.toString(),
 			code: $scope.input.visa_card_code,
-			first_name: $scope.input.first_name,
-			last_name: $scope.input.last_name,
-			street: $scope.input.street,
-			city: $scope.input.city,
-			state: $scope.input.state,
-			phone: $scope.input.phone,
+			// first_name: $scope.input.first_name,
+			// last_name: $scope.input.last_name,
+			// street: $scope.input.street,
+			// city: $scope.input.city,
+			// state: $scope.input.state,
+			// phone: $scope.input.phone,
 		}).then(function(data) {
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
