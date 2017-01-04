@@ -52,11 +52,20 @@
     }
     .long-title {
         display: block;
+        position: relative;
         margin-bottom: 8px;
         line-height: 26px;
         font-size: 20px;
         font-weight: 700;
         overflow: hidden;
+        &.order-item {
+            padding-right: 155px;
+            span.timestamp {
+                position: absolute;
+                right: 0;
+                font-size: 16px;
+            }
+        }
     }
     .auto-title {
         display: block;

@@ -24,7 +24,7 @@ angular.module("Skillopedia").factory("errorServices", function($rootScope, $tim
 			// tip error
 			switch (status) {
 				case 0:
-					this.autoHide("连接超时");
+					this.autoHide("Connect Timeout");
 					break;
 				case 500:
 				case 501:
@@ -36,7 +36,7 @@ angular.module("Skillopedia").factory("errorServices", function($rootScope, $tim
 				case 507:
 				case 509:
 				case 510:
-					this.autoHide("服务器连接出错");
+					this.autoHide("Server Error");
 					break;
 				default:
 					;

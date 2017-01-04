@@ -20,7 +20,7 @@
                     <span class="official-coach" ng-if="order.Course.is_official"></span>
                 </div>
                 <div class="coach-info" ng-click="local_go(order.orders_id)">
-                    <div class="long-title text-ellipsis">{{order.Course.title}}</div>
+                    <div class="long-title text-ellipsis order-item">{{order.Course.title}} <span class="timestamp">{{order.post_time}}</span></div>
                     <span class="pull-right" style="margin-left:8px;">x{{order.buy_amount}}</span>
                     <span class="pull-right text-primary text-big">{{order.Course.session_rate|currency:"$"}}</span>
                     <div style="margin-bottom:10px;" class="text-transform">{{order.Course.coach_name}}</div>

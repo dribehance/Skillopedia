@@ -348,7 +348,7 @@ angular.module("Skillopedia").controller("editCourseController", function($scope
 				return !r.partial_match;
 			});
 			if (result.length == 0) {
-				$scope.street_error = "the street name or number appears to be invalid";
+				$scope.street_error = "The street name or number is not correct";
 				return;
 			}
 			$scope.street_error = "";

@@ -21,7 +21,12 @@ angular.module("Skillopedia").controller("orderCommentController", function($sco
 	$scope.hover = function(name, index) {
 		return $scope.input[name] = index;
 	}
+	var commenting = false;
 	$scope.ajaxForm = function() {
+		if (commenting) {
+			return;
+		}
+		commenting = true;
 		toastServices.show();
 		orderServices.comment({
 			orders_id: $routeParams.id,
@@ -32,7 +37,8 @@ angular.module("Skillopedia").controller("orderCommentController", function($sco
 			teaching_environment: $scope.input.environment,
 			teaching_attitude: $scope.input.attitude
 		}).then(function(data) {
-			toastServices.hide()
+			toastServices.hide();
+			commenting = false;
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				errorServices.autoHide(data.message);
 				$timeout(function() {

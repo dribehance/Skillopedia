@@ -106,10 +106,10 @@
                                 </div>
                                 <div class="clearfix">
                                     <div class="visa-input">
-                                        <input type="number" placeholder="Card number" required name="visa_card_id" ng-model="input.visa_card_id">
+                                        <input type="number" placeholder="Card number" required name="visa_card_id" ng-model="input.visa_card_id" maxlength="16" ng-class="{'text-danger':visaForm.visa_card_id.$invalid && visaForm.visa_card_id.$dirty}">
                                     </div>
                                     <div class="visa-input">
-                                        <input type="number" placeholder="Month" class="month" min="0" max="12" required name="visa_card_id" ng-model="input.visa_card_month">
+                                        <input type="number" placeholder="Month" class="month" min="0" max="12" required name="visa_card_month" ng-model="input.visa_card_month">
                                         <input type="number" placeholder="Year" class="year" min="0" max="99" required name="visa_card_year" ng-model="input.visa_card_year">
                                     </div>
                                     <div class="visa-input">

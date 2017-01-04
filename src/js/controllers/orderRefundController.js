@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("orderRefundController", function($scope, $routeParams, $route, $timeout, orderServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("orderRefundController", function($scope, $rootScope, $routeParams, $route, $timeout, orderServices, errorServices, toastServices, localStorageService, config) {
 	toastServices.show();
 	orderServices.query_refund({
 		orders_id: $routeParams.id
@@ -15,6 +15,9 @@ angular.module("Skillopedia").controller("orderRefundController", function($scop
 				}
 				return r;
 			});
+			if ($scope.refund_meta.can_refund_num == 0) {
+				$rootScope.back();
+			}
 			$scope.calculate();
 		} else {
 			errorServices.autoHide(data.message);

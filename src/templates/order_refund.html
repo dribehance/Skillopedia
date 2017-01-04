@@ -46,7 +46,7 @@
             </div>
             <div class="drawback">
                 <div class="refund-btn clearfix">
-                    <div class="items-refund pull-left" ng-click="refund()" ng-if="refund_meta.can_refund_num>0">
+                    <div class="items-refund pull-left hover" ng-click="refund()" ng-if="refund_meta.can_refund_num>0">
                         Refund {{total_refund_money|currency:"$"}}
                     </div>
                     <a class="lab" ng-href="#/order?id={{order.orders_id}}">Click here for detail</a>

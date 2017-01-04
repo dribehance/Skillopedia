@@ -14,8 +14,8 @@
                     <imageview data-rate="1" src="staticImageUrl + order.Course.buy_image_01"></imageview>
                 </div>
                 <b>{{order.Course.buy_nickname}}</b>
-                <div>{{order.leave_message}}</div>
-                <a ng-href="/show?user_id={{order.Course.user_id}}" class="btn btn-success pull-right">Detail</a>
+                <div>{{order.leave_message||"No message leave"}}</div>
+                <!-- <a ng-href="#/show?user_id={{order.Course.user_id}}" class="btn btn-success pull-right">Detail</a> -->
             </div>
             <!-- 订单详情 -->
             <div class="list-group">
@@ -63,7 +63,8 @@
                     <li><a href="">Traffic costs:<em>{{order.go_door_traffic_cost|currency:"$"}}</em></a></li>
                     <li><a href="">Service fee:<em>{{order.first_joint_fee|currency:"$"}}</em></a></li>
                     <li><a href="">Amount:<em>x{{order.buy_amount}}</em></a></li>
-                    <li><a href="">Discount:<em>{{order.discount_price|currency:"$"}}</em></a></li>
+                    <li><a href="">Discount:<em>{{order.discount_price}}% off</em></a></li>
+                    <li><a href="">Coupon:<em>{{order.my_coupon_money|currency:"$"}}</em></a></li>
                     <li><a href="">Total:<em>{{order.total_session_rate|currency:"$"}}</em></a></li>
                 </ul>
             </div>
@@ -73,7 +74,7 @@
             </div>
             <a class="coach-item" ng-href="#/detail?course_id={{order.Course.course_id}}">
                 <div class="coach-avatar">
-                    <imageview data-rate="1" center-only src="staticImageUrl + order.Course.coach_image"></imageview>
+                    <imageview data-rate="1" center-only src="staticImageUrl + order.Course.course_images_01"></imageview>
                     <span class="official-coach" ng-if="order.Course.is_official"></span>
                 </div>
                 <div class="coach-info">
