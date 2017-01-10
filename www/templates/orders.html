@@ -49,7 +49,7 @@
                         <!-- refund active #/order_refund-->
                         <a class="btn btn-danger" ng-if="order.status == '21'" ng-href="#/order_refund?id={{order.orders_id}}">Refund</a>
                         <!-- refund disabled -->
-                        <span class="btn btn-danger" disabled ng-if="order.status == '22'">refund</span>
+                        <span class="btn btn-danger" disabled ng-if="order.status == '22'">Refund</span>
                         <!-- Buy again when course is finish -->
                         <a class="btn btn-default" ng-if="order.status == '30' || order.status == '40'" ng-href="#/detail?course_id={{order.Course.course_id}}">Buy again</a>
                         <!-- comment when course is finish #/order_comment-->

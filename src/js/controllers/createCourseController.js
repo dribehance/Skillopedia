@@ -1,8 +1,8 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("createCourseController", function($scope, $rootScope, $sce, $timeout, $location, $window, googleMapServices, skillopediaServices, filterFilter, coursesServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("createCourseController", function($scope, $routeParams, $rootScope, $sce, $timeout, $location, $window, googleMapServices, skillopediaServices, filterFilter, coursesServices, errorServices, toastServices, localStorageService, config) {
 	// 未认证，跳转认证
 	// agent_level 1:普通用户 2:教练
-	if ($rootScope.user.agent_level != "2") {
+	if ($rootScope.user.agent_level != "2" && !$routeParams.flag) {
 		$location.path("authenication").replace();
 		return;
 	}
@@ -19,7 +19,9 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 	};
 	// 获取新建课程id
 	toastServices.show();
-	coursesServices.prapare_create_course().then(function(data) {
+	coursesServices.prapare_create_course({
+		is_auth_public: $routeParams.flag ? 2 : 1,
+	}).then(function(data) {
 		toastServices.hide()
 		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 			$scope.course_id = data.course_id;
@@ -412,7 +414,7 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 			}).map(function(w) {
 				return w.time + "@" + w.week;
 			}).join("#"),
-			user_images_01: $scope.input.poster
+			user_images_01: $scope.input.poster,
 		}).then(function(data) {
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
@@ -433,7 +435,7 @@ angular.module("Skillopedia").controller("uploadController", function($scope, er
 	var filename, extension;
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 			extension = ext;
 			return ext;
 		})
@@ -476,7 +478,7 @@ angular.module("Skillopedia").controller("uploadCoversController", function($sco
 	var filename, extension;
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 			extension = ext;
 			return ext;
 		})
@@ -524,7 +526,7 @@ angular.module("Skillopedia").controller("uploadPosterController", function($sco
 	var filename, extension;
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 			extension = ext;
 			return ext;
 		})

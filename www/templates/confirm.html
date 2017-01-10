@@ -17,16 +17,32 @@
 <!-- content confirm box yes or no -->
 <div class="confirm-box" ng-if="confirm.content_type =='content'">
     <div class="confirm-body">
-        <div class="confirm-header">
-            {{confirm.title}}
-            <i class="pull-right fa fa-times close" ng-click="confirm.cancel()"></i>
-        </div>
         <div class="confirm-content">
-            {{confirm.content}}
+            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">{{confirm.content_text}}</p>
+            <p class="text-center">
+                <span class="btn btn-primary block full-width btn-lg btn-md" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+            </p>
+            <p class="text-center">
+                <small class="hover" ng-click="confirm.cancel()">{{confirm.cancel_text}}</small>
+            </p>
         </div>
-        <div class="confirm-footer">
-            <span class="btn btn-default" ng-click="confirm.cancel()">{{confirm.cancel_text}}</span>
-            <span class="btn btn-primary" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+    </div>
+</div>
+<!-- content confirm box yes or no -->
+<div class="confirm-box" ng-if="confirm.content_type =='content_1'">
+    <div class="confirm-body">
+        <div class="confirm-content">
+            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">{{confirm.content_text}}</p>
+            <p class="text-center"> In the meantime, you can</p>
+            <p class="text-center">
+                <span class="btn btn-success block full-width btn-lg btn-md" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+            </p>
+            <p class="text-center">or</p>
+            <p class="text-center">
+                <small class="btn btn-primary block full-width btn-lg btn-md" ng-click="confirm.cancel()">{{confirm.cancel_text}}</small>
+            </p>
         </div>
     </div>
 </div>
@@ -38,27 +54,23 @@
             <p class="text-center">{{confirm.content_text}}</p>
             <autocomplete location="input.location"></autocomplete>
             <p class="text-center">
-                <span class="btn btn-primary block full-width btn-lg btn-md" ng-if="confirm.content_type =='autocomplete'" ng-click="confirm.ok_submit()">{{confirm.ok_text}}</span>
+                <span class="btn btn-primary block full-width btn-lg btn-md" ng-click="confirm.ok_submit()">{{confirm.ok_text}}</span>
             </p>
             <p class="text-center">
                 <small class="hover" ng-click="confirm.cancel()">{{confirm.cancel_text}}</small>
             </p>
-            
         </div>
     </div>
 </div>
 <!-- dialog confirm box for just message feedback -->
 <div class="confirm-box" ng-if="confirm.content_type =='dialog'">
     <div class="confirm-body">
-        <div class="confirm-header">
-            {{confirm.title}}
-            <i class="pull-right fa fa-times close" ng-click="confirm.cancel()"></i>
-        </div>
         <div class="confirm-content">
-            {{confirm.content}}
-        </div>
-        <div class="confirm-footer">
-            <span class="btn btn-default" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">{{confirm.content_text}}</p>
+            <p class="text-center">
+                <span class="btn btn-primary block full-width btn-lg btn-md" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+            </p>
         </div>
     </div>
 </div>

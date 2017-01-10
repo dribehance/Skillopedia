@@ -329,18 +329,67 @@ input.pickadate {
         width: 25%;
         top: 0;
         bottom: 0;
+        background-size: 100%;
+        background-repeat: no-repeat;
     }
     .step_1 {
         left: 0;
+        z-index: 4;
+        background-image:url("../images/step_1_active.png");
+        &.active {
+            background-image:url("../images/step_1_active.png");
+        }
+        &.success {
+            background-image:url("../images/step_1_success.png");
+        }
+        &.error {
+            background-image:url("../images/step_1_error.png");
+        }
     }
     .step_2 {
         left: 25%;
+        z-index: 3;
+        margin-left: -18px;
+        background-image:url("../images/step_2_normal.png");
+        &.active {
+            background-image:url("../images/step_2_active.png");
+        }
+        &.success {
+            background-image:url("../images/step_2_success.png");
+        }
+        &.error {
+            background-image:url("../images/step_2_error.png");
+        }
     }
     .step_3 {
         left: 50%;
+        z-index: 2;
+        margin-left: -36px;
+        background-image:url("../images/step_3_normal.png");
+        &.active {
+            background-image:url("../images/step_3_active.png");
+        }
+        &.success {
+            background-image:url("../images/step_3_success.png");
+        }
+        &.error {
+            background-image:url("../images/step_3_error.png");
+        }
     }
     .step_4 {
         left: 75%;
+        z-index: 1;
+        margin-left: -54px;
+        background-image:url("../images/step_4_normal.png");
+        &.active {
+            background-image:url("../images/step_4_active.png");
+        }
+        &.success {
+            background-image:url("../images/step_4_success.png");
+        }
+        &.error {
+            background-image:url("../images/step_4_error.png");
+        }
     }
 }
 

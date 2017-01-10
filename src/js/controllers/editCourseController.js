@@ -2,7 +2,7 @@
 angular.module("Skillopedia").controller("editCourseController", function($scope, $routeParams, $rootScope, $sce, $timeout, $location, $window, googleMapServices, skillopediaServices, filterFilter, coursesServices, errorServices, toastServices, localStorageService, config) {
 	// 未认证，跳转认证
 	// agent_level 1:普通用户 2:教练
-	if ($rootScope.user.agent_level != "2") {
+	if ($rootScope.user.agent_level != "2" && !$routeParams.flag) {
 		$location.path("authenication").replace();
 		return;
 	}
@@ -528,7 +528,7 @@ angular.module("Skillopedia").controller("uploadController", function($scope, er
 	var filename, extension;
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 			extension = ext;
 			return ext;
 		})
@@ -571,7 +571,7 @@ angular.module("Skillopedia").controller("uploadCoversController", function($sco
 		var filename, extension;
 		$scope.$on("flow::filesSubmitted", function(event, flow) {
 			if (flow.files.length == 0) return;
-			flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+			flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 				extension = ext;
 				return ext;
 			})
@@ -619,7 +619,7 @@ angular.module("Skillopedia").controller("uploadPosterController", function($sco
 	var filename, extension;
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif/g, function(ext) {
+		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
 			extension = ext;
 			return ext;
 		})

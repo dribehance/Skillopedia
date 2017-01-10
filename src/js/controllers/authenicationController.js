@@ -1,10 +1,19 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("authenicationController", function($scope, $rootScope, $route, $filter, $timeout, skillopediaServices, userServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("authenicationController", function($scope, $window, $rootScope, $route, $location, $filter, $timeout, skillopediaServices, userServices, errorServices, toastServices, localStorageService, config) {
 	// it's coach,redirect,agent_level:1 普通用户,2:教练
 	if ($rootScope.user.agent_level == '2') {
 		$rootScope.back();
 		return;
 	}
+	$scope.listen = function() {
+		$timeout(function() {
+			if ($rootScope.user.course_id == 0 && $location.path() == "/authenication") {
+				userServices.sync();
+				$scope.listen();
+			}
+		}, 1000);
+	}
+	$scope.listen();
 	$scope.input = {};
 	$scope.input.gender = "1";
 	// query category list;
@@ -43,9 +52,20 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				errorServices.autoHide(data.message);
-				$timeout(function() {
+				$scope.confirm.ok_text = "Create my first course";
+				$scope.confirm.cancel_text = "Leave and create my course later";
+				$scope.confirm.content_text = "Application submitted. Our administrator will review your application within 24 hours.";
+				$scope.confirm.content_type = "content_1"
+				$scope.confirm.open();
+				$scope.confirm.cancle_callback = function() {
 					userServices.sync();
-				}, 2000)
+					$route.reload();
+				}
+				$scope.confirm.ok_callback = function() {
+					// $location.path("create_course").search("flag", "_t");
+					userServices.sync();
+					$window.open($location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/create_course?flag=_t", '_blank', 'toolbar=yes, location=yes, status=yes, menubar=yes, scrollbars=yes');
+				};
 			} else {
 				errorServices.autoHide(data.message);
 			}

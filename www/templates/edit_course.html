@@ -126,8 +126,8 @@
             <div class="step" ng-show="step == 2" ng-form="stepForm2">
                 <!-- 步骤框 -->
                 <div class="step-wrap">
-                    <div class="step_1 hover" ng-click="show_step(1)"></div>
-                    <div class="step_2 hover" ng-click="show_step(2)"></div>
+                    <div class="step_1 hover" ng-class="{'error':stepForm1.$invalid,'success':stepForm1.$valid}" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover active" ng-click="show_step(2)"></div>
                     <div class="step_3 hover" ng-click="show_step(3)"></div>
                     <div class="step_4 hover" ng-click="show_step(4)"></div>
                     <img ng-src="../images/step_2.png" class="full-width" alt="">
@@ -272,9 +272,9 @@
             <!-- 新建课程第3步 -->
             <div class="step" ng-show="step == 3" ng-form="stepForm3">
                 <div class="step-wrap">
-                    <div class="step_1 hover" ng-click="show_step(1)"></div>
-                    <div class="step_2 hover" ng-click="show_step(2)"></div>
-                    <div class="step_3 hover" ng-click="show_step(3)"></div>
+                    <div class="step_1 hover" ng-class="{'error':stepForm1.$invalid,'success':stepForm1.$valid}" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover" ng-class="{'error':stepForm2.$invalid,'success':stepForm2.$valid}" ng-click="show_step(2)"></div>
+                    <div class="step_3 hover active" ng-click="show_step(3)"></div>
                     <div class="step_4 hover" ng-click="show_step(4)"></div>
                     <img ng-src="../images/step_3.png" class="full-width" alt="">
                 </div>
@@ -375,10 +375,10 @@
             <!-- 新建课程 第四步 -->
             <div class="step" ng-show="step == 4" ng-form="stepForm4">
                 <div class="step-wrap">
-                    <div class="step_1 hover" ng-click="show_step(1)"></div>
-                    <div class="step_2 hover" ng-click="show_step(2)"></div>
-                    <div class="step_3 hover" ng-click="show_step(3)"></div>
-                    <div class="step_4 hover" ng-click="show_step(4)"></div>
+                    <div class="step_1 hover" ng-class="{'error':stepForm1.$invalid,'success':stepForm1.$valid}" ng-click="show_step(1)"></div>
+                    <div class="step_2 hover" ng-class="{'error':stepForm2.$invalid,'success':stepForm2.$valid}" ng-click="show_step(2)"></div>
+                    <div class="step_3 hover" ng-class="{'error':stepForm3.$invalid,'success':stepForm3.$valid}" ng-click="show_step(3)"></div>
+                    <div class="step_4 hover active" ng-click="show_step(4)"></div>
                     <img ng-src="../images/step_4.png" class="full-width" alt="">
                 </div>
                 <p>Select time frame for your course</p>

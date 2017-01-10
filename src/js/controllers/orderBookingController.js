@@ -81,7 +81,7 @@ angular.module("Skillopedia").controller("orderBookingController", function($sco
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				// errorServices.autoHide(data.message);
 				$scope.confirm.ok_text = "Ok";
-				$scope.confirm.content = data.message;
+				$scope.confirm.content_text = data.message;
 				$scope.confirm.content_type = "dialog"
 				$scope.confirm.open();
 				$scope.confirm.cancle_callback = function() {
