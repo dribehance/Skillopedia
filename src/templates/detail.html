@@ -115,8 +115,8 @@
                 <p class="text-center" ng-if="course.is_stop_course != 1 && course.status == 1">
                     <a class="btn btn-warning btn-lg" ng-href="#/fillinorder?course_id={{course.course_id}}">Get Started</a>
                 </p>
-                <p class="text-center" ng-if="course.status != 1">
-                    The course is out date.
+                <p class="text-center text-danger" ng-if="course.status != 1">
+                    This course is currently not available.
                 </p>
             </div>
             <div class="section sm wrap bg-white detail-group">
