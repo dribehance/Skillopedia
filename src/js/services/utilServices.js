@@ -35,8 +35,8 @@ angular.module("Skillopedia").factory("utilServices", function($q) {
 				var canvas = document.createElement("canvas");
 				var ctx = canvas.getContext("2d");
 				ctx.drawImage(img, 0, 0);
-				var MAX_WIDTH = 500;
-				var MAX_HEIGHT = 500;
+				var MAX_WIDTH = 800;
+				var MAX_HEIGHT = 800;
 				var width = img.width;
 				var height = img.height;
 				if (width > height) {
