@@ -52,19 +52,38 @@ angular.module("Skillopedia").controller("accountController", function($scope, $
 		})
 	}
 });
-angular.module("Skillopedia").controller("uploadAvatarController", function($scope, $rootScope, userServices, errorServices, toastServices, localStorageService, config) {
-	$scope.$on("flow::filesSubmitted", function(event, flow, flowFile) {
+angular.module("Skillopedia").controller("uploadAvatarController", function($scope, $rootScope, utilServices, userServices, errorServices, toastServices, localStorageService, config) {
+	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		// $rootScope.back();
-		flow.opts.target = config.url + "/app/UserCenter/UpdateAvatar";
-		flow.opts.testChunks = false;
-		flow.opts.fileParameterName = "image_01";
-		flow.opts.query = {
-			"invoke": "h5",
-			"token": localStorageService.get("token")
-		};
-		flow.upload();
-	})
+		toastServices.show();
+		utilServices.resizeFile(flow.files[0].file).then(function(blob) {
+			var fd = new FormData();
+			fd.append("image_01", blob);
+			userServices.upload_image(fd).then(function(data) {
+				toastServices.hide();
+				errorServices.autoHide(data.message);
+				return data;
+			}, function(e) {
+				toastServices.hide();
+				errorServices.autoHide("upload error");
+			}).then(function(data) {
+				if (!data) return;
+				var filename = data.fileName;
+				toastServices.show();
+				userServices.upload_avatar({
+					filename: filename
+				}).then(function(data) {
+					toastServices.hide();
+					if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+						$rootScope.user.image_01 = filename;
+						errorServices.autoHide(data.message)
+					} else {
+						errorServices.autoHide(data.message);
+					}
+				})
+			})
+		})
+	});
 	$scope.$on('flow::fileAdded', function(event, flowFile, flow) {
 		if (!{
 				png: 1,
@@ -72,17 +91,10 @@ angular.module("Skillopedia").controller("uploadAvatarController", function($sco
 				jpg: 1,
 				jpeg: 1
 			}[flow.getExtension()]) {
+			toastServices.hide();
 			errorServices.autoHide("Picture is required")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 3000) {
-			errorServices.autoHide("Suggested size: 520*296, below 3M")
-			event.preventDefault(); //prevent file from uploading
-			return;
-		}
-	});
-	$scope.$on('flow::fileSuccess', function(file, message, chunk) {
-		errorServices.autoHide("Upload successfully");
 	});
 })

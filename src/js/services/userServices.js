@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").factory("userServices", function($rootScope, $http, facebookServices, localStorageService, config) {
+angular.module("Skillopedia").factory("userServices", function($rootScope, $http, apiServices, facebookServices, localStorageService, config) {
 	return {
 		rsa_key: function(input) {
 			return $http({
@@ -11,6 +11,14 @@ angular.module("Skillopedia").factory("userServices", function($rootScope, $http
 				return data.data;
 			});
 		},
+		upload_image: apiServices._post_formdata(angular.extend({}, config.common_params, {
+			url: config.url + "/app/Experiences/updatePic2",
+			token: localStorageService.get("token")
+		})),
+		upload_avatar: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/UserCenter/UpdateAvatarH5",
+			token: localStorageService.get("token")
+		})),
 		signin: function(input) {
 			return $http({
 				// by dribehance <dribehance.kksdapp.com>

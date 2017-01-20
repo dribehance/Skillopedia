@@ -141,6 +141,7 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 	// mock {id:"",url:""}
 	$scope.input.covers = [];
 	$scope.$on("upload_cover_success", function(event, args) {
+		console.log(args.message)
 		$scope.input.covers.push(args.message)
 	});
 	// 移除封面
@@ -431,25 +432,22 @@ angular.module("Skillopedia").controller("createCourseController", function($sco
 	}
 });
 // uploadController upload certs
-angular.module("Skillopedia").controller("uploadController", function($scope, errorServices, toastServices, localStorageService, config) {
-	var filename, extension;
+angular.module("Skillopedia").controller("uploadController", function($scope, utilServices, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
-			extension = ext;
-			return ext;
+		toastServices.show();
+		utilServices.resizeFile(flow.files[0].file).then(function(blob) {
+			var fd = new FormData();
+			fd.append("image_01", blob);
+			userServices.upload_image(fd).then(function(data) {
+				toastServices.hide();
+				$scope.cert.url = data.fileName;
+				errorServices.autoHide(data.message);
+			}, function(e) {
+				toastServices.hide();
+				errorServices.autoHide("upload error");
+			})
 		})
-		filename = Math.round(Math.random() * 100000000);
-		filename += new Date().getTime() + extension;
-		flow.opts.target = config.url + "/app/Experiences/updatePic";
-		flow.opts.testChunks = false;
-		flow.opts.fileParameterName = "image_01";
-		flow.opts.query = {
-			"invoke": "h5",
-			"token": localStorageService.get("token"),
-			"filename": filename
-		};
-		flow.upload();
 	});
 	$scope.$on('flow::fileAdded', function(event, flowFile, flow) {
 		if (!{
@@ -458,42 +456,33 @@ angular.module("Skillopedia").controller("uploadController", function($scope, er
 				jpg: 1,
 				jpeg: 1
 			}[flow.getExtension()]) {
+			toastServices.hide();
 			errorServices.autoHide("Picture is required")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 3000) {
-			errorServices.autoHide("Suggested size: 520*296, below 3M")
-			event.preventDefault(); //prevent file from uploading
-			return;
-		}
-		$scope.cert.url = "";
-	});
-	$scope.$on('flow::fileSuccess', function(file, message, chunk) {
-		$scope.cert.url = filename;
 	});
 });
 // uploadCoversController
-angular.module("Skillopedia").controller("uploadCoversController", function($scope, errorServices, toastServices, localStorageService, config) {
-	var filename, extension;
+angular.module("Skillopedia").controller("uploadCoversController", function($scope, utilServices, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
-			extension = ext;
-			return ext;
-		})
-		filename = Math.round(Math.random() * 100000000);
-		filename += new Date().getTime() + extension;
-		flow.opts.target = config.url + "/app/Experiences/updatePic";
-		flow.opts.testChunks = false;
-		flow.opts.fileParameterName = "image_01";
-		flow.opts.query = {
-			"invoke": "h5",
-			"token": localStorageService.get("token"),
-			"filename": filename
-		};
 		toastServices.show();
-		flow.upload();
+		utilServices.resizeFile(flow.files[0].file).then(function(blob) {
+			var fd = new FormData();
+			fd.append("image_01", blob);
+			userServices.upload_image(fd).then(function(data) {
+				toastServices.hide();
+				$scope.$flow.files = [];
+				$scope.$emit("upload_cover_success", {
+					message: data.fileName
+				});
+				errorServices.autoHide(data.message);
+			}, function(e) {
+				toastServices.hide();
+				errorServices.autoHide("upload error");
+			})
+		})
 	});
 	$scope.$on('flow::fileAdded', function(event, flowFile, flow) {
 		if (!{
@@ -502,46 +491,33 @@ angular.module("Skillopedia").controller("uploadCoversController", function($sco
 				jpg: 1,
 				jpeg: 1
 			}[flow.getExtension()]) {
+			toastServices.hide();
 			errorServices.autoHide("Picture is required")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		// if (parseFloat(flow.size) / 1000 > 3000) {
-		// 	errorServices.autoHide("Suggested size: 520*296, below 3M")
-		// 	event.preventDefault(); //prevent file from uploading
-		// 	return;
-		// }
-		// $scope.cover.url = "";
-	});
-	$scope.$on('flow::fileSuccess', function(file, message, chunk) {
-		$scope.$flow.files = [];
-		$scope.$emit("upload_cover_success", {
-			message: filename
-		});
-		toastServices.hide();
 	});
 });
 // uploadCoversController
-angular.module("Skillopedia").controller("uploadPosterController", function($scope, errorServices, toastServices, localStorageService, config) {
-	var filename, extension;
+angular.module("Skillopedia").controller("uploadPosterController", function($scope, utilServices, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
-			extension = ext;
-			return ext;
-		})
-		filename = Math.round(Math.random() * 100000000);
-		filename += new Date().getTime() + extension;
-		flow.opts.target = config.url + "/app/Experiences/updatePic";
-		flow.opts.testChunks = false;
-		flow.opts.fileParameterName = "image_01";
-		flow.opts.query = {
-			"invoke": "h5",
-			"token": localStorageService.get("token"),
-			"filename": filename
-		};
 		toastServices.show();
-		flow.upload();
+		utilServices.resizeFile(flow.files[0].file).then(function(blob) {
+			var fd = new FormData();
+			fd.append("image_01", blob);
+			userServices.upload_image(fd).then(function(data) {
+				toastServices.hide();
+				$scope.$flow.files = [];
+				$scope.$emit("upload_poster_success", {
+					message: data.fileName
+				});
+				errorServices.autoHide(data.message);
+			}, function(e) {
+				toastServices.hide();
+				errorServices.autoHide("upload error");
+			})
+		})
 	});
 	$scope.$on('flow::fileAdded', function(event, flowFile, flow) {
 		if (!{
@@ -550,22 +526,10 @@ angular.module("Skillopedia").controller("uploadPosterController", function($sco
 				jpg: 1,
 				jpeg: 1
 			}[flow.getExtension()]) {
+			toastServices.hide();
 			errorServices.autoHide("Picture is required")
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 3000) {
-			errorServices.autoHide("Suggested size: 520*296, below 3M")
-			event.preventDefault(); //prevent file from uploading
-			return;
-		}
-		// $scope.cover.url = "";
-	});
-	$scope.$on('flow::fileSuccess', function(file, message, chunk) {
-		$scope.$flow.files = [];
-		$scope.$emit("upload_poster_success", {
-			message: filename
-		});
-		toastServices.hide();
 	});
 })

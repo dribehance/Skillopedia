@@ -82,27 +82,22 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 	}
 });
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("uploadIdcardController", function($scope, errorServices, toastServices, localStorageService, config) {
-	var filename, extension, is_big = false;
+angular.module("Skillopedia").controller("uploadIdcardController", function($scope, utilServices, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.$on("flow::filesSubmitted", function(event, flow) {
 		if (flow.files.length == 0) return;
-		if (is_big) return;
-		flow.files[0].name.replace(/.png|.jpg|.jpeg|.gif|.PNG|.JPG|.JPEG|.GIF/g, function(ext) {
-			extension = ext;
-			return ext;
+		toastServices.show();
+		utilServices.resizeFile(flow.files[0].file).then(function(blob) {
+			var fd = new FormData();
+			fd.append("image_01", blob);
+			userServices.upload_image(fd).then(function(data) {
+				toastServices.hide();
+				$scope.card.url = data.fileName;
+				errorServices.autoHide(data.message);
+			}, function(e) {
+				toastServices.hide();
+				errorServices.autoHide("upload error");
+			})
 		})
-		filename = Math.round(Math.random() * 100000000);
-		filename += new Date().getTime() + extension;
-		flow.opts.target = config.url + "/app/Experiences/updatePic";
-		flow.opts.testChunks = false;
-		flow.opts.fileParameterName = "image_01";
-		flow.opts.query = {
-			"invoke": "h5",
-			"token": localStorageService.get("token"),
-			"filename": filename
-		};
-		// toastServices.show();
-		flow.upload();
 	});
 	$scope.$on('flow::fileAdded', function(event, flowFile, flow) {
 		if (!{
@@ -116,18 +111,5 @@ angular.module("Skillopedia").controller("uploadIdcardController", function($sco
 			event.preventDefault(); //prevent file from uploading
 			return;
 		}
-		if (parseFloat(flow.size) / 1000 > 3000) {
-			is_big = true;
-			toastServices.hide();
-			errorServices.autoHide("Suggested size: 520*296, below 3M")
-			event.preventDefault(); //prevent file from uploading
-			return;
-		}
-		is_big = false;
-		$scope.card.url = "";
-	});
-	$scope.$on('flow::fileSuccess', function(file, message, chunk) {
-		$scope.card.url = filename;
-		toastServices.hide();
 	});
 })
