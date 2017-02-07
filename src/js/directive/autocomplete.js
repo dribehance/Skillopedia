@@ -4,7 +4,8 @@ angular.module("Skillopedia").directive('autocomplete', function($window, $timeo
 		restrict: 'E',
 		scope: {
 			location: "=",
-			placeholder: "=?"
+			placeholder: "=?",
+			mode: "=?"
 		},
 		templateUrl: "../templates/autocomplete.html",
 		link: function(scope, element, attrs) {
@@ -49,7 +50,6 @@ angular.module("Skillopedia").directive('autocomplete', function($window, $timeo
 				// 	document.getElementById(component).location = '';
 				// 	document.getElementById(component).disabled = false;
 				// }
-				console.log(place);
 				// Get each component of the address from the place details
 				// and fill the corresponding field on the form.
 				var address = {};
@@ -70,10 +70,16 @@ angular.module("Skillopedia").directive('autocomplete', function($window, $timeo
 					if (address.route) {
 						scope.location.street += " " + address.route;
 					}
-					angular.element("#autocomplete").val(scope.location.street);
-					scope.location.city = address.locality || "";
+					scope.location.country = address.country || "";
 					scope.location.state = address.administrative_area_level_1 || "";
+					scope.location.city = address.locality || "";
 					scope.location.zipcode = address.postal_code || "";
+					scope.location.address = (scope.location.street && (scope.location.street + ", ")) + (scope.location.city && (scope.location.city + ", ")) + (scope.location.state && (scope.location.state + ", ")) + scope.location.country;
+					if (scope.mode == "street") {
+						angular.element("#autocomplete").val(scope.location.street);
+					} else {
+						angular.element("#autocomplete").val(scope.location.address);
+					}
 				});
 				// scope.location = address;
 			}

@@ -5,7 +5,7 @@
     </div> -->
     <div class="calendar-day" ng-show="calendar.mode != 'confirm'">
         <datepicker date-format="MMM dd, yyyy" date-min-limit="{{nowaday}}">
-        <input type="text" name="day" ng-model="calendar.day" class="full-width" readonly/>
+        <input type="text" name="day" date-format="MMM dd, yyyy" ng-model="calendar.day" class="full-width" readonly/>
     <i class="fa fa-angle-right pull-right"></i>
     </datepicker>
     </div>

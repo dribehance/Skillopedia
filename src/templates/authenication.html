@@ -115,8 +115,8 @@
                     </div>
                     <div class="nextbtn-addr">
                         <div class="authen-number">customer service：714-213-9873</div>
-                        <div class="authen-recertification" style="background-color: #ffb342" ng-if="user.course_id =='0' && user.authen_num !='0'" ><a ng-href="#/create_course?flag=_t" style="color:white" target="_blank">Publish My Course</a></div>
-                        <div class="authen-recertification" ng-if="user.course_id !='0'" style="background-color: #d4d4d4;    cursor: inherit;border:none">Publish My Course</div>
+                        <div class="authen-recertification" style="background-color: #ffb342;border:none" ng-if="user.course_id =='0' && user.authen_num !='0'" ><a ng-href="#/create_course?flag=_t" style="color:white;border:none;" target="_blank">Publish My Course</a></div>
+                        <div class="authen-recertification" ng-if="user.course_id !='0'" style="border:none;background-color: #d4d4d4;    cursor: inherit;border:none">Publish My Course</div>
                     </div>
                     <!-- <div class="anthen-tips">You have {{user.authen_num}} times to reapply, if you have any question, please contact us</div> -->
                 </div>
@@ -131,8 +131,8 @@
                     <div class="nextbtn-addr">
                         <div class="authen-number">customer service：714-213-9873</div>
                         <div class="authen-recertification" ng-click="reauthen()" ng-if="user.authen_num !='0'">Reapply</div>
-                        <div class="authen-recertification" ng-if="user.course_id =='0' && user.authen_num !='0'" style="background-color: #ffb342"><a ng-href="#/create_course?flag=_t" style="color:white;" target="_blank">Publish My Course</a></div>
-                        <div class="authen-recertification" ng-if="user.course_id !='0'" style="background-color: #d4d4d4;    cursor: inherit;border:none">Publish My Course</div>
+                        <div class="authen-recertification" ng-if="user.course_id =='0' && user.authen_num !='0'" style="background-color: #ffb342;border:none"><a ng-href="#/create_course?flag=_t" style="color:white;border:none;" target="_blank">Publish My Course</a></div>
+                        <div class="authen-recertification" ng-if="user.course_id !='0'" style="border:none;background-color: #d4d4d4;    cursor: inherit;border:none">Publish My Course</div>
                     </div>
                     <div class="anthen-tips">You can reapply {{user.authen_num}}  more times. If you have any questions, please contact us.
                     </div>

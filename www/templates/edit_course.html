@@ -335,7 +335,7 @@
                     <div class="title-input">
                         <span><b class="text-danger"> * </b>Location<b class="text-danger" ng-if="street_error"> - {{street_error}}</b></span>
                         <div class="course-input">
-                            <autocomplete location="input.location" placeholder="'Street address, P.O. box, company name, c/o.'"></autocomplete>
+                            <autocomplete location="input.location" placeholder="'Street address, P.O. box, company name, c/o.'" mode="'street'"></autocomplete>
                         </div>
                         <div class="course-input z-margin">
                             <input type="text" name="apt" ng-model="input.location.apt" class="full-width" placeholder="Apartment, suite, unit, building, floor, etc. (Not Required)" />

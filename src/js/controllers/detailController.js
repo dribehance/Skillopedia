@@ -12,7 +12,7 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 			$scope.course = data.Result.Course;
 			// query schedule
 			$scope.calendar = angular.extend({}, $scope.calendar);
-			$scope.calendar.day = $scope.course.freeCourseDay;
+			$scope.calendar.day = $filter("date")(new Date($scope.course.freeCourseDay).getTime(), "MMM dd,yyyy");
 		} else {
 			errorServices.autoHide(data.message);
 		}

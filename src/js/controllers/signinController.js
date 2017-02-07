@@ -136,4 +136,8 @@ angular.module("Skillopedia").controller("signinController", function($scope, $r
 	$scope.twitter_login = function() {
 		$window.location.href = config.url + "/twitterOne";
 	}
+	$scope.remove_panel = function() {
+		$scope.reconfirm_signin = false;
+		$scope.reconfirm_signup = false;
+	}
 });

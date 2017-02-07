@@ -33,6 +33,7 @@
             <div class="resend" ng-if="reconfirm_signin">
                 <div class="resend-content">
                     Skillpier go to <span class="text-danger">{{input.signin_email}}</span> to complete the sign-up process. <span class="btn btn-primary hover" ng-click="resend_email(input.signin_email)">Resend email</span>
+                    <span class="pull-right hover" style="line-height: 30px" ng-click="remove_panel()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
                 </div>
             </div>
             <div class="text-center">
@@ -60,6 +61,7 @@
         <div class="resend" ng-if="reconfirm_signup">
             <div class="resend-content">
                 Skillpier go to <span class="text-danger">{{input.signup_email}}</span> to complete the sign-up process. <span class="btn btn-primary hover" ng-click="resend_email(input.signup_email)">Resend email</span>
+                <span class="pull-right hover" style="line-height: 30px" ng-click="remove_panel()"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
             </div>
         </div>
         <div class="text-center">

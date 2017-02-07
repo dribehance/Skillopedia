@@ -5,7 +5,9 @@ angular.module("Skillopedia").factory("tokenInterceptor", function($location, $r
 		// optional method
 		'request': function(config) {
 			// do something on success
-			++request_count == 1 && toastServices.start();
+			if (config.url.indexOf("/app/UserCenter/baseInfo") == -1) {
+				++request_count == 1 && toastServices.start();
+			}
 			// The language can be configured any other way.
 
 			// We'll eventually use $("html").attr("lang").
@@ -24,7 +26,9 @@ angular.module("Skillopedia").factory("tokenInterceptor", function($location, $r
 		},
 		// optional method
 		'response': function(response) {
-			--request_count == 0 && toastServices.done();
+			if (config.url.indexOf("/app/UserCenter/baseInfo") == -1) {
+				--request_count == 0 && toastServices.done();
+			}
 			// do something on success
 			var defer = $q.defer();
 			// static response

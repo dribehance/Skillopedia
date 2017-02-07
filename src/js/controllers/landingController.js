@@ -233,4 +233,8 @@ angular.module("Skillopedia").controller("landingController", function($scope, $
 	$scope.go = function() {
 		$window.location.href = $location.protocol() + "://" + $location.host() + ":" + $location.port();
 	}
+	$scope.remove_panel = function() {
+		$scope.reconfirm_signin = false;
+		$scope.reconfirm_signup = false;
+	}
 });

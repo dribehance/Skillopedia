@@ -12,7 +12,7 @@ angular.module("Skillopedia").directive('calendar', function($filter, localStora
 			scope.nowaday = $filter("date")(today, "yyyy-MM-dd");
 
 			scope.calendar = angular.extend({}, scope.calendar);
-			scope.calendar.day = scope.calendar.day || $filter("date")(new Date());
+			scope.calendar.day = scope.calendar.day || $filter("date")(new Date().getTime(), "MMM dd,yyyy");
 			// edit mode
 			scope.$watch("calendar.day", function(n, o) {
 				if (n && typeof scope.calendar.onDayChange == "function") {

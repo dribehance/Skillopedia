@@ -41,7 +41,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             $scope.query_coupons();
             // query schedule
             $scope.calendar = angular.extend({}, $scope.calendar);
-            $scope.calendar.day = $scope.course.freeCourseDay;
+            $scope.calendar.day = $filter("date")(new Date($scope.course.freeCourseDay).getTime(), "MMM dd,yyyy");
 
         } else {
             errorServices.autoHide(data.message);

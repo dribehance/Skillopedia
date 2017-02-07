@@ -7,7 +7,7 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 	}
 	$scope.listen = function() {
 		$timeout(function() {
-			if ($rootScope.user.course_id == 0 && $location.path() == "/authenication") {
+			if ($rootScope.user.course_id == 0 && $location.path() == "/authenication" && $rootScope.user.authen_status != 0) {
 				userServices.sync();
 				$scope.listen();
 			}

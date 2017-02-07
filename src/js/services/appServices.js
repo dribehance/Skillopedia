@@ -83,11 +83,11 @@
  			// }
  			// $rootScope.onload = false;
  			browserServices.detect();
-			// $timeout(function() {
-			// 	googleMapServices.geolocation().then(function(data) {
-			// 		console.log(data)
-			// 	})
-			// }, 10000)
+ 			// $timeout(function() {
+ 			// 	googleMapServices.geolocation().then(function(data) {
+ 			// 		console.log(data)
+ 			// 	})
+ 			// }, 10000)
  		}
  	}
  });
