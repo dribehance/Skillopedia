@@ -38,7 +38,7 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 	}];
 	// 提交认证
 	$scope.ajaxForm = function() {
-		$scope.confirm.ok_text = "Agree";
+		$scope.confirm.ok_text = "Continue";
 		$scope.confirm.cancel_text = "Decline";
 		$scope.confirm.content_text = "Application submitted. Our administrator will review your application within 24 hours.";
 		$scope.confirm.content_type = "rich_text"
