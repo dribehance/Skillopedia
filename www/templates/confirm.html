@@ -41,9 +41,10 @@
             <div ng-include="'../templates/partnership_agreement.html'"></div>
         </div>
         <div class="confirm-footer">
-            <span class="btn btn-primary btn-lg btn-md pull-left" ng-click="confirm.cancel()">{{confirm.cancel_text}}</span>
-            <span class="btn btn-default btn-lg block btn-md pull-right" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
-            <p class="pull-right">Agree means you agree all the terms in Skillpier's partnership agreement.</p>
+            <p style="text-align: left" class="hover" ng-click="check()"><i class="fa" ng-class="{'fa-square-o': !checked,'fa-check-square-o': checked,'text-primary': checked}" aria-hidden="true"></i> Agree means you agree all the terms in Skillpier's partnership agreement.</p>
+            <p class="text-center">
+                <button class="btn btn-primary block" ng-click="confirm.ok()" ng-disabled="!checked">{{confirm.ok_text}}</button>
+            </p>
         </div>
     </div>
 </div>

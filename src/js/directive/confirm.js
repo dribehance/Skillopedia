@@ -10,6 +10,9 @@ angular.module("Skillopedia").directive('confirm', function() {
 			// function body
 			scope.input = {};
 			scope.input.location = {};
+			scope.check = function() {
+				return scope.checked = !scope.checked;
+			}
 			scope.confirm = angular.extend({}, {
 				title: "Tips",
 				content: "Are You Sure?",
@@ -33,6 +36,9 @@ angular.module("Skillopedia").directive('confirm', function() {
 				},
 				ok: function() {
 					$(element).hide();
+					if (scope.confirm.content_type == "rich_text" && !scope.checked) {
+						return;
+					}
 					if (typeof scope.confirm.ok_callback == "function") {
 						scope.confirm.ok_callback();
 						scope.confirm.content_type = "content";
