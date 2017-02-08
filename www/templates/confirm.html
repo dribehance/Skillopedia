@@ -18,7 +18,9 @@
 <div class="confirm-box" ng-if="confirm.content_type =='content'">
     <div class="confirm-body">
         <div class="confirm-content">
-            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">
+                <a><img src="../images/logo.png" class="logo" alt=""></a>
+            </p>
             <p class="text-center">{{confirm.content_text}}</p>
             <p class="text-center">
                 <span class="btn btn-primary block full-width btn-lg btn-md" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
@@ -29,11 +31,29 @@
         </div>
     </div>
 </div>
+<!-- content confirm box yes or no rich text-->
+<div class="confirm-box" ng-if="confirm.content_type =='rich_text'">
+    <div class="confirm-body rich-body">
+        <div class="confirm-content">
+            <p class="text-center">
+                <a><img src="../images/logo.png" class="logo" alt=""></a>
+            </p>
+            <div ng-include="'../templates/partnership_agreement.html'"></div>
+        </div>
+        <div class="confirm-footer">
+            <span class="btn btn-primary btn-lg btn-md pull-left" ng-click="confirm.cancel()">{{confirm.cancel_text}}</span>
+            <span class="btn btn-default btn-lg block btn-md pull-right" ng-click="confirm.ok()">{{confirm.ok_text}}</span>
+            <p class="pull-right">Agree means you agree all the terms in Skillpier's partnership agreement.</p>
+        </div>
+    </div>
+</div>
 <!-- content confirm box yes or no -->
 <div class="confirm-box" ng-if="confirm.content_type =='content_1'">
     <div class="confirm-body">
         <div class="confirm-content">
-            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">
+                <a><img src="../images/logo.png" class="logo" alt=""></a>
+            </p>
             <p class="text-center">{{confirm.content_text}}</p>
             <p class="text-center"> In the meantime, you can</p>
             <p class="text-center">
@@ -50,7 +70,9 @@
 <div class="confirm-box" ng-if="confirm.content_type =='autocomplete'">
     <div class="confirm-body">
         <div class="confirm-content">
-            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">
+                <a><img src="../images/logo.png" class="logo" alt=""></a>
+            </p>
             <p class="text-center">{{confirm.content_text}}</p>
             <autocomplete location="input.location"></autocomplete>
             <p class="text-center">
@@ -66,7 +88,9 @@
 <div class="confirm-box" ng-if="confirm.content_type =='dialog'">
     <div class="confirm-body">
         <div class="confirm-content">
-            <p class="text-center"><a><img src="../images/logo.png" class="logo" alt=""></a></p>
+            <p class="text-center">
+                <a><img src="../images/logo.png" class="logo" alt=""></a>
+            </p>
             <p class="text-center">{{confirm.content_text}}</p>
             <p class="text-center">
                 <span class="btn btn-primary block full-width btn-lg btn-md" ng-click="confirm.ok()">{{confirm.ok_text}}</span>

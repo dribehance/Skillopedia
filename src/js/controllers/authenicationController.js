@@ -38,6 +38,17 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 	}];
 	// 提交认证
 	$scope.ajaxForm = function() {
+		$scope.confirm.ok_text = "Agree";
+		$scope.confirm.cancel_text = "Decline";
+		$scope.confirm.content_text = "Application submitted. Our administrator will review your application within 24 hours.";
+		$scope.confirm.content_type = "rich_text"
+		$scope.confirm.open();
+		$scope.confirm.cancle_callback = function() {}
+		$scope.confirm.ok_callback = function() {
+			$scope.postForm();
+		};
+	};
+	$scope.postForm = function() {
 		toastServices.show();
 		userServices.authenication({
 			nickname: $scope.input.realname,
@@ -51,7 +62,7 @@ angular.module("Skillopedia").controller("authenicationController", function($sc
 		}).then(function(data) {
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-				errorServices.autoHide(data.message);
+				// errorServices.autoHide(data.message);
 				$scope.confirm.ok_text = "Create my first course";
 				$scope.confirm.cancel_text = "Leave and create my course later";
 				$scope.confirm.content_text = "Application submitted. Our administrator will review your application within 24 hours.";

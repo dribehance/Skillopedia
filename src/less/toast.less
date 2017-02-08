@@ -73,6 +73,13 @@
         border-radius: 6px;
         overflow: hidden;
         .box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.22));
+        &.rich-body {
+            max-width: 900px;
+            .confirm-content {
+                max-height: 500px;
+                overflow-y: scroll;
+            }
+        }
     }
     .confirm-header {
         padding: 20px 15px;
@@ -98,6 +105,7 @@
         padding: 10px 15px;
         border-top: 1px dashed #a0a0a0;
         text-align: right;
-        background-color: #f0f0f0;
+        overflow:hidden;
+        // background-color: #f0f0f0;
     }
 }

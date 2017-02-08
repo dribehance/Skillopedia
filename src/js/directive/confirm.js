@@ -18,9 +18,15 @@ angular.module("Skillopedia").directive('confirm', function() {
 				ok_text: "Ok",
 				open: function() {
 					$(element).show();
+					$("body").css({
+						overflow: "hidden"
+					});
 				},
 				cancel: function() {
 					$(element).hide();
+					$("body").css({
+						overflow: "auto"
+					});
 					if (typeof scope.confirm.cancle_callback == "function") {
 						scope.confirm.cancle_callback();
 					}
