@@ -19,7 +19,7 @@
                     <span class="official-coach" ng-if="course.is_official"></span>
                 </div>
                 <div class="coach-info">
-                    <div class="long-title text-ellipsis">{{course.title}}</div>
+                    <div class="long-title text-ellipsis"><span class="text-danger" ng-if="course.status == 0">[Offline]</span>{{course.title}}</div>
                     <span class="pull-right text-primary text-big">{{course.session_rate|currency:"$"}}</span>
                     <div style="margin-bottom:10px;" class="text-transform">{{course.coach_name}}</div>
                     <div class="justified">
