@@ -1,5 +1,9 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("ordersManagementController", function($scope, $route, $window, $timeout, $location, googleMapServices, orderServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("ordersManagementController", function($scope, $rootScope, $route, $window, $timeout, $location, googleMapServices, orderServices, errorServices, toastServices, localStorageService, config) {
+	if ($rootScope.user.agent_level != "2") {
+		$location.path("authenication").replace();
+		return;
+	}
 	$scope.input = {
 		order_type: '1'
 	}

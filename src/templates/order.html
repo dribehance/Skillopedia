@@ -63,11 +63,11 @@
                     <!-- 教练确认 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.status=='20' && schedule.refund_status=='10'">confirm</div>
                     <!-- 教练未确认 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.status=='3' && schedule.refund_status=='10'">unconfirm</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.status=='3' && (schedule.refund_status=='10'||schedule.refund_status=='1')">unconfirm</div>
                     <!-- 用户未选择 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.status=='4' && schedule.refund_status=='10'">unselected</div>
                     <!-- 退款中 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='2' || schedule.refund_status=='30'">pending</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='2' || schedule.refund_status=='30'">refund pending</div>
                     <!-- 退款完成 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='31'">refunded</div>
                 </div>
@@ -78,7 +78,7 @@
             </div>
             <a class="coach-item" ng-href="#/detail?course_id={{order.Course.course_id}}">
                 <div class="coach-avatar">
-                    <img ng-src="{{staticImageUrl + order.Course.course_image_01}}" class="full-width full-height" alt="" err-src="../images/example_7.png">
+                    <img ng-src="{{staticImageUrl + order.Course.coach_image}}" class="full-width full-height" alt="" err-src="../images/example_7.png">
                     <span class="official-coach" ng-if="order.Course.is_official"></span>
                 </div>
                 <div class="coach-info">

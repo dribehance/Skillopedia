@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("orderBookingController", function($scope, $rootScope, $route, $routeParams, $filter, $timeout, orderServices, scheduleServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("orderBookingController", function($scope, $rootScope, $route, $routeParams, $filter, $timeout, coursesServices, orderServices, scheduleServices, errorServices, toastServices, localStorageService, config) {
 	// schedule
 	$scope.calendar = {
 		mode: "edit",
@@ -51,7 +51,24 @@ angular.module("Skillopedia").controller("orderBookingController", function($sco
 	$scope.calendar.onDayChange = function() {
 		$scope.query_schedule($filter("date")(new Date($scope.calendar.day).getTime(), "yyyy-MM-dd"))
 	};
-	$scope.query_schedule($filter("date")(new Date().getTime(), "yyyy-MM-dd"));
+	coursesServices.query_by_id({
+		course_id: $routeParams.course_id,
+		latitude: 0,
+		longitude: 0
+	}).then(function(data) {
+		toastServices.hide()
+		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+			$scope.course = data.Result.Course;
+			// query schedule
+			$scope.calendar = angular.extend({}, $scope.calendar);
+			$scope.calendar.day = $filter("date")(new Date($scope.course.freeCourseDay).getTime(), "MMM dd,yyyy");
+		} else {
+			errorServices.autoHide(data.message);
+		}
+	}).then(function(data) {
+		$scope.query_schedule($filter("date")(new Date($scope.calendar.day).getTime(), "yyyy-MM-dd"));
+	});
+	// $scope.query_schedule($filter("date")(new Date().getTime(), "yyyy-MM-dd"));
 	// 获取剩余可选课程
 	$scope.get_left = function() {
 		return parseFloat($scope.calendar.size) - parseFloat($scope.calendar.selected.length);

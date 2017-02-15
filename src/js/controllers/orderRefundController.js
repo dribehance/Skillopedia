@@ -11,7 +11,7 @@ angular.module("Skillopedia").controller("orderRefundController", function($scop
 			$scope.order = data.Result.Orders;
 			$scope.refunds.map(function(r) {
 				if (r.refund_status == '10') {
-					r.selected = true;
+					r.selected = false;
 				}
 				return r;
 			});

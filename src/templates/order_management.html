@@ -23,15 +23,15 @@
                     <div class="col-xs-3">session{{$index+1}}</div>
                     <div class="col-xs-6">{{schedule.schedule_data}} {{schedule.schedule_hours}}</div>
                     <!-- 课程完成 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.status=='1'">finish</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.status=='1'">complete</div>
                     <!-- 教练确认 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.status=='20' && schedule.refund_status=='10'">confirm</div>
                     <!-- 教练未确认 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.status=='3' && schedule.refund_status=='10'">unconfirm</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.status=='3' && (schedule.refund_status=='10'||schedule.refund_status=='1')">unconfirm</div>
                     <!-- 用户未选择 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.status=='4' && schedule.refund_status=='10'">unselected</div>
                     <!-- 退款中 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='2' || schedule.refund_status=='30'">pending</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='2' || schedule.refund_status=='30'">refund pending</div>
                     <!-- 退款完成 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='31'">refunded</div>
                 </div>
@@ -41,9 +41,9 @@
                     <!-- coach cancel course -->
                     <!-- <a class="btn btn-success" ng-if="order.button_status1 == '1'" ng-href="#/order_cancel">cancel</a> -->
                     <!-- confirm course time -->
-                    <a class="btn btn-success" ng-if="order.button_status2 == '1'" ng-href="#/order_confirm">confirm</a>
+                    <a class="btn btn-success" ng-if="order.button_status2 == '1'" ng-href="#/order_confirm">Confirm</a>
                     <!-- finish course -->
-                    <a class="btn btn-success" ng-if="order.button_status3 == '1'" ng-href="#/order_finish">finish</a>
+                    <a class="btn btn-success" ng-if="order.button_status3 == '1'" ng-href="#/order_finish">Finish</a>
                     <span class="btn btn-danger" ng-if="order.button_status4 == '1'" ng-click="remove(order)">Delete</span>
                 </div>
             </div>
@@ -74,14 +74,15 @@
             </div>
             <a class="coach-item" ng-href="#/detail?course_id={{order.Course.course_id}}">
                 <div class="coach-avatar">
-                    <imageview data-rate="1" center-only src="staticImageUrl + order.Course.course_images_01"></imageview>
+                    <imageview data-rate="1" center-only src="staticImageUrl + order.Course.course_image_01"></imageview>
                     <span class="official-coach" ng-if="order.Course.is_official"></span>
                 </div>
                 <div class="coach-info">
                     <div class="long-title text-ellipsis">{{order.Course.title}}</div>
                     <span class="pull-right" style="margin-left:8px;">x{{order.buy_amount}}</span>
                     <span class="pull-right text-primary text-big">{{order.Course.session_rate|currency:"$"}}</span>
-                    <div style="margin-bottom:10px;" class="text-transform">{{order.Course.course_nickname}}</div>
+                    <!-- <div style="margin-bottom:10px;" class="text-transform">{{order.Course.course_nickname}}</div> -->
+                    <div style="margin-bottom:10px;" class="text-transform">{{order.buy_nickname}}</div>
                     <div class="justified">
                         <div>
                             <i class="fa fa-star" aria-hidden="true"></i>

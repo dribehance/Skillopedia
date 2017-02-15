@@ -127,7 +127,7 @@ angular.module("Skillopedia").controller("orderConfirmController", function($sco
 	};
 	// reject
 	$scope.reject_course = function() {
-		$scope.confirm.content = "Decline Booking";
+		$scope.confirm.content_text = "Decline Booking";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {

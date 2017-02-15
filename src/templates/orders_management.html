@@ -23,7 +23,8 @@
                     <div class="long-title text-ellipsis order-item">{{order.Course.title}} <span class="timestamp">{{order.post_time}}</span></div>
                     <span class="pull-right" style="margin-left:8px;">x{{order.buy_amount}}</span>
                     <span class="pull-right text-primary text-big">{{order.Course.session_rate|currency:"$"}}</span>
-                    <div style="margin-bottom:10px;" class="text-transform">{{order.Course.coach_name}}</div>
+                    <!-- <div style="margin-bottom:10px;" class="text-transform">{{order.Course.coach_name}}</div> -->
+                    <div style="margin-bottom:10px;" class="text-transform">{{order.buy_nickname}}</div>
                     <div class="justified">
                         <div>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -47,9 +48,9 @@
                         <!-- coach cancel course -->
                         <!-- <a class="btn btn-success" ng-if="order.button_status1 == '1'" ng-href="#/order_cancel?id={{order.orders_id}}">cancel</a> -->
                         <!-- confirm course time -->
-                        <a class="btn btn-success" ng-if="order.button_status2 == '1'" ng-href="#/order_confirm?id={{order.orders_id}}">confirm</a>
+                        <a class="btn btn-success" ng-if="order.button_status2 == '1'" ng-href="#/order_confirm?id={{order.orders_id}}">Confirm</a>
                         <!-- finish course -->
-                        <a class="btn btn-success" ng-if="order.button_status3 == '1'" ng-href="#/order_finish?id={{order.orders_id}}">finish</a>
+                        <a class="btn btn-success" ng-if="order.button_status3 == '1'" ng-href="#/order_finish?id={{order.orders_id}}">Finish</a>
                         <span class="btn btn-danger" ng-if="order.button_status4 == '1'" ng-click="remove(order)">Delete</span>
                     </div>
                 </div>

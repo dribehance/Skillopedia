@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("indexController", function($scope, $rootScope, $timeout, skillopediaServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("indexController", function($scope, $rootScope, $location, $timeout, skillopediaServices, errorServices, toastServices, localStorageService, config) {
 	// banner
 	toastServices.show();
 	skillopediaServices.query_banner().then(function(data) {
@@ -95,4 +95,16 @@ angular.module("Skillopedia").controller("indexController", function($scope, $ro
 			errorServices.autoHide(data.message);
 		}
 	})
+	$scope.go_list = function(sport_second) {
+		var coming_soon = ["Baking", "Dance", "Yoga", "Painting"];
+		if (coming_soon.includes(sport_second.category_02_name)) {
+			errorServices.autoHide("Coming soon");
+			return;
+		}
+		$location.path("list").search({
+			category: sport_second.category_02_name,
+			category_id: sport_second.category_02_id,
+			type: 2
+		});
+	}
 });
