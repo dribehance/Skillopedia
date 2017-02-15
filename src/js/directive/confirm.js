@@ -36,6 +36,9 @@ angular.module("Skillopedia").directive('confirm', function() {
 				},
 				ok: function() {
 					$(element).hide();
+					$("body").css({
+						overflow: "auto"
+					});
 					if (scope.confirm.content_type == "rich_text" && !scope.checked) {
 						return;
 					}
@@ -45,6 +48,9 @@ angular.module("Skillopedia").directive('confirm', function() {
 					}
 				},
 				ok_submit: function() {
+					$("body").css({
+						overflow: "auto"
+					});
 					scope.confirm.content = scope.input.location.street; //$(element).find("input").val();
 					scope.confirm.location = scope.input.location;
 					if (!scope.confirm.content) return;

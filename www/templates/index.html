@@ -115,7 +115,7 @@
             <div class="sub-feature">
                 <span class="close_right close" ng-click="close_right($event)"><i class="fa fa-times" aria-hidden="true"></i></span>
                 <div class="sub-feature-{{$index}} circle" ng-repeat="art_second in art_seconds track by $index" ng-if="$index<6">
-                    <a class="feature-meta hover" ng-click="go_list(sport_second)" title="{{art_second.category_describe}}">
+                    <a class="feature-meta hover" ng-click="go_list(art_second)" title="{{art_second.category_describe}}">
                         <img ng-src="{{staticImageUrl + art_second.big_image_01}}" class="full-width" err-src="../images/error.jpg" onload>
                         <span class="feature-meta-title text-ellipsis">
                             {{art_second.category_02_name}}

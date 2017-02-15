@@ -19,7 +19,7 @@
                     <div ng-if="refund.refund_status=='31'" ng-class="{'text-success':refund.refund_status=='31'}">
                         <div class="col-xs-3">
                             <i class="fa hover" ng-class="{' fa-check-square-o':refund.selected,' fa-square-o':!refund.selected}" ng-click="select(refund)" ng-if="refund.refund_status=='10'"></i>
-                            <span class="">{{$index+1}} session</span>
+                            <span class="">session {{$index+1}}</span>
                         </div>
                         <div class="col-xs-6"><span class="">{{refund.schedule_data}} {{refund.schedule_hours}}</span></div>
                         <div class="col-xs-3 text-right"><span class="">finish</span></div>
@@ -28,7 +28,7 @@
                     <div ng-if="refund.refund_status=='2'" ng-class="{'text-primary':refund.refund_status=='2'}">
                         <div class="col-xs-3">
                             <i class="fa hover" ng-class="{' fa-check-square-o':refund.selected,' fa-square-o':!refund.selected}" ng-click="select(refund)" ng-if="refund.refund_status=='10'"></i>
-                            <span class=""> {{$index+1}} session</span>
+                            <span class=""> session {{$index+1}}</span>
                         </div>
                         <div class="col-xs-6"><span class="">{{refund.schedule_data}} {{refund.schedule_hours}}</span></div>
                         <div class="col-xs-3 text-right"><span class="">pending</span></div>
@@ -37,17 +37,17 @@
                     <div ng-if="refund.refund_status=='10'" ng-class="{'text-danger':refund.refund_status=='10'}">
                         <div class="col-xs-3">
                             <i class="fa hover" ng-class="{' fa-check-square-o':refund.selected,' fa-square-o':!refund.selected}" ng-click="select(refund)" ng-if="refund.refund_status=='10'"></i>
-                            <span class=""> {{$index+1}} session</span>
+                            <span class=""> session {{$index+1}}</span>
                         </div>
                         <div class="col-xs-6"><span class="">{{refund.schedule_data}} {{refund.schedule_hours}}</span></div>
-                        <div class="col-xs-3 text-right"><span class="">Could be refund</span></div>
+                        <div class="col-xs-3 text-right"><span class="">Eligible for refund</span></div>
                     </div>
                 </div>
             </div>
             <div class="drawback">
                 <div class="refund-btn clearfix">
                     <div class="items-refund pull-left hover" ng-click="refund()" ng-if="refund_meta.can_refund_num>0">
-                        Refund {{total_refund_money|currency:"$"}}
+                        Refund <!-- {{total_refund_money|currency:"$"}} -->
                     </div>
                     <a class="lab" ng-href="#/order?id={{order.orders_id}}">Click here for detail</a>
                 </div>

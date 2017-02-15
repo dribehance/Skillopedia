@@ -54,7 +54,7 @@
                         <a class="btn btn-default" ng-if="order.status == '30' || order.status == '40'" ng-href="#/detail?course_id={{order.Course.course_id}}">Buy again</a>
                         <!-- comment when course is finish #/order_comment-->
                         <a class="btn btn-second" ng-if="order.status == '30'" ng-href="#/order_comment?id={{order.orders_id}}">Comment</a>
-                        <a class="btn btn-second" ng-if="order.status == '40'" ng-href="#/order_comment?id={{order.orders_id}}">Update comment</a>
+                        <a class="btn btn-second" ng-if="order.status == '40'" ng-href="#/order_comment?id={{order.orders_id}}&c_id={{order.Course.comment_id}}">Update comment</a>
                         <!-- booking active book_status #/order_booking-->
                         <a class="btn btn-success" ng-if="order.booking_status == '1'" ng-href="#/order_booking?order_id={{order.orders_id}}&course_id={{order.Course.course_id}}">Booking</a>
                         <!-- booking disabled book_status-->
