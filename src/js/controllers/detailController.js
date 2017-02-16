@@ -169,7 +169,7 @@ angular.module("Skillopedia").controller("detailController", function($scope, $r
 	}
 	$scope.parse_html = function(html) {
 		if (!html) return;
-		return html.replace(/\n/g, "<br>");
+		return html.replace(/\n/g, "<br>").replace(/，\s*/g, ", ");
 	}
 	$scope.tab = "about";
 	$scope.active_tab = function(tab) {
