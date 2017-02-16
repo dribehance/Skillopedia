@@ -6,4 +6,7 @@ angular.module("Skillopedia").controller("sidebarController", function($scope, $
 		}
 		return false;
 	}
+	$scope.go = function(path) {
+		$location.path(path);
+	}
 })
