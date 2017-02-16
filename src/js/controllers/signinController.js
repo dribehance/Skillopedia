@@ -27,7 +27,9 @@ angular.module("Skillopedia").controller("signinController", function($scope, $r
 					localStorageService.set("token", data.token);
 					userServices.sync();
 					$rootScope.close_popup_signin();
-					$route.reload();
+					if ($location.path() != "/fillinorder") {
+						$route.reload();
+					}
 				}
 				if (data.code == config.request.SUCCESS && data.status == 5) {
 					$scope.reconfirm_signin = true;

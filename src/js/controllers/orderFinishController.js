@@ -86,6 +86,7 @@ angular.module("Skillopedia").controller("orderFinishController", function($scop
 
 	function parse_selected() {
 		$scope.calendar.selected = [];
+		$scope.calendar.default_selected = [];
 		var selectabled = $scope.calendar.times.filter(function(t) {
 			return t.active;
 		})
@@ -96,6 +97,7 @@ angular.module("Skillopedia").controller("orderFinishController", function($scop
 				to: selectabled[i + 1]
 			}
 			$scope.calendar.selected.push(selected_time);
+			$scope.calendar.default_selected.push(selected_time);
 		}
 	}
 	$scope.input = {};

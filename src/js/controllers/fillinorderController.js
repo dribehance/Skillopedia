@@ -223,7 +223,7 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
                     time.schedule_state_message = time.schedule_state_message;
                     time.day = day;
                     var temp = time.day + " " + time.hour;
-                    if (selected.indexOf(temp) != -1) {
+                    if (time.schedule_state == 3 && selected.indexOf(temp) != -1) {
                         time.schedule_state = 2;
                         time.active = true;
                     }
@@ -431,6 +431,12 @@ angular.module("Skillopedia").controller("fillinorderController", function($scop
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
                 errorServices.autoHide(data.message);
                 type == "1" && (animate_dot());
+                $timeout(function() {
+                    if (type == "1") {
+                        $scope.query_schedule($filter("date")(new Date($scope.calendar.day).getTime(), "yyyy-MM-dd"));
+                        $scope.calendar.selected = []
+                    }
+                }, 2000)
                 $timeout(function() {
                     var url = $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#/payment?id=" + data.orders_id;
                     type == "11" && ($window.location.href = url);

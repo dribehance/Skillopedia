@@ -70,11 +70,21 @@ angular.module("Skillopedia").directive('calendar', function($filter, localStora
 				// scope.calendar = angular.extend({}, scope.calendar);
 				scope.calendar.selected = [];
 				scope.select = function(time, index) {
-					var next = index + 1;
-					next = next > scope.calendar.times.length - 1 ? scope.calendar.times.length - 1 : next;
-					if (index == next) {
-						return;
-					}
+					// var next = index + 1;
+					// next = next > scope.calendar.times.length - 1 ? scope.calendar.times.length - 1 : next;
+					// if (index == next) {
+					// 	return;
+					// }
+					var next = 0;
+					scope.calendar.default_selected.map(function(s) {
+						if (s.from.hour == time.hour) {
+							next = index + 1;
+						}
+						if (s.to.hour == time.hour) {
+							next = index - 1;
+						}
+						return s;
+					});
 					// schedule_state_1 disabled,schedule_state_2 busy,schedule_state_3 free
 					if (time.schedule_state == 3 && scope.calendar.times[next].schedule_state == 3 && scope.calendar.selected.length < scope.calendar.size) {
 						time.schedule_state = 2;

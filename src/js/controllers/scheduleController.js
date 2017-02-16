@@ -74,7 +74,7 @@ angular.module("Skillopedia").controller("scheduleController", function($scope, 
 		});
 	}
 	$scope.busy_one_day = function() {
-		$scope.confirm.content = $scope.calendar.is_busy_24 == "0" ? "Mark busy today?" : "Cancel mark busy today?";
+		$scope.confirm.content = $scope.calendar.is_busy_24 == "0" ? "Mark busy today?" : "Cancel Mark busy today?";
 		$scope.confirm.open();
 		$scope.confirm.cancle_callback = function() {}
 		$scope.confirm.ok_callback = function() {
