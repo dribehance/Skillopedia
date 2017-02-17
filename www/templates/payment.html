@@ -109,11 +109,11 @@
                                         <input type="number" placeholder="Card number" required name="visa_card_id" ng-model="input.visa_card_id" maxlength="16" ng-class="{'text-danger':visaForm.visa_card_id.$invalid && visaForm.visa_card_id.$dirty}">
                                     </div>
                                     <div class="visa-input">
-                                        <input type="number" placeholder="Month" class="month" min="0" max="12" required name="visa_card_month" ng-model="input.visa_card_month">
-                                        <input type="number" placeholder="Year" class="year" min="0" max="99" required name="visa_card_year" ng-model="input.visa_card_year">
+                                        <input type="text" placeholder="Month" class="month" required name="visa_card_month"  ng-model="input.visa_card_month" month-mark>
+                                        <input type="number" placeholder="Year" class="year" required name="visa_card_year" ng-model="input.visa_card_year" year-mark>
                                     </div>
                                     <div class="visa-input">
-                                        <input type="number" placeholder="Security code" class="code" min="0" required name="visa_card_code" ng-model="input.visa_card_code">
+                                        <input type="number" placeholder="Security code" class="code" required name="visa_card_code" ng-model="input.visa_card_code" security-code-mark>
                                     </div>
                                 </div>
                                 <p></p>

@@ -27,9 +27,9 @@
                     <!-- 教练确认 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.status=='20' && schedule.refund_status=='10'">Confirm</div>
                     <!-- 教练未确认 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.status=='3' && (schedule.refund_status=='10'||schedule.refund_status=='1')">unconfirm</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.status=='3' && (schedule.refund_status=='10'||schedule.refund_status=='1')">Unconfirm</div>
                     <!-- 用户未选择 -->
-                    <div class="col-xs-3 text-right" ng-if="schedule.status=='4' && schedule.refund_status=='10'">Unselected</div>
+                    <div class="col-xs-3 text-right" ng-if="schedule.status=='4' && schedule.refund_status=='10'">Not Scheduled</div>
                     <!-- 退款中 -->
                     <div class="col-xs-3 text-right" ng-if="schedule.refund_status=='2' || schedule.refund_status=='30'">Refund pending</div>
                     <!-- 退款完成 -->

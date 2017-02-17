@@ -1,27 +1,28 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").directive('mark', function() {
+angular.module("Skillopedia").directive('securityCodeMark', function() {
     return {
         restrict: 'A',
         require: 'ngModel',
         link: function(scope, element, attrs, ctrl) {
-            var us_telephone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
+            var month_reg = /[0-9]/,
                 is_backspace = false;
             ctrl.$parsers.push(function(viewValue) {
                 if (is_backspace) {
                     is_backspace = false;
                     return;
                 }
-                viewValue = format_telephone(viewValue);
+                viewValue = format_code(viewValue);
                 ctrl.$setViewValue(viewValue);
-                if (us_telephone.test(viewValue)) {
-                    ctrl.$setValidity("mark", true);
+                if (month_reg.test(viewValue)) {
+                    ctrl.$setValidity("securityCodeMark", true);
                 } else {
-                    ctrl.$setValidity("mark", false);
+                    ctrl.$setValidity("securityCodeMark", false);
                 }
                 ctrl.$render();
                 return viewValue;
             });
             $(element).bind("keydown", function(e) {
+                console.log(e.key)
                 if (!(e.key.match(/[0-9]/) || e.key == "Backspace" || e.key == "Tab")) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -33,16 +34,9 @@ angular.module("Skillopedia").directive('mark', function() {
                 }
             });
 
-            function format_telephone(str) {
+            function format_code(str) {
                 if (!str) return;
-                str = str.replace(/-/g, "");
-                str = str.substring(0, 10);
-                str = str.replace(/[0-9]{6}/, function(replacement) {
-                    return replacement + "-";
-                })
-                str = str.replace(/[0-9]{3}/, function(replacement) {
-                    return replacement + "-";
-                })
+                str = str.toString().slice(0, 3);
                 return str;
             };
         }
