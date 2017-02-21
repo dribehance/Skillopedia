@@ -25,6 +25,12 @@ angular.module("Skillopedia").directive('confirm', function() {
 						overflow: "hidden"
 					});
 				},
+				close: function() {
+					$(element).hide();
+					$("body").css({
+						overflow: "auto"
+					});
+				},
 				cancel: function() {
 					$(element).hide();
 					$("body").css({

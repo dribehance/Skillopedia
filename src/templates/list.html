@@ -6,7 +6,7 @@
             <form class="search-form clearfix" name="searchForm" ng-submit="ajaxForm()" ng-controller="searchFormController">
                 <div class="skill-input addon">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" ng-required="true" placeholder="Find your private coach or lesson">
+                    <input type="text" class="full-width" ng-model="input.keyword" ng-focus="focus()" ng-blur="blur()" placeholder="Find your private coach or lesson">
                     <span class="category-suggestion" ng-if="input.focus && input.categorys.length>0">
             <span class="suggestion-item" ng-repeat="category in input.categorys" ng-click="select_category(category)">{{category.category_02_name}}</span>
                     </span>
@@ -16,7 +16,7 @@
                     <autocomplete location="input.location"></autocomplete>
                 </span>
                 </div>
-                <button class="btn btn-primary" type="submit" ng-disabled="searchForm.$invalid">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
                 <div class="filter">
                     More filters
                     <div class="rangeslider-wrap">
@@ -47,12 +47,13 @@
             </div>
             <div class="condition-3">
                 <span class="text-primary"><b>Travel Services Available:</b></span>
-                <span class="condition" ng-class="{'active':input.travel =='1'}" ng-click="travel_yes()">
+                <!-- <span class="condition" ng-class="{'active':input.travel =='1'}" ng-click="travel_yes()">
                             Yes
                     </span>
                 <span class="condition" ng-class="{'active':input.travel =='0'}" ng-click="travel_no()">
                             No
-                    </span>
+                    </span> -->
+                    <span class="on-off" ng-class="{'on':input.travel =='1','off':input.travel =='0'}" ng-click="travel()"></span>
             </div>
         </div>
         <div class="coach-item hover" ng-click="local_go(course)" ng-repeat="course in courses">

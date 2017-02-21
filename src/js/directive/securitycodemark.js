@@ -22,7 +22,6 @@ angular.module("Skillopedia").directive('securityCodeMark', function() {
                 return viewValue;
             });
             $(element).bind("keydown", function(e) {
-                console.log(e.key)
                 if (!(e.key.match(/[0-9]/) || e.key == "Backspace" || e.key == "Tab")) {
                     e.preventDefault();
                     e.stopPropagation();

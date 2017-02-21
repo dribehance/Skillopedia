@@ -72,7 +72,7 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 			price_type: $scope.input.price,
 			review_type: $scope.input.review,
 			hot_type: $scope.input.hot,
-			travel_to_session: $scope.input.travel,
+			travel_to_session: $scope.input.travel != 1 ? "" : $scope.input.travel,
 			session_rate: $scope.input.session_rate
 		})
 		$scope.loadMore();
@@ -106,15 +106,23 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 		$scope.input.hot = sort_3++ % 2 + 1;
 		$scope.reload();
 	};
-	var travel = 0;
-	$scope.travel_yes = function() {
-		$scope.input.travel = 1;
+	$scope.input.travel = 0;
+	$scope.travel = function() {
+		if ($scope.input.travel == 0) {
+			$scope.input.travel = 1;
+		} else {
+			$scope.input.travel = 0;
+		}
 		$scope.reload();
 	};
-	$scope.travel_no = function() {
-		$scope.input.travel = 0;
-		$scope.reload();
-	};
+	// $scope.travel_yes = function() {
+	// 	$scope.input.travel = 1;
+	// 	$scope.reload();
+	// };
+	// $scope.travel_no = function() {
+	// 	$scope.input.travel = 0;
+	// 	$scope.reload();
+	// };
 	$scope.open_map = function(course, e) {
 		e.preventDefault();
 		e.stopPropagation();
