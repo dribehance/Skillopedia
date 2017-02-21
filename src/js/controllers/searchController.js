@@ -203,18 +203,21 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 		$scope.input.review = sort_2 = 0;
 		$scope.input.hot = sort_3 = 0;
 		$scope.input.price = sort_1++ % 2 + 1;
+		$scope.paging.pn = 1;
 		$scope.reload();
 	};
 	$scope.sort_by_review = function() {
 		$scope.input.price = sort_1 = 0;
 		$scope.input.hot = sort_3 = 0;
 		$scope.input.review = sort_2++ % 2 + 1;
+		$scope.paging.pn = 1;
 		$scope.reload();
 	};
 	$scope.sort_by_hot = function() {
 		$scope.input.price = sort_1 = 0;
 		$scope.input.review = sort_2 = 0;
 		$scope.input.hot = sort_3++ % 2 + 1;
+		$scope.paging.pn = 1;
 		$scope.reload();
 	};
 	$scope.input.travel = 0;
