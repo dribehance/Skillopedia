@@ -172,12 +172,14 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 		if (n === o) {
 			return;
 		}
+		$scope.paging.pn = 1;
 		$scope.reload();
 	}, true);
 	$scope.$watch("input.priority", function(n, o) {
 		if (n === o) {
 			return;
 		}
+		$scope.paging.pn = 1;
 		$scope.reload();
 	}, true);
 	// filter by priority;
@@ -222,6 +224,7 @@ angular.module("Skillopedia").controller("searchController", function($scope, $r
 		} else {
 			$scope.input.travel = 0;
 		}
+		$scope.paging.pn = 1;
 		$scope.reload();
 	};
 	$scope.open_map = function(course, e) {
