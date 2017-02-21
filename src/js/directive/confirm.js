@@ -54,12 +54,12 @@ angular.module("Skillopedia").directive('confirm', function() {
 					}
 				},
 				ok_submit: function() {
+					scope.confirm.content = scope.input.location.address; //$(element).find("input").val();
+					scope.confirm.location = scope.input.location;
+					if (!scope.confirm.content) return;
 					$("body").css({
 						overflow: "auto"
 					});
-					scope.confirm.content = scope.input.location.street; //$(element).find("input").val();
-					scope.confirm.location = scope.input.location;
-					if (!scope.confirm.content) return;
 					$(element).hide();
 					if (typeof scope.confirm.ok_callback == "function") {
 						scope.confirm.ok_callback();
