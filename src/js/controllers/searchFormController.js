@@ -48,6 +48,10 @@ angular.module("Skillopedia").controller("searchFormController", function($scope
 	}
 	$scope.ajaxForm = function() {
 		// var address = $("#autocomplete").val();
+		if (localStorageService.get("cache_category")) {
+			$scope.input.keyword = localStorageService.get("cache_category").name;
+		}
+		localStorageService.remove("cache_category");
 		var address = "";
 		if ($scope.input.location.street) {
 			address += $scope.input.location.street + ", ";

@@ -85,6 +85,7 @@ angular.module("Skillopedia").controller("listController", function($scope, $roo
 		if (n === o) {
 			return;
 		}
+		localStorageService.set("cache_category", n);
 		$scope.reload();
 	}, true);
 	var sort_1 = sort_2 = sort_3 = 0;
