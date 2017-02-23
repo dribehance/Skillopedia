@@ -15,6 +15,7 @@
             <span class="marquee" ng-if="user.agent_level == '1'">Teach With Skillpier</span>
             <span class="marquee" ng-if="user.agent_level == '2'">As a coach</span>
             <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
+            <span class="red-dot" ng-if="user.booking_number>0">{{user.booking_number}}</span>
         </a>
         <a class="sidebar-item clearfix" ng-href="#/messages" ng-class="{'active':highlight('/messages')}">
             <i class="sidebar-icon sidebar-message"></i>

@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Skillopedia").controller("ordersManagementController", function($scope, $rootScope, $route, $window, $timeout, $location, googleMapServices, orderServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Skillopedia").controller("ordersManagementController", function($scope, $rootScope, $route, $window, $timeout, $location, userServices, googleMapServices, orderServices, errorServices, toastServices, localStorageService, config) {
 	if ($rootScope.user.agent_level != "2") {
 		$location.path("authenication").replace();
 		return;
@@ -28,6 +28,7 @@ angular.module("Skillopedia").controller("ordersManagementController", function(
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.orders = $scope.orders.concat(data.Result.CoachOrderList.list);
 				$scope.no_more = $scope.orders.length == data.Result.CoachOrderList.totalRow ? true : false;
+				$rootScope.user.booking_number > 0 && userServices.sync();
 			} else {
 				errorServices.autoHide("Server error");
 			}
