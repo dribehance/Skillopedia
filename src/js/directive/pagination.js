@@ -64,11 +64,11 @@ angular.module("Skillopedia").directive('pagination', function() {
 			}
 			scope.valid_page = function() {
 				scope.total_pages = Math.ceil(scope.paging.total_items / scope.paging.page_size);
-				scope.paging.pn = Math.min(scope.paging.pn, scope.total_pages);
-				scope.paging.pn = Math.max(0, scope.paging.pn);
+				scope.paging.pn = Math.min(scope.paging.pn, scope.total_pages) || 1;
+				scope.paging.pn = Math.max(1, scope.paging.pn);
 			}
 			scope.$watch("paging.total_items", function(n, o) {
-				if (n) {
+				if (n || n === 0) {
 					scope.valid_page();
 					scope.parse_page();
 				}
